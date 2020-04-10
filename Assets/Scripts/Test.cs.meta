@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a1d5cef200cd0a248beabfe4a11fe3c5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _playerUnit: {fileID: 4142962831304538761, guid: 6d2534bef26c6354a8e8a314d54e570d,
+      type: 3}
+  - _enemyUnit: {fileID: 848244997343059411, guid: 7300c80a88f4a5f488aa8def3ecdb282,
+      type: 3}
+  - swordPlayer: {fileID: 479351306551889366, guid: 48cd1b9b1c565dd44ac855956bee950e,
+      type: 3}
+  - swordEnemy: {fileID: 1969890579225098, guid: a43414e7a355b304db774a169cfa04bb,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
