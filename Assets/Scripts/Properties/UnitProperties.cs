@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitProperties : MonoBehaviour
+[CreateAssetMenu]
+public class UnitProperties : ScriptableObject
 {
     [Header("Урон")]
-    public float Damage;
+    public float damage;
     [Header("Скорость передвижения")]
-    public float Speed;
+    public float speed;
     [Header("Пауза между атаками")]
     public float attackDelay;
     [Header("Дистанция для атаки")]

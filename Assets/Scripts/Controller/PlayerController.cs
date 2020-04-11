@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float leftHotline, rightHotline;
+    
+    private const float VERTICAL_HOTLINE = -2.5f;
     public float speed;
-
+    private float targetPos;
     private Vector2 startPos;
     private Camera cam;
-
-    private float verticalHotLine = -2;
-    private float targetPos;
-
-
-    [SerializeField]
-    private float leftHotline, rightHotline;
 
     void Start()
     {
@@ -29,8 +26,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             float y = cam.ScreenToWorldPoint(Input.mousePosition).y;
-            //Debug.Log(y);
-            if (y >= verticalHotLine)
+            if(y > VERTICAL_HOTLINE) 
             {
                 float position = cam.ScreenToWorldPoint(Input.mousePosition).x - startPos.x;
                 targetPos = Mathf.Clamp(transform.position.x - position, leftHotline, rightHotline);

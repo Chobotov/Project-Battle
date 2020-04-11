@@ -16,10 +16,10 @@ public class PlayerUnitAI : MonoBehaviour
 
     private void Start()
     {
-        damage = GetComponent<UnitProperties>().Damage;
-        speed = GetComponent<UnitProperties>().Speed;
-        attackDelay = GetComponent<UnitProperties>().attackDelay;
-        maxDistance = GetComponent<UnitProperties>().maxDistance;
+        damage = GetComponent<UnitData>()._unitProperties.damage;
+        speed = GetComponent<UnitData>()._unitProperties.speed;
+        attackDelay = GetComponent<UnitData>()._unitProperties.attackDelay;
+        maxDistance = GetComponent<UnitData>()._unitProperties.maxDistance;
     }
 
     private void FixedUpdate()

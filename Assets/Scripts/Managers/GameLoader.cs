@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameLoader : MonoBehaviour
 {
+    [Header("Менеджеры")]
     //Ссылки на менеджеров
     public GameObject game_manager;
     public GameObject audio_manager;
-
+   
 
     private void Awake()
     {
@@ -21,5 +22,4 @@ public class GameLoader : MonoBehaviour
             Instantiate(audio_manager);
         }
     }
-
 }

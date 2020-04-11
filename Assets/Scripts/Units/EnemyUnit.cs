@@ -4,23 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyUnit : MonoBehaviour
-{   
+{
     public Slider HealthSlider;
     private float health;
     private bool isDead;
 
     private void Start()
     {
-        health = GetComponent<DataHealth>().health;
-        isDead = GetComponent<DataHealth>().isDead;
+        health = GetComponent<UnitData>()._dataHealth.health;
+        isDead = GetComponent<UnitData>()._dataHealth.isDead;
     }
 
     public void TakeDamage(float damage)
     {
-        GetComponent<DataHealth>().health -= damage;
-        if (GetComponent<DataHealth>().health > 0)
+        health -= damage;
+        if (health > 0)
         {
-            HealthSlider.value = GetComponent<DataHealth>().health;
+            HealthSlider.value = health;
         }
         else
         {

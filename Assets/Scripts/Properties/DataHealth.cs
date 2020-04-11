@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DataHealth : MonoBehaviour
+[CreateAssetMenu]
+public class DataHealth : ScriptableObject
 {
     [Header ("Здоровье")]
     public float health;
