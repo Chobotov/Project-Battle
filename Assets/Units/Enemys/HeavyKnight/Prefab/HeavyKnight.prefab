@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 1146580653428857840}
   - component: {fileID: 2865998741739305357}
   - component: {fileID: 4747502466433077324}
+  - component: {fileID: 2990652762458153862}
   m_Layer: 0
   m_Name: HeavyKnight
   m_TagString: Enemy
@@ -607,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c02113751647df4ea5995f3e9671fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 6279881706068490557}
+  healthSlider: {fileID: 6279881706068490557}
 --- !u!114 &4747502466433077324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,8 +623,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   type: 5
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: b89b6c3d50096134bad9623a736b800d, type: 2}
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: b89b6c3d50096134bad9623a736b800d, type: 2}
+--- !u!114 &2990652762458153862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942001054181767565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1 &942069709494011885
 GameObject:
   m_ObjectHideFlags: 0

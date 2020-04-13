@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float targetPos;
     private Vector2 startPos;
     private Camera cam;
+    
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             float y = cam.ScreenToWorldPoint(Input.mousePosition).y;
-            if(y > VERTICAL_HOTLINE) 
+            if (y > VERTICAL_HOTLINE)
             {
                 float position = cam.ScreenToWorldPoint(Input.mousePosition).x - startPos.x;
                 targetPos = Mathf.Clamp(transform.position.x - position, leftHotline, rightHotline);

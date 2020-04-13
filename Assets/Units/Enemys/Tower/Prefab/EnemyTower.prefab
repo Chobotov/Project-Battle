@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 663525168490766441}
   - component: {fileID: 3070434109254392318}
   - component: {fileID: 3382865077431896831}
+  - component: {fileID: 4296279477545129633}
   m_Layer: 0
   m_Name: EnemyTower
   m_TagString: EnemyTower
@@ -186,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c02113751647df4ea5995f3e9671fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 0}
+  healthSlider: {fileID: 0}
 --- !u!114 &3382865077431896831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,8 +202,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   type: 0
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: 0c14e6dff1864f740a1d51bb00650389, type: 2}
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: 0c14e6dff1864f740a1d51bb00650389, type: 2}
+--- !u!114 &4296279477545129633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139752293854446264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1 &201890546457979086
 GameObject:
   m_ObjectHideFlags: 0

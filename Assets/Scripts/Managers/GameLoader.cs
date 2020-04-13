@@ -8,11 +8,17 @@ public class GameLoader : MonoBehaviour
     //Ссылки на менеджеров
     public GameObject game_manager;
     public GameObject audio_manager;
+    public GameObject ui_manager;
    
 
     private void Awake()
     {
-        if(GameManager.instance == null)
+        if (UIManager.instance == null)
+        {
+            Instantiate(ui_manager);
+        }
+
+        if (GameManager.Instance == null)
         {
             Instantiate(game_manager);
         }

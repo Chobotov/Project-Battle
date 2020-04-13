@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 5356031537288018931}
   - component: {fileID: 553971872125517575}
   - component: {fileID: 8209332684424190090}
+  - component: {fileID: 3292599494106437157}
   m_Layer: 0
   m_Name: PlayerTower
   m_TagString: PlayerTower
@@ -672,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b73b51e1c9d1ce4aa5c38be24c77d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 0}
+  healthSlider: {fileID: 0}
 --- !u!114 &8209332684424190090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,8 +688,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   type: 0
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: 0c14e6dff1864f740a1d51bb00650389, type: 2}
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: 0c14e6dff1864f740a1d51bb00650389, type: 2}
+--- !u!114 &3292599494106437157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991119383553933887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1 &3000471255687738530
 GameObject:
   m_ObjectHideFlags: 0

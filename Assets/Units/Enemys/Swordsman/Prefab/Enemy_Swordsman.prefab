@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 8823227520951023803}
   - component: {fileID: 1610546360253781107}
   - component: {fileID: 8185377871723543526}
+  - component: {fileID: 2417478952633982493}
   m_Layer: 0
   m_Name: Enemy_Swordsman
   m_TagString: Enemy
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c02113751647df4ea5995f3e9671fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 6143018218606751999}
+  healthSlider: {fileID: 6143018218606751999}
 --- !u!114 &1610546360253781107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +298,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 1
   type: 3
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: a39196cce95a19b45915e4b453689b07, type: 2}
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: a39196cce95a19b45915e4b453689b07, type: 2}
+--- !u!114 &2417478952633982493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671052663430912619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1 &6671061198849061803
 GameObject:
   m_ObjectHideFlags: 0

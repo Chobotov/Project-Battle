@@ -3,44 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
+public class GameManager : Singleton<GameManager>
+{   
+    public Mana mana;
+    public Fireball fireball;
+    //Башни на сцене
+    public GameObject PlayerTower, EnemyTower;
+    //Массив юнитов игрока
+    public GameObject[] _playerUnits = new GameObject[3];
+    //Массив юнитов врага
+    public GameObject[] _enemyUnits = new GameObject[3];
 
-    [SerializeField] private int MAX_MANA;
-    public int MANA;
-    public int FIREBALL;
-    private bool isFull
-    {
-        get
-        {
-            return MANA == MAX_MANA ? true : false;
-        }
-    }
 
-    [SerializeField] private Button Mana;
-    [SerializeField] private Text _manaLevel;
-
-   
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
-        else if(instance == this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    [SerializeField] private Button manaButton;
+    [SerializeField] private Text manaLevel;
 
     private void Update()
     {
-        if (!isFull)
+        if (!mana.MANA_isFull)
         {
-            MANA++;
-            _manaLevel.text = MANA.ToString();
+            mana.MANA += 1;
+            manaLevel.text = mana.MANA.ToString();
         }
     }
 }

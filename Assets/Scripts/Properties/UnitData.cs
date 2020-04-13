@@ -6,6 +6,6 @@ public class UnitData : MonoBehaviour
 {
     public UnitType.Side side;
     public UnitType.Type type;
-    public DataHealth _dataHealth;
-    public UnitProperties _unitProperties;
+    public DataHealth dataHealth;
+    public UnitProperties unitProperties;
 }

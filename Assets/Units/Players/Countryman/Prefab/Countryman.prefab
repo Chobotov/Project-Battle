@@ -141,11 +141,12 @@ GameObject:
   - component: {fileID: 6641057131224755502}
   - component: {fileID: 9099182163673530376}
   - component: {fileID: 1676948037514177081}
-  - component: {fileID: -8186177942888359087}
   - component: {fileID: 2939010728142815588}
   - component: {fileID: 7540373588264433347}
+  - component: {fileID: -8186177942888359087}
+  - component: {fileID: 5880493701006157410}
   m_Layer: 0
-  m_Name: "\u0421ountryman"
+  m_Name: Countryman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,22 +265,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91, y: 1.1}
   m_EdgeRadius: 0
---- !u!114 &-8186177942888359087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6836431602491273430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 397985df4ab52ce47b4fdc88273c18b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  side: 0
-  type: 2
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: 5574ac9bb969c1549b712a61de817f5f, type: 2}
 --- !u!114 &2939010728142815588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +290,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b73b51e1c9d1ce4aa5c38be24c77d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 2840904024373146351}
+  healthSlider: {fileID: 2840904024373146351}
+--- !u!114 &-8186177942888359087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836431602491273430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397985df4ab52ce47b4fdc88273c18b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  side: 0
+  type: 2
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: 5574ac9bb969c1549b712a61de817f5f, type: 2}
+--- !u!114 &5880493701006157410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836431602491273430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1001 &2593086523557854195
 PrefabInstance:
   m_ObjectHideFlags: 0

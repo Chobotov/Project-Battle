@@ -10,16 +10,17 @@ public class EnemyUnitAI : MonoBehaviour
     private float attackDelay;
     private float nextAttackTime;
     private RaycastHit2D hit;
-
-
+    
     public Transform startRay;
+    UnitLinks _links;
 
     private void Start()
     {
-        damage = GetComponent<UnitData>()._unitProperties.damage;
-        speed = GetComponent<UnitData>()._unitProperties.speed;
-        attackDelay = GetComponent<UnitData>()._unitProperties.attackDelay;
-        maxDistance = GetComponent<UnitData>()._unitProperties.maxDistance;
+        _links = GetComponent<UnitLinks>();
+        damage = _links.unitData.unitProperties.damage;
+        speed = _links.unitData.unitProperties.speed;
+        attackDelay = _links.unitData.unitProperties.attackDelay;
+        maxDistance = _links.unitData.unitProperties.maxDistance;
     }
 
     private void FixedUpdate()
@@ -31,14 +32,13 @@ public class EnemyUnitAI : MonoBehaviour
     {
         if (hit)
         {
+            PlayerUnit unit = hit.collider.gameObject.GetComponent<PlayerUnit>();
             if (hit.distance > maxDistance)
             {
                 transform.Translate(-transform.right * speed * Time.deltaTime);
             }
-            if(hit.collider.gameObject.GetComponent<PlayerUnit>() != null && hit.distance < maxDistance)
+            if(unit != null && hit.distance < maxDistance)
             {
-                //Debug.Log(hit.collider.gameObject.name);
-                PlayerUnit unit = hit.collider.gameObject.GetComponent<PlayerUnit>();
                 Attack(unit);
             }
         }

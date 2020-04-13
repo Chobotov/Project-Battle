@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class EnemyUnit : MonoBehaviour
 {
-    public Slider HealthSlider;
+    public Slider healthSlider;
     private float health;
     private bool isDead;
-
+    UnitLinks unitLinks;
     private void Start()
     {
-        health = GetComponent<UnitData>()._dataHealth.health;
-        isDead = GetComponent<UnitData>()._dataHealth.isDead;
+        unitLinks = GetComponent<UnitLinks>();
+        health = unitLinks.unitData.dataHealth.health;
+        isDead = unitLinks.unitData.dataHealth.isDead;
     }
 
     public void TakeDamage(float damage)
@@ -20,7 +21,7 @@ public class EnemyUnit : MonoBehaviour
         health -= damage;
         if (health > 0)
         {
-            HealthSlider.value = health;
+            healthSlider.value = health;
         }
         else
         {

@@ -1148,6 +1148,7 @@ GameObject:
   - component: {fileID: 8484032979757495496}
   - component: {fileID: 3473620159987604290}
   - component: {fileID: 2167336921395587353}
+  - component: {fileID: 2006048121088017607}
   m_Layer: 0
   m_Name: Swordsman
   m_TagString: Untagged
@@ -1257,7 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b73b51e1c9d1ce4aa5c38be24c77d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 8226171478187905819}
+  healthSlider: {fileID: 8226171478187905819}
 --- !u!114 &2167336921395587353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,8 +1273,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 0
   type: 3
-  _dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
-  _unitProperties: {fileID: 11400000, guid: f7590efd16c908a4c840dccb6c17728d, type: 2}
+  dataHealth: {fileID: 11400000, guid: 0ba35c0eec1fc6448afaae5ad2e5c469, type: 2}
+  unitProperties: {fileID: 11400000, guid: f7590efd16c908a4c840dccb6c17728d, type: 2}
+--- !u!114 &2006048121088017607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479351306551889366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714f4239d16f51a419292b16365d1521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData: {fileID: 0}
 --- !u!1 &3461596214539931621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1546,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 219c827ef5256364f9bae7acb2850783, type: 3}
+--- !u!224 &4774578453774032583 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3817675836841116864, guid: 219c827ef5256364f9bae7acb2850783,
+    type: 3}
+  m_PrefabInstance: {fileID: 8555060543309650439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8226171478187905819 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 328926998812002588, guid: 219c827ef5256364f9bae7acb2850783,
@@ -1544,9 +1564,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &4774578453774032583 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3817675836841116864, guid: 219c827ef5256364f9bae7acb2850783,
-    type: 3}
-  m_PrefabInstance: {fileID: 8555060543309650439}
-  m_PrefabAsset: {fileID: 0}

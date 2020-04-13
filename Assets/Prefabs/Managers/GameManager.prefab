@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02283db015b5e58438d947704ce3d990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: {fileID: 11400000, guid: 16a0fa38f5a2cef4cbf9782d4d071dcf, type: 2}
+  fireball: {fileID: 11400000, guid: 704e3e6663bb0fa4fb4e0dbd0c188a61, type: 2}
+  unitsInfo: {fileID: 11400000, guid: e1246517855e60340b066db301e75910, type: 2}
+  _manaButton: {fileID: 0}
+  _manaLevel: {fileID: 0}

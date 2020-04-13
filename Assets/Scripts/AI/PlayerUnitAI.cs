@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +12,16 @@ public class PlayerUnitAI : MonoBehaviour
     private float nextAttackTime;
     private RaycastHit2D hit;
 
-    
     public Transform startRay;
+    UnitLinks _links;
 
     private void Start()
     {
-        damage = GetComponent<UnitData>()._unitProperties.damage;
-        speed = GetComponent<UnitData>()._unitProperties.speed;
-        attackDelay = GetComponent<UnitData>()._unitProperties.attackDelay;
-        maxDistance = GetComponent<UnitData>()._unitProperties.maxDistance;
+        _links = GetComponent<UnitLinks>();
+        damage = _links.unitData.unitProperties.damage;
+        speed = _links.unitData.unitProperties.speed;
+        attackDelay = _links.unitData.unitProperties.attackDelay;
+        maxDistance = _links.unitData.unitProperties.maxDistance;
     }
 
     private void FixedUpdate()
@@ -31,25 +33,23 @@ public class PlayerUnitAI : MonoBehaviour
     {
         if (hit)
         {
+            EnemyUnit enemy = hit.collider.gameObject.GetComponent<EnemyUnit>();
             if (hit.distance > maxDistance)
             {
                 transform.Translate(transform.right * speed * Time.deltaTime);
             }
-            if (hit.collider.gameObject.GetComponent<EnemyUnit>() != null && hit.distance < maxDistance)
+            if (enemy != null && hit.distance < maxDistance)
             {
-                //Debug.Log(hit.collider.gameObject.name);
-                EnemyUnit unit = hit.collider.gameObject.GetComponent<EnemyUnit>();
-                Attack(unit);
+                Attack(enemy);
             }
         }
     }
-
     private void Attack(EnemyUnit enemy)
     {
-        if(nextAttackTime < Time.time)
+        if (nextAttackTime < Time.time)
         {
             enemy.TakeDamage(damage);
-            nextAttackTime = Time.time+attackDelay;
-        }        
+            nextAttackTime = Time.time + attackDelay;
+        }
     }
 }
