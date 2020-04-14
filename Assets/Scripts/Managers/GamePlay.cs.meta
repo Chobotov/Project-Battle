@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 175360377270c0d4385da3970bd3fde5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mana: {fileID: 11400000, guid: 16a0fa38f5a2cef4cbf9782d4d071dcf, type: 2}
+  - fireball: {fileID: 11400000, guid: 704e3e6663bb0fa4fb4e0dbd0c188a61, type: 2}
+  - enemySquad: {fileID: 11400000, guid: 4390646539599dc4597ef94818be97f2, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

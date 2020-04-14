@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager instance = null;
     public static bool music = true;
     public static bool sounds = true;
 
     void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else if(instance == this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
         InitializeManager();
     }
 

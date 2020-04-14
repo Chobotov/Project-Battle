@@ -13,15 +13,15 @@ public class PlayerUnitAI : MonoBehaviour
     private RaycastHit2D hit;
 
     public Transform startRay;
-    UnitLinks _links;
+    UnitLinks links;
 
     private void Start()
     {
-        _links = GetComponent<UnitLinks>();
-        damage = _links.unitData.unitProperties.damage;
-        speed = _links.unitData.unitProperties.speed;
-        attackDelay = _links.unitData.unitProperties.attackDelay;
-        maxDistance = _links.unitData.unitProperties.maxDistance;
+        links = GetComponent<UnitLinks>();
+        damage = links.unitData.unitProperties.damage;
+        speed = links.unitData.unitProperties.speed;
+        attackDelay = links.unitData.unitProperties.attackDelay;
+        maxDistance = links.unitData.unitProperties.maxDistance;
     }
 
     private void FixedUpdate()

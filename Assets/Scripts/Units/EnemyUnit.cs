@@ -6,29 +6,27 @@ using UnityEngine.UI;
 public class EnemyUnit : MonoBehaviour
 {
     public Slider healthSlider;
-    private float health;
-    private bool isDead;
     UnitLinks unitLinks;
     private void Start()
     {
         unitLinks = GetComponent<UnitLinks>();
-        health = unitLinks.unitData.dataHealth.health;
-        isDead = unitLinks.unitData.dataHealth.isDead;
+        unitLinks.unitData.dataHealth.health = 100;
+        unitLinks.unitData.dataHealth.isDead = false;
     }
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health > 0)
+        unitLinks.unitData.dataHealth.health -= damage;
+        if (unitLinks.unitData.dataHealth.health > 0)
         {
-            healthSlider.value = health;
+            healthSlider.value = unitLinks.unitData.dataHealth.health;
         }
         else
         {
-            isDead = true;
+            unitLinks.unitData.dataHealth.isDead = true;
         }
         
-        if (isDead)
+        if (unitLinks.unitData.dataHealth.isDead)
         {
             Die();
         }
@@ -36,6 +34,7 @@ public class EnemyUnit : MonoBehaviour
 
     void Die()
     {
+        if(GamePlay.Instance.enemyCount > 0) GamePlay.Instance.enemyCount--;
         Destroy(gameObject);
     }
 }

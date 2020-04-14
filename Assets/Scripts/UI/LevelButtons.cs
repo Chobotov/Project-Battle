@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelButtons : ScriptableObject
+public enum SpeedLevel
 {
-    Button Pause;
-    Button Speed;
-    Button Fireball;
-    Button Mana;
-    Button FirstUnit, SecondUnit, ThirdUnit;
+    Start,
+    Medium,
+    Max
+}
+public class LevelButtons : MonoBehaviour
+{
+    public SpeedLevel levelSpeed = SpeedLevel.Start;
+    public Button Pause;
+    public Button Speed;
+    public Button Fireball;
+    public Button Mana;
+    public Button FirstUnit, SecondUnit, ThirdUnit;
 
     public void Show()
     {
@@ -31,5 +38,32 @@ public class LevelButtons : ScriptableObject
         FirstUnit.gameObject.SetActive(false);
         SecondUnit.gameObject.SetActive(false);
         ThirdUnit.gameObject.SetActive(false);
+    }
+
+    public void NextSpeed()
+    {
+        switch (levelSpeed)
+        {
+            case SpeedLevel.Start:
+                levelSpeed = SpeedLevel.Medium;
+                Time.timeScale = 1.5f;
+                //Debug.Log(Time.timeScale);
+                break;
+            case SpeedLevel.Medium:
+                levelSpeed = SpeedLevel.Max;
+                Time.timeScale = 2f;
+                //Debug.Log(Time.timeScale);
+                break;
+            case SpeedLevel.Max:
+                levelSpeed = SpeedLevel.Start;
+                Time.timeScale = 0.5f;
+                //Debug.Log(Time.timeScale);
+                break;
+            default:
+                levelSpeed = SpeedLevel.Start;
+                Time.timeScale = 1f;
+                //Debug.Log(Time.timeScale);
+                break;
+        }
     }
 }

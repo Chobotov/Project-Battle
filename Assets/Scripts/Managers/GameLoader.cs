@@ -13,7 +13,7 @@ public class GameLoader : MonoBehaviour
 
     private void Awake()
     {
-        if (UIManager.instance == null)
+        if (UIManager.Instance == null)
         {
             Instantiate(ui_manager);
         }
@@ -23,7 +23,7 @@ public class GameLoader : MonoBehaviour
             Instantiate(game_manager);
         }
         
-        if(AudioManager.instance == null)
+        if(AudioManager.Instance == null)
         {
             Instantiate(audio_manager);
         }
