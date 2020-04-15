@@ -21,7 +21,7 @@ public class AsyncLoadingScreen : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = operation.progress/0.9f;
-            progressText.text = string.Format("{0:0}%", progress * 100);
+            progressText.text = " Loading: " + string.Format("{0:0}%", progress * 100);
             yield return null;
         }
     }
