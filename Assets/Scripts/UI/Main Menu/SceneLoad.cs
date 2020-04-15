@@ -11,9 +11,11 @@ public class SceneLoad : MonoBehaviour
 
     public void Load()
     {
-       // if(GameManager.Instance.playerData.squad.currentPlayerUnits.Length == 3)
-       // {
-            SceneManager.LoadScene(sceneID);
-        //}
+       if(GameManager.Instance.playerData.squad.currentPlayerUnits[0] != null &&
+           GameManager.Instance.playerData.squad.currentPlayerUnits[1] != null &&
+           GameManager.Instance.playerData.squad.currentPlayerUnits[2] != null)
+       {
+         SceneManager.LoadScene(sceneID);
+       }
     }
 }

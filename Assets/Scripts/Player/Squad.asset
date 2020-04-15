@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ed0935f1b0a3478354ac6c5734fa5, type: 3}
   m_Name: Squad
   m_EditorClassIdentifier: 
+  allUnits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPlayerUnits:
-  - {fileID: 6836431602491273430, guid: 78f8a2eb7ff33b64c84bf5d02033da66, type: 3}
-  - {fileID: 479351306551889366, guid: 48cd1b9b1c565dd44ac855956bee950e, type: 3}
-  - {fileID: 4038706366430379007, guid: eab830303ff7369478f27e2d2adc47f7, type: 3}
+  - {fileID: 11400000, guid: b403074594913ba40bb3f6c2dae9e1bd, type: 2}
+  - {fileID: 11400000, guid: b403074594913ba40bb3f6c2dae9e1bd, type: 2}
+  - {fileID: 11400000, guid: b403074594913ba40bb3f6c2dae9e1bd, type: 2}

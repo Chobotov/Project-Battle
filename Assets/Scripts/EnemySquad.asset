@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ed0935f1b0a3478354ac6c5734fa5, type: 3}
   m_Name: EnemySquad
   m_EditorClassIdentifier: 
+  allUnits: []
   currentPlayerUnits:
-  - {fileID: 8855177469274552839, guid: d62eabbba76d93a4b8d298d3a2411a47, type: 3}
-  - {fileID: 6671052663430912619, guid: 96a509dcb7b755d4c8d5ca44f202841b, type: 3}
-  - {fileID: 942001054181767565, guid: c1bb19f05d6ebaf4f85aad31fa3f9291, type: 3}
+  - {fileID: 11400000, guid: eee5713c0a03967439253b36e3ab09ff, type: 2}
+  - {fileID: 11400000, guid: 67ed05492c66f92449bc0e00dd4c8d2f, type: 2}
+  - {fileID: 11400000, guid: 9a26f429948074249b883ca7e05f5d6b, type: 2}

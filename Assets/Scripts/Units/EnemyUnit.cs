@@ -10,23 +10,22 @@ public class EnemyUnit : MonoBehaviour
     private void Start()
     {
         unitLinks = GetComponent<UnitLinks>();
-        unitLinks.unitData.dataHealth.health = 100;
-        unitLinks.unitData.dataHealth.isDead = false;
+        GetComponent<SpriteRenderer>().sprite = unitLinks.unitData.unit.sprite;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        unitLinks.unitData.dataHealth.health -= damage;
-        if (unitLinks.unitData.dataHealth.health > 0)
+        unitLinks.unitData.unit.dataHealth.health -= damage;
+        if (unitLinks.unitData.unit.dataHealth.health > 0)
         {
-            healthSlider.value = unitLinks.unitData.dataHealth.health;
+            healthSlider.value = unitLinks.unitData.unit.dataHealth.health;
         }
         else
         {
-            unitLinks.unitData.dataHealth.isDead = true;
+            unitLinks.unitData.unit.dataHealth.isDead = true;
         }
         
-        if (unitLinks.unitData.dataHealth.isDead)
+        if (unitLinks.unitData.unit.dataHealth.isDead)
         {
             Die();
         }

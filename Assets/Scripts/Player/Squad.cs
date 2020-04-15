@@ -8,9 +8,9 @@ public class Squad : ScriptableObject
     /// <summary>
     /// Все имеющиеся юниты 
     /// </summary>
-    public Queue<GameObject> allUnits = new Queue<GameObject>();
+    public List<Unit> allUnits;
     /// <summary>
     /// Текущий отряд 
     /// </summary>
-    public GameObject[] currentPlayerUnits = new GameObject[3];
+    public Unit[] currentPlayerUnits = new Unit[3];
 }

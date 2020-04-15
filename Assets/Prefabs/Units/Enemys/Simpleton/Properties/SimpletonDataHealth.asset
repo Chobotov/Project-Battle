@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc01df257b97a642a2175c89383acaa, type: 3}
   m_Name: SimpletonDataHealth
   m_EditorClassIdentifier: 
-  health: 5
+  health: 100
   isDead: 0

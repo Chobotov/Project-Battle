@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc01df257b97a642a2175c89383acaa, type: 3}
-  m_Name: CountrymanDataHealth
+  m_Script: {fileID: 11500000, guid: 63ccfa3cf3b9f28458844f3b898e446e, type: 3}
+  m_Name: HeavyKnight
   m_EditorClassIdentifier: 
-  health: 20
-  isDead: 0
+  sprite: {fileID: 21300182, guid: f5f1c19ce87450f4b97f8b363746558d, type: 3}
+  unitType: {fileID: 0}
+  dataHealth: {fileID: 0}
+  unitProperties: {fileID: 0}

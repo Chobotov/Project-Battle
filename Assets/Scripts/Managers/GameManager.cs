@@ -8,4 +8,5 @@ public class GameManager : Singleton<GameManager>
     /// Данные об игроке
     /// </summary>
     public PlayerData playerData;
+
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class UnitProperties : ScriptableObject
 {
     [Header("Урон")]
-    public float damage;
+    public int damage;
     [Header("Скорость передвижения")]
     public float speed;
     [Header("Пауза между атаками")]

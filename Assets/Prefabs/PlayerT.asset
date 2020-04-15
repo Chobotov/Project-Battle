@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ccfa3cf3b9f28458844f3b898e446e, type: 3}
+  m_Name: PlayerT
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  unitType: {fileID: 0}
+  dataHealth: {fileID: 11400000, guid: b905af7d2c780fc44afbb22605cc2591, type: 2}
+  unitProperties: {fileID: 11400000, guid: 0c14e6dff1864f740a1d51bb00650389, type: 2}

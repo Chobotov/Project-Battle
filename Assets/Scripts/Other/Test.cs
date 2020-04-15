@@ -8,11 +8,17 @@ public class Test : MonoBehaviour
     public Button[] buttons;  
     //Точки спавна
     public GameObject playerUnit,enemyUnit;
+    public GameObject pp;
+    public GameObject pe;
+
+    private UnitData ppData, peData;
 
     private float attackDelay = 10;
     private float nextAttackTime;
 
     private int id = 0;
+
+
 
     public void GetFirstUnit()
     {
@@ -45,37 +51,43 @@ public class Test : MonoBehaviour
     {
         if (GamePlay.Instance.playerCount < 3)
         {
-            Instantiate(GameManager.Instance.playerData.squad.currentPlayerUnits[id], playerUnit.transform);
+            ppData.unit = GamePlay.Instance.enemySquad.currentPlayerUnits[id];
+            ppData.GetComponent<SpriteRenderer>().sprite = ppData.unit.sprite;
+            Instantiate(pp, playerUnit.transform);
             GamePlay.Instance.playerCount++;
-            Debug.Log("spawn");
         }
     }
     public void SpawnEnemyUnit()
     {
         int index = Random.Range(0,3);
-        Instantiate(GamePlay.Instance.enemySquad.currentPlayerUnits[index], enemyUnit.transform);
+        peData.unit = GamePlay.Instance.enemySquad.currentPlayerUnits[index];
+        peData.GetComponent<SpriteRenderer>().sprite = peData.unit.sprite;
+        Instantiate(pe, enemyUnit.transform);
         GamePlay.Instance.enemyCount++;
     }
     private void Start()
     {
+        ppData = pp.GetComponent<UnitData>();
+        peData = pe.GetComponent<UnitData>();
         StartCoroutine(Wait());
     }
     private void Update()
     {
-
-        if (GamePlay.Instance.gameStatus == GameStatus.Running && 
-            nextAttackTime < Time.time && 
-            GamePlay.Instance.enemyCount < 3 && 
-            enemyUnit != null)
-        {
-            SpawnEnemyUnit();
-            nextAttackTime = Time.time + attackDelay;
-        }
+        //if(GamePlay.Instance.gameStatus == GameStatus.Running)
+        //{
+            if (nextAttackTime < Time.time &&
+                GamePlay.Instance.enemyCount < 3 &&
+                enemyUnit != null)
+            {
+                SpawnEnemyUnit();
+                nextAttackTime = Time.time + attackDelay;
+            }
+       // }
     }
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         GamePlay.Instance.gameStatus = GameStatus.Running;
     }
 }

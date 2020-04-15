@@ -28,6 +28,8 @@ public class GamePlay : MonoBehaviour
 
     private UnitData playerTowerData,enemyTowerData;
 
+    public Text txt;
+
     private void Awake()
     {
         Instance = this;
@@ -43,6 +45,8 @@ public class GamePlay : MonoBehaviour
         enemyTowerData = GameObject.Find("EnemyTower").GetComponent<UnitData>();
 
         mana.MANA = 0;
+
+        txt.text = ($"1 : {GameManager.Instance.playerData.squad.currentPlayerUnits[1]}");
     }
     private void Update()
     {
@@ -54,7 +58,7 @@ public class GamePlay : MonoBehaviour
         if (gameStatus == GameStatus.Running)
         {
             //Debug.Log("Running!");
-            if (playerTowerData.dataHealth.isDead)
+            if (playerTowerData.unit.dataHealth.isDead)
             {
                 gameStatus = GameStatus.GameOver;
             }
