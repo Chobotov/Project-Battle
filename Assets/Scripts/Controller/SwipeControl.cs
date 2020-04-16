@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
@@ -9,8 +10,9 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
     [SerializeField] private List<Transform> spots = new List<Transform>();
     [Header("Скорость перемещения камеры")]
     [SerializeField] private int speed;
+    [SerializeField ]private Text spotTitle;
     //ID текущего игрового места
-    private int spotID = 0;
+    private int spotID = 1;
     //Проверка листа на наличие мест
     private bool isEmpty
     {
@@ -24,7 +26,7 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void Update()
     {
-        if (isPressed)
+        if (!isEmpty && isPressed)
         {
             CameraMoveToSpot(spotID);
         }
@@ -53,41 +55,41 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void SwipeRight()
     {
         //Debug.Log("Swipe Right");
-        if (!isEmpty)
+        if (spotID == 2)
         {
-            if (spotID == 2)
-            {
-                spotID = 0;
-            }
-            else
-            {
-                spotID++;
-            }
-            isPressed = true;
+            spotID = 0;
         }
+        else
+        {
+            spotID++;
+        }
+        isPressed = true;
     }
     private void SwipeLeft()
     {
-        //Debug.Log("Swipe Left");
-        if (!isEmpty)
+        //Debug.Log("Swipe Left") ;
+        if (spotID == 0)
         {
-            if (spotID == 0)
-            {
-                spotID = 2;
-            }
-            else
-            {
-                spotID--;
-            }
-            isPressed = true;
+            spotID = 2;
         }
+        else
+        {
+            spotID--;
+        }
+        isPressed = true;
     }
 
     //Передвижение камеры к игровому месту
     private void CameraMoveToSpot(int spotID)
     {
         Camera.main.transform.position = new Vector3(Mathf.Lerp(Camera.main.transform.position.x, spots[spotID].transform.position.x, speed * Time.deltaTime), Camera.main.transform.position.y, Camera.main.transform.position.z);
-        if (Camera.main.transform.position.x == spots[spotID].transform.position.x)
+        var delta = Mathf.Abs(Camera.main.transform.position.x - spots[spotID].transform.position.x);
+        if (delta < 5)
+        {
+            spotTitle.text = spots[spotID].name;
+            spotTitle.GetComponent<Animation>().Play();
+        }
+        if(delta < 0.1)
         {
             isPressed = false;
         }
