@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CountryManProperties
   m_EditorClassIdentifier: 
   side: 0
-  state: 3
-  Damage: 3
+  state: 1
+  Damage: 5
   Speed: 10
-  Distance: 0.5
+  Distance: 0.1
   AttackDelay: 0.5
   isPurchased: 0
   isCurrentUnit: 0
