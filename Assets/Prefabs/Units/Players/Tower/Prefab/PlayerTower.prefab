@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &634790062724464744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8034969030116447543}
+  m_Layer: 0
+  m_Name: SpawnUnits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8034969030116447543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634790062724464744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3288303457335054804}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058262394682054883
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +70,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3288303457335054804}
   - component: {fileID: 1729566164031564153}
+  - component: {fileID: 3288457192650018254}
+  - component: {fileID: 7488682873806039603}
   m_Layer: 0
   m_Name: PlayerTower
   m_TagString: Untagged
@@ -68,6 +100,7 @@ Transform:
   - {fileID: 2473968324654920369}
   - {fileID: 3288303458564381123}
   - {fileID: 3288303458935744367}
+  - {fileID: 8034969030116447543}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,6 +130,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.65, y: 15}
   m_EdgeRadius: 0
+--- !u!114 &3288457192650018254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288303457335054805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc19551011c8ef42a60e3a1f1574ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataHealth: {fileID: 11400000, guid: 998fda4e177e3a349af3fd21a606f571, type: 2}
+  unitProperties: {fileID: 11400000, guid: 4663931e7a202e04b8c9c3b96e3a386d, type: 2}
+--- !u!114 &7488682873806039603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288303457335054805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3b7b10a190571428912d64cdaf7da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
 --- !u!1 &3288303457339445858
 GameObject:
   m_ObjectHideFlags: 0

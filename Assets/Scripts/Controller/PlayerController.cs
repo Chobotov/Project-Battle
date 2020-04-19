@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             float y = cam.ScreenToWorldPoint(Input.mousePosition).y;
-            Debug.Log(y);
+            //Debug.Log(y);
             if (y > VERTICAL_HOTLINE)
             {
                 float position = cam.ScreenToWorldPoint(Input.mousePosition).x - startPos.x;
