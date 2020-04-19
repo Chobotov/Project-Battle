@@ -24,12 +24,14 @@ public class AnimationController : MonoBehaviour
                 anim.SetBool("isAttack", true);
                 anim.SetBool("isRunning", false);
                 break;
+            case State.Running:
+                anim.SetBool("isRunning", true);
+                anim.SetBool("isAttack", false);
+                break;
             case State.Dead:
                 anim.SetBool("isDead", true);
                 break;
-            case State.Running:
-                anim.SetBool("isRunning", true);
-                break;
-        }
+        }  
+        
     }
 }

@@ -12,5 +12,6 @@ public class UnitData : MonoBehaviour
         var health = dataHealth.Health;
         dataHealth = ScriptableObject.CreateInstance(typeof(DataHealth)) as DataHealth;
         dataHealth.SetHealth(health);
+        unitProperties.state = State.Idle;
     }
 }

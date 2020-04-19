@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SimpletonProperties
   m_EditorClassIdentifier: 
   side: 1
-  state: 1
-  Damage: 1
+  state: 2
+  Damage: 3
   Speed: 10
-  Distance: 1
-  AttackDelay: 3
+  Distance: 0.5
+  AttackDelay: 0.5
   isPurchased: 0
   isCurrentUnit: 0

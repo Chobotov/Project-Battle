@@ -38,7 +38,11 @@ public class PlayerUnit : MonoBehaviour
     void Die()
     {
         //if (GamePlay.Instance.playerCount > 0) GamePlay.Instance.playerCount--;
+        unitData.unitProperties.state = State.Dead;
+    }
 
+    private void DestroyUnit()
+    {
         Destroy(gameObject);
     }
 }

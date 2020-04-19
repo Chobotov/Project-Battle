@@ -24,12 +24,13 @@ public class EnemyUnitAi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        hit = Physics2D.Raycast(startRay.position, -startRay.right);
+        if (!unitData.dataHealth.isDead)
+            hit = Physics2D.Raycast(startRay.position, -startRay.right);
     }
 
     private void Update()
     {
-        if (hit)
+        if (hit && !unitData.dataHealth.isDead)
         {
             PlayerUnit playerUnit = hit.collider.gameObject.GetComponent<PlayerUnit>();
             if (hit.distance > maxDistance)
