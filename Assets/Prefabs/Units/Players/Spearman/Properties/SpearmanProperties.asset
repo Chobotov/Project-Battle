@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1364504a6da845f4d961d4e3d4e9a64a, type: 3}
   m_Name: SpearmanProperties
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 2f13e89b94526c540ad3ac5d6ece8b74, type: 3}
   side: 0
   state: 0
   Damage: 20
   Speed: 5
   Distance: 2
   AttackDelay: 1
-  isPurchased: 0
+  isPurchased: 1
   isCurrentUnit: 0

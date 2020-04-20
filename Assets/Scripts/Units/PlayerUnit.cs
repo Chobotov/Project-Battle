@@ -11,7 +11,8 @@ public class PlayerUnit : MonoBehaviour
     private void Start()
     {
         unitData = GetComponent<UnitData>();
-        healthBar.value = unitData.dataHealth.Health;
+        if (healthBar != null)
+            healthBar.value = unitData.dataHealth.Health;
         unitData.dataHealth.isDead = false;
     }
 

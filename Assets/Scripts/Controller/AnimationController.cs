@@ -12,7 +12,7 @@ public class AnimationController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         switch (unitData.unitProperties.state)
         {

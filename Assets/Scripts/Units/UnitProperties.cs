@@ -21,6 +21,8 @@ public enum State
 [CreateAssetMenu]
 public class UnitProperties : ScriptableObject
 {
+    [Header("Иконка")]
+    public Sprite sprite;
     [Header("Сторона юнита")]
     public Side side;
     [Header("Состояние юнита")]
