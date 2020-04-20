@@ -20,4 +20,11 @@ public class DataHealth : ScriptableObject
     {
         Health = health;
     }
+
+    public void SetBool(bool isAttack, bool isRunning, bool isDead)
+    {
+        this.isAttack = isAttack;
+        this.isRunning = isRunning;
+        this.isDead = isDead;
+    }
 }

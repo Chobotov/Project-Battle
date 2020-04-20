@@ -20,4 +20,4 @@ MonoBehaviour:
   Distance: 2
   AttackDelay: 1
   isPurchased: 1
-  isCurrentUnit: 0
+  isCurrentUnit: 1

@@ -68,12 +68,12 @@ public class MainUIController : MonoBehaviour
 
     public void StartGame()
     {
-        //if(GameManager.Instance.playerData.squad.currentPlayerUnits[0] != null &&
-        //    GameManager.Instance.playerData.squad.currentPlayerUnits[1] != null &&
-        //    GameManager.Instance.playerData.squad.currentPlayerUnits[2] != null)
-        //{
+        if(GameManager.Instance.playerData.currentUnits[0] != null &&
+           GameManager.Instance.playerData.currentUnits[1] != null &&
+            GameManager.Instance.playerData.currentUnits[2] != null)
+        {
         SceneManager.LoadScene(sceneID);
-        //}
+        }
     }
 
     public void ShowSettings()

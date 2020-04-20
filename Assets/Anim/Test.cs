@@ -10,17 +10,15 @@ public class Test : MonoBehaviour
     public GameObject[] players = new GameObject[3];
     public GameObject[] enemys = new GameObject[3];
 
-    public void One_Button()
-    {
-        Debug.Log("1");
-        var index = Random.Range(0, 2);
-        Instantiate(players[index], pl);
-    }
+    public float Delay;
 
-    public void Two_Button()
+    private void Update()
     {
-        Debug.Log("2");
-        var index = Random.Range(0, 2);
-        Instantiate(enemys[index], enem);
+        if(Delay < Time.time)
+        {
+            int index = Random.Range(0,3);
+            Instantiate(enemys[index],enem);
+            Delay = Time.time + Delay;
+        }
     }
 }

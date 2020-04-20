@@ -40,5 +40,32 @@ public class UnitProperties : ScriptableObject
     [Header("Юнит состоит в текущем отряде")]
     public bool isCurrentUnit;
 
+    public void SetSprite(Sprite sprite)
+    {
+        this.sprite = sprite;
+    }
 
+    public void SetEnum(Side side,State state)
+    {
+        this.side = side;
+        this.state = state;
+    }
+
+    public void SetInt(int damage, int speed)
+    {
+        Damage = damage;
+        Speed = speed;
+    }
+
+    public void SetFloat(float distance, float attackDelay)
+    {
+        Distance = distance;
+        AttackDelay = attackDelay;
+    }
+
+    public void SetBool(bool isPurchased, bool isCurrentUnit)
+    {
+        this.isPurchased = isPurchased;
+        this.isCurrentUnit = isCurrentUnit;
+    }
 }
