@@ -66,7 +66,7 @@ public class LevelUIController : MonoBehaviour
     public void Pause()
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public void Speed()
@@ -100,10 +100,10 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnFirstUnit()
     {
-        Debug.Log(GameManager.Instance);
+        Debug.Log(SaveSystem.Instance);
         if (currentValueFirst == MAX_VALUE)
         {
-            Instantiate(GameManager.Instance.playerData.currentUnits[0], playerSpot);
+            Instantiate(SaveSystem.Instance.playerData.currentUnits[0], playerSpot);
             currentValueFirst = 0;
             firstUnitButtonSlider.value = 0;
         }
@@ -115,10 +115,10 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnSecondtUnit()
     {
-        Debug.Log(GameManager.Instance.playerData);
+        Debug.Log(SaveSystem.Instance.playerData);
         if (currentValueSecond == MAX_VALUE)
         {
-            Instantiate(GameManager.Instance.playerData.currentUnits[1], playerSpot);
+            Instantiate(SaveSystem.Instance.playerData.currentUnits[1], playerSpot);
             currentValueSecond = 0;
             secondUnitButtonSlider.value = 0;
         }
@@ -130,10 +130,10 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnThirdUnit()
     {
-        Debug.Log(GameManager.Instance.playerData);
+        Debug.Log(SaveSystem.Instance.playerData);
         if (currentValueThird == MAX_VALUE)
         {
-            Instantiate(GameManager.Instance.playerData.currentUnits[2], playerSpot);
+            Instantiate(SaveSystem.Instance.playerData.currentUnits[2], playerSpot);
             currentValueThird= 0;
             thirdUnitButtonSlider.value = 0;
         }

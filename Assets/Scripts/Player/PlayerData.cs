@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class PlayerData : ScriptableObject
+
+[Serializable]
+public class PlayerData
 {
     [Header("Монеты")]
     public int coins;

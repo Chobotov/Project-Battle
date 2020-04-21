@@ -822,8 +822,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitDataBase: {fileID: 11400000, guid: 4f3ebb5bd6a91a14ab48c151246cc8e6, type: 2}
-  playerData: {fileID: 11400000, guid: 0a7ff1eb7949b4e44b8fd2134dd545c2, type: 2}
+  playerData:
+    coins: 0
+    energy: 0
+    currentUnits:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    currentTowerUpdate: {fileID: 0}
   game_manager: {fileID: 378706705540708656, guid: 879b486f8f18d0845a292e4f3f5e4ef7,
+    type: 3}
+  save_manager: {fileID: 449071123955903158, guid: 80dc2269a65255e46a27c0177b70e97d,
     type: 3}
 --- !u!4 &892508684
 Transform:

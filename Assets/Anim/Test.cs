@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    public Button player, enemy;
-    public Transform pl, enem;
+    public Button player, 
+                  enemy;
+    public Transform pl, 
+                     enem;
     public GameObject[] players = new GameObject[3];
     public GameObject[] enemys = new GameObject[3];
 

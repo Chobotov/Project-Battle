@@ -8,7 +8,9 @@ public class ManagerLoader : MonoBehaviour
     public PlayerData playerData;
 
     // Ссылки на менеджеров
-    public GameObject game_manager; // Game Base Manager
+    public GameObject game_manager; 
+    public GameObject save_manager; 
+
 
     // Метод пробуждения объекта (перед стартом игры)
     void Awake()
@@ -18,19 +20,16 @@ public class ManagerLoader : MonoBehaviour
         {
             Instantiate(game_manager);
         }
+
+        // Инициализация игровой базы
+        if (SaveSystem.Instance == null)
+        {
+            Instantiate(save_manager);
+        }
     }
 
     private void Start()
     {
-        int coins = playerData.coins;
-        int energy = playerData.energy;
-        GameObject[] currentUnits = playerData.currentUnits;
-        GameObject currentTowerUpdate = playerData.currentTowerUpdate;
-        playerData = ScriptableObject.CreateInstance(typeof(PlayerData)) as PlayerData;
-        playerData.SetCoinsAndEnergy(coins, energy);
-        playerData.SetCurrentUnits(currentUnits);
-        playerData.SetCurrentTowerUpdate(currentTowerUpdate);
-
         List<GameObject> purchasedUnits = new List<GameObject>();
         List<GameObject> allUnits = new List<GameObject>();
 
@@ -41,6 +40,5 @@ public class ManagerLoader : MonoBehaviour
         unitDataBase.SetAllUnits(allUnits);
 
         GameManager.Instance.unitDataBase = unitDataBase;
-        GameManager.Instance.playerData = playerData;
     }
 }

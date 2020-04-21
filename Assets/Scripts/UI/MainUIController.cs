@@ -15,12 +15,12 @@ public class MainUIController : MonoBehaviour
 
     [Header("Текущая энергия и монеты")]
     [SerializeField]
-    private Text energy,
-                 coins;
+    private Text energyText,
+                 coinsText;
 
     [Header("Вкл/Выкл звук")]
     [SerializeField]
-    private Button OnOffAudio;
+    private Button OnOffAudioButton;
 
     [Header("Кнопки нижней части экрана")]
     [SerializeField]
@@ -44,13 +44,14 @@ public class MainUIController : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
-        energy.text = GameManager.Instance.playerData.energy.ToString();
-        coins.text = GameManager.Instance.playerData.coins.ToString();
+        Debug.Log(SaveSystem.Instance.playerData);
+        energyText.text = SaveSystem.Instance.playerData.energy.ToString();
+        coinsText.text = SaveSystem.Instance.playerData.coins.ToString();
     }
 
     private void FixedUpdate()
     {
-        if (CurrentUnitsIsEmpty(GameManager.Instance.playerData.currentUnits) && 
+        if (CurrentUnitsIsEmpty(SaveSystem.Instance.playerData.currentUnits) &&
             (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f)
             && !InventarView.activeSelf)
         {
@@ -60,7 +61,7 @@ public class MainUIController : MonoBehaviour
         {
             armyButtonView.SetActive(false);
         }
-        if(Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) > 5f)
+        if (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) > 5f)
         {
             InventarView.SetActive(false);
         }
@@ -68,11 +69,13 @@ public class MainUIController : MonoBehaviour
 
     public void StartGame()
     {
-        if(GameManager.Instance.playerData.currentUnits[0] != null &&
-           GameManager.Instance.playerData.currentUnits[1] != null &&
-            GameManager.Instance.playerData.currentUnits[2] != null)
+        if (SaveSystem.Instance.playerData.currentUnits[0] != null &&
+           SaveSystem.Instance.playerData.currentUnits[1] != null &&
+            SaveSystem.Instance.playerData.currentUnits[2] != null &&
+            SaveSystem.Instance.playerData.energy > 0)
         {
-        SceneManager.LoadScene(sceneID);
+            SaveSystem.Instance.playerData.energy -= 1;
+            SceneManager.LoadScene(sceneID);
         }
     }
 
@@ -96,6 +99,12 @@ public class MainUIController : MonoBehaviour
     {
         InventarView.SetActive(false);
         armyButtonView.SetActive(true);
+    }
+
+    public void GetEnergy()
+    {
+        SaveSystem.Instance.playerData.energy++;
+        energyText.text = SaveSystem.Instance.playerData.energy.ToString();
     }
 
     private bool CurrentUnitsIsEmpty(GameObject[] currentUnits)
