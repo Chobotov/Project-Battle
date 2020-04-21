@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[CreateAssetMenu]
-public class UnitDataBase : ScriptableObject
+[Serializable]
+public class UnitDataBase 
 {
     public List<GameObject> purchasedUnits = new List<GameObject>();
     public List<GameObject> allUnits = new List<GameObject>();

@@ -7,56 +7,35 @@ using System.IO;
 public class SaveSystem : Singleton<SaveSystem>
 {
     public PlayerData playerData = new PlayerData();
+    public UnitDataBase unitDataBase = new UnitDataBase();
     private string filepath;
 
     private void Start()
     {
         Debug.Log("StartSave");
 
-        if (!PlayerPrefs.HasKey("Save"))
+        if (!PlayerPrefs.HasKey("PlayerData"))
         {
-
+            return;
         }
         else
         {
-            playerData = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("Save"));
+            playerData = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("PlayerData"));
         }
 
-//#if UNITY_ANDROID && !UNITY_EDITOR
-//        filepath = Path.Combine(Application.persistentDataPath, "Save.json");
-//#else
-//        filepath = Path.Combine(Application.dataPath, "Save.json");
-//#endif
-//        if (File.Exists(filepath))
-//        {
-//            playerData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(filepath));
-//            Debug.Log("Save is Done!");
-//        }
-        //else
-        //{
-
-        //}
-    }
-
-    public void SetData(int coins,int energy)
-    {
-        playerData.coins =  coins;
-        playerData.energy = energy;
-    }
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-    private void OnApplicationPause(bool pause)
-    {
-        if (pause)
+        if (!PlayerPrefs.HasKey("UnitDataBase"))
         {
-            File.WriteAllText(filepath, JsonUtility.ToJson(playerData));
+            return;
+        }
+        else
+        {
+            unitDataBase = JsonUtility.FromJson<UnitDataBase>(PlayerPrefs.GetString("UnitDataBase"));
         }
     }
-#endif
 
     private void OnApplicationQuit()
     {
-        PlayerPrefs.SetString("Save",JsonUtility.ToJson(playerData));
-        //File.WriteAllText(filepath, JsonUtility.ToJson(playerData));
+        PlayerPrefs.SetString("PlayerData", JsonUtility.ToJson(playerData));
+        PlayerPrefs.SetString("UnitDataBase", JsonUtility.ToJson(unitDataBase));
     }
 }
