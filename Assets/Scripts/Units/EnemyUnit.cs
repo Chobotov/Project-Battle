@@ -10,8 +10,10 @@ public class EnemyUnit : MonoBehaviour
     private void Start()
     {
         unitData = GetComponent<UnitData>();
-        healthBar.value = unitData.dataHealth.Health;
+        if (healthBar != null)
+            healthBar.value = unitData.dataHealth.Health;
         unitData.dataHealth.isDead = false;
+        unitData.unitProperties.state = State.Idle;
     }
 
 
@@ -26,10 +28,6 @@ public class EnemyUnit : MonoBehaviour
         {
             healthBar.value = 0;
             unitData.dataHealth.isDead = true;
-        }
-
-        if (unitData.dataHealth.isDead)
-        {
             Die();
         }
     }

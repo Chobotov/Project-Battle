@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1364504a6da845f4d961d4e3d4e9a64a, type: 3}
   m_Name: EnemySwordsmanProperties
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   side: 1
-  state: 2
+  state: 0
   Damage: 10
   Speed: 8
   Distance: 0.1

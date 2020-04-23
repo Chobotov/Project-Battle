@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1364504a6da845f4d961d4e3d4e9a64a, type: 3}
   m_Name: HeaviKnightProperties
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   side: 0
-  state: 3
+  state: 0
   Damage: 20
   Speed: 5
   Distance: 3

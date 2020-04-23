@@ -14,6 +14,7 @@ public class PlayerUnit : MonoBehaviour
         if (healthBar != null)
             healthBar.value = unitData.dataHealth.Health;
         unitData.dataHealth.isDead = false;
+        unitData.unitProperties.state = State.Idle;
     }
 
 
@@ -28,15 +29,11 @@ public class PlayerUnit : MonoBehaviour
         {
             healthBar.value = 0;
             unitData.dataHealth.isDead = true;
-        }
-
-        if (unitData.dataHealth.isDead)
-        {
             Die();
         }
     }
 
-    void Die()
+    private void Die()
     {
         //if (GamePlay.Instance.playerCount > 0) GamePlay.Instance.playerCount--;
         unitData.unitProperties.state = State.Dead;

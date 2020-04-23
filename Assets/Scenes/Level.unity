@@ -746,7 +746,7 @@ MonoBehaviour:
   - {fileID: 7552037070005338217, guid: 7787291f329676f46918efa2fad26fd4, type: 3}
   - {fileID: 7722362331685239341, guid: 51b3c1f5963bdff4e9390e4ec739cdb9, type: 3}
   - {fileID: 7794124466500868545, guid: 96382126a03ebf7448b80cf88c622f7a, type: 3}
-  Delay: 5
+  Delay: 2
 --- !u!4 &1531299431
 Transform:
   m_ObjectHideFlags: 0
