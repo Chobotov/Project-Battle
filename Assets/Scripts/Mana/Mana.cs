@@ -15,7 +15,7 @@ public class Mana : ScriptableObject
 {
     public Mana_Level _manaLevel = Mana_Level.First;
     //Кол-во текущей маны
-    private int _currentMana = 0;
+    private int _currentMana = 100;
     public int MANA
     {
         get
@@ -52,7 +52,7 @@ public class Mana : ScriptableObject
                     _manaLevel = Mana_Level.Third;
                     return 150;
                 case Mana_Level.Third:
-                    return 300;
+                    return 250;
                 default:
                     return 0;
             }
@@ -74,6 +74,22 @@ public class Mana : ScriptableObject
                 default:
                     return 0;
             }
+        }
+    }
+
+    public void NextManaLevel()
+    {
+        switch (_manaLevel)
+        {
+            case Mana_Level.First:
+                _manaLevel = Mana_Level.Second;
+                break;
+            case Mana_Level.Second:
+                _manaLevel = Mana_Level.Third;
+                break;
+            case Mana_Level.Third:
+                _manaLevel = Mana_Level.Third;
+                break;
         }
     }
 }

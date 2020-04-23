@@ -13,18 +13,45 @@ public class LevelUIController : MonoBehaviour
         VeryFast
     }
 
+    enum PressedButton
+    {
+        None,
+        FirstUnit,
+        SecondUnit,
+        ThirdUnit,
+        Mana,
+        Fireball
+    }
+
+    enum GameState
+    {
+        Game,
+        Pause
+    }
+
     public int timeDelay;
 
     private const int MAX_VALUE = 100;
 
-    public int currentValueFirst = MAX_VALUE;
-    public int currentValueSecond = MAX_VALUE;
-    public int currentValueThird = MAX_VALUE;
+    //Текущие значения шкал заполненности кнопок
+    private int currentValueFirst = MAX_VALUE;
+    private int currentValueSecond = MAX_VALUE;
+    private int currentValueThird = MAX_VALUE;
+
+    //Цены за текущих юнитов
+    private int priceFirstUnit;
+    private int priceSecondUnit;
+    private int priceThirdUnit;
+
+    [SerializeField]
+    private Mana mana;
 
     [SerializeField]
     private Transform playerSpot, enemySpot;
 
+    private GameState gameState = GameState.Game;
     private LevelOfSpeed levelOfSpeed = LevelOfSpeed.Normal;
+    private PressedButton pressedButton = PressedButton.None;
 
     [Header("Кнопки пауза и скорость")]
     [SerializeField]
@@ -51,11 +78,26 @@ public class LevelUIController : MonoBehaviour
     [SerializeField]
     private Slider firstUnitButtonSlider,
                    secondUnitButtonSlider,
-                   thirdUnitButtonSlider;
+                   thirdUnitButtonSlider,
+                   manaButoonSlider,
+                   FireballButtonSlider;
+
+    [SerializeField]
+    private Text textCurrentMana,
+                 textCurrentFireball;
 
     private void Start()
     {
+        Debug.Log(SaveSystem.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice);
+        manaButoonSlider.maxValue = mana.MAX_MANA;
+        mana.MANA = (int)manaButoonSlider.maxValue;
 
+        textCurrentMana.text = mana.MANA.ToString();
+        textCurrentFireball.text = 100.ToString();
+
+        priceFirstUnit = SaveSystem.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice;
+        priceSecondUnit = SaveSystem.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.ManaPrice;
+        priceThirdUnit = SaveSystem.Instance.playerData.currentUnits[2].GetComponent<UnitData>().unitProperties.ManaPrice;
     }
 
     private void Update()
@@ -65,8 +107,17 @@ public class LevelUIController : MonoBehaviour
 
     public void Pause()
     {
-        SceneManager.LoadScene(0);
-        //Time.timeScale = 0f;
+        if(gameState == GameState.Game)
+        {
+            gameState = GameState.Pause;
+            //SceneManager.LoadScene(0);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            gameState = GameState.Game;
+            Time.timeScale = 1f;
+        }
     }
 
     public void Speed()
@@ -88,58 +139,116 @@ public class LevelUIController : MonoBehaviour
         }
     }
 
-    IEnumerator Delay(int currentValue, Slider slider)
+    IEnumerator Delay()
     {
-        while(currentValueFirst != MAX_VALUE)
+        switch (pressedButton) 
         {
-            currentValueFirst += 1;
-            slider.value = currentValueFirst;
-            yield return null;
+            case PressedButton.FirstUnit:
+                while (currentValueFirst != MAX_VALUE)
+                {
+                    currentValueFirst += 1;
+                    firstUnitButtonSlider.value = currentValueFirst;
+                    yield return new WaitForSeconds(0.1f);
+                }
+                break;
+            case PressedButton.SecondUnit:
+                while (currentValueSecond != MAX_VALUE)
+                {
+                    currentValueSecond += 1;
+                    secondUnitButtonSlider.value = currentValueSecond;
+                    yield return new WaitForSeconds(0.1f);
+                }
+                break;
+            case PressedButton.ThirdUnit:
+                while (currentValueThird != MAX_VALUE)
+                {
+                    currentValueThird += 1;
+                    thirdUnitButtonSlider.value = currentValueThird;
+                    yield return new WaitForSeconds(0.1f);
+                }
+                break;
+            case PressedButton.Mana:
+                while (mana.MANA != (int)manaButoonSlider.maxValue)
+                {
+                    mana.MANA += 1;
+                    manaButoonSlider.value = mana.MANA;
+                    textCurrentMana.text = mana.MANA.ToString();
+                    yield return new WaitForSeconds(0.05f);
+                }
+                break;
+            //case PressedButton.Fireball:
+            //    while (currentValueFirst != MAX_VALUE)
+            //    {
+            //        currentValueFirst += 1;
+            //        slider.value = currentValueFirst;
+            //        yield return null;
+            //    }
+            //    break;
+            default:
+                break;
         }
     }
 
     public void SpawnFirstUnit()
     {
-        Debug.Log(SaveSystem.Instance);
-        if (currentValueFirst == MAX_VALUE)
+        if (currentValueFirst == MAX_VALUE && mana.MANA >= priceFirstUnit)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[0], playerSpot);
             currentValueFirst = 0;
             firstUnitButtonSlider.value = 0;
-        }
-        else
-        {
-            StartCoroutine(Delay(currentValueFirst,firstUnitButtonSlider));
+            pressedButton = PressedButton.FirstUnit;
+            UseMana(priceFirstUnit);
+            StartCoroutine(Delay());
+            pressedButton = PressedButton.Mana;
+            StartCoroutine(Delay());
         }
     }
 
     public void SpawnSecondtUnit()
     {
-        Debug.Log(SaveSystem.Instance.playerData);
-        if (currentValueSecond == MAX_VALUE)
+        if (currentValueSecond == MAX_VALUE && mana.MANA >= priceSecondUnit)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[1], playerSpot);
             currentValueSecond = 0;
             secondUnitButtonSlider.value = 0;
-        }
-        else
-        {
-            StartCoroutine(Delay(currentValueSecond, secondUnitButtonSlider));
+            pressedButton = PressedButton.SecondUnit;
+            UseMana(priceSecondUnit);
+            StartCoroutine(Delay());
+            pressedButton = PressedButton.Mana;
+            StartCoroutine(Delay());
         }
     }
 
     public void SpawnThirdUnit()
     {
-        Debug.Log(SaveSystem.Instance.playerData);
-        if (currentValueThird == MAX_VALUE)
+        if (currentValueThird == MAX_VALUE && mana.MANA >= priceThirdUnit)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[2], playerSpot);
             currentValueThird= 0;
             thirdUnitButtonSlider.value = 0;
+            pressedButton = PressedButton.ThirdUnit;
+            UseMana(priceThirdUnit);
+            StartCoroutine(Delay());
+            pressedButton = PressedButton.Mana;
+            StartCoroutine(Delay());
         }
-        else
+    }
+
+    public void ManaButton()
+    {
+        Debug.Log(mana.MANA_PRICE);
+        if(mana.MANA >= mana.MANA_PRICE)
         {
-            StartCoroutine(Delay(currentValueThird, thirdUnitButtonSlider));
+            mana.NextManaLevel();
+            UseMana(mana.MANA_PRICE);
+            StartCoroutine(Delay());
         }
+    }
+
+    private void UseMana(int value)
+    {
+        mana.MANA -= value;
+        manaButoonSlider.value = mana.MANA;
+        StartCoroutine(Delay());
     }
 }

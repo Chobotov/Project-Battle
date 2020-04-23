@@ -12,13 +12,13 @@ public class Test : MonoBehaviour
     public GameObject[] players = new GameObject[3];
     public GameObject[] enemys = new GameObject[3];
 
-    public float Delay = 3, nextSpawn;
+    public float Delay = 6, nextSpawn;
 
     private void Update()
     {
         if(nextSpawn < Time.time)
         {
-            int index = 0; //Random.Range(0,1);
+            int index = 1; //Random.Range(0,1);
             Instantiate(enemys[index],enem);
             nextSpawn = Time.time + Delay;
         }

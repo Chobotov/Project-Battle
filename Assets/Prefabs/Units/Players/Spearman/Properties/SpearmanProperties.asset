@@ -19,5 +19,7 @@ MonoBehaviour:
   Speed: 5
   Distance: 2
   AttackDelay: 1
+  CoinsPrice: 0
+  ManaPrice: 75
   isPurchased: 1
   isCurrentUnit: 1

@@ -43,6 +43,7 @@ public class MainUIController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         cam = Camera.main;
         Debug.Log(SaveSystem.Instance.playerData);
         energyText.text = SaveSystem.Instance.playerData.energy.ToString();

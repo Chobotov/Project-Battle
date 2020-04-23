@@ -13,7 +13,6 @@ public class PlayerUnit : MonoBehaviour
         unitData = GetComponent<UnitData>();
         if (healthBar != null)
             healthBar.value = unitData.dataHealth.Health;
-        unitData.dataHealth.isDead = false;
         unitData.unitProperties.state = State.Idle;
     }
 
@@ -28,7 +27,6 @@ public class PlayerUnit : MonoBehaviour
         else
         {
             healthBar.value = 0;
-            unitData.dataHealth.isDead = true;
             Die();
         }
     }

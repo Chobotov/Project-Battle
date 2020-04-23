@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUnitAi : MonoBehaviour
+public class EnemyUnitAI : MonoBehaviour
 {
     private float nextAttackTime;
     private RaycastHit2D hit;
@@ -24,13 +24,13 @@ public class EnemyUnitAi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!unitData.dataHealth.isDead)
+        if (unitData.unitProperties.state != State.Dead)
             hit = Physics2D.Raycast(startRay.position, -startRay.right);
     }
 
     private void Update()
     {
-        if (hit && !unitData.dataHealth.isDead)
+        if (hit && unitData.unitProperties.state != State.Dead)
         {
             PlayerUnit playerUnit = hit.collider.gameObject.GetComponent<PlayerUnit>();
             if (hit.distance > maxDistance)
@@ -41,6 +41,10 @@ public class EnemyUnitAi : MonoBehaviour
             if (playerUnit != null && hit.distance < maxDistance)
             {
                 Attack(playerUnit);
+            }
+            else if (playerUnit == null)
+            {
+                unitData.unitProperties.state = State.Idle;
             }
         }
     }

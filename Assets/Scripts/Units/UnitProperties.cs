@@ -35,6 +35,10 @@ public class UnitProperties : ScriptableObject
     public float Distance;
     [Header("Пауза между атаками")]
     public float AttackDelay;
+    [Header("Цена за юнита в монетах")]
+    public int CoinsPrice;
+    [Header("Цена за юнита в мане")]
+    public int ManaPrice;
     [Header("Юнит куплен")]
     public bool isPurchased;
     [Header("Юнит состоит в текущем отряде")]
@@ -51,10 +55,12 @@ public class UnitProperties : ScriptableObject
         this.state = state;
     }
 
-    public void SetInt(int damage, int speed)
+    public void SetInt(int damage, int speed, int manaPrice, int coinsPrice)
     {
         Damage = damage;
         Speed = speed;
+        ManaPrice = manaPrice;
+        CoinsPrice = coinsPrice;
     }
 
     public void SetFloat(float distance, float attackDelay)
