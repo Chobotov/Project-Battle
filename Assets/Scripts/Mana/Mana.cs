@@ -107,6 +107,5 @@ public class Mana : ScriptableObject
             case Mana_Level.Third:
                 break;
         }
-        Debug.Log(_manaLevel);
     }
 }

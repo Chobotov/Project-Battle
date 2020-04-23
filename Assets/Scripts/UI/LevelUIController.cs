@@ -45,6 +45,8 @@ public class LevelUIController : MonoBehaviour
 
     [SerializeField]
     private Mana mana;
+    [SerializeField]
+    private Fireball fireball;
 
     [SerializeField]
     private Transform playerSpot, enemySpot;
@@ -92,6 +94,9 @@ public class LevelUIController : MonoBehaviour
 
         manaButoonSlider.maxValue = mana.MAX_MANA;
         mana.MANA = (int)manaButoonSlider.maxValue;
+
+        fireball.Value = fireball.MAX_VALUE;
+        FireballButtonSlider.value = fireball.Value;
 
         textCurrentMana.text = mana.MANA.ToString();
         textCurrentFireball.text = 100.ToString();
@@ -179,14 +184,14 @@ public class LevelUIController : MonoBehaviour
                     yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
                 break;
-            //case PressedButton.Fireball:
-            //    while (currentValueFirst != MAX_VALUE)
-            //    {
-            //        currentValueFirst += 1;
-            //        slider.value = currentValueFirst;
-            //        yield return null;
-            //    }
-            //    break;
+            case PressedButton.Fireball:
+                while (!fireball.Fireball_isReady)
+                {
+                    fireball.Value += 1;
+                    FireballButtonSlider.value = fireball.Value;
+                    yield return new WaitForSeconds(1f);
+                }
+                break;
             default:
                 break;
         }
@@ -241,6 +246,17 @@ public class LevelUIController : MonoBehaviour
         }
     }
 
+    public void Fireball()
+    {
+        if (fireball.Fireball_isReady)
+        {
+            fireball.Value = 0;
+            FireballButtonSlider.value = 0;
+            pressedButton = PressedButton.Fireball;
+            StartCoroutine(Delay());
+        }
+    }
+
     private void UseMana(int value)
     {
         mana.MANA -= value;
@@ -248,4 +264,5 @@ public class LevelUIController : MonoBehaviour
         pressedButton = PressedButton.Mana;
         StartCoroutine(Delay());
     }
+
 }

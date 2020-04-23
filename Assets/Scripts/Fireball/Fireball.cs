@@ -25,9 +25,24 @@ public class Fireball : ScriptableObject
         {
             return currentValue;
         }
+        set
+        {
+            currentValue = value;
+        }
     }
     //Максимальное значение шкалы
-    [SerializeField]private int MaxValue = 100;
+    private int MaxValue = 100;
+    public int MAX_VALUE
+    {
+        get
+        {
+            return MaxValue;
+        }
+        set
+        {
+            MaxValue = value;
+        }
+    }
     //Заклинание готово
     private bool IsReady;
     public bool Fireball_isReady
