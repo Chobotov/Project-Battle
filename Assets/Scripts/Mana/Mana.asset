@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0992524d8d128be44a4a1f0842a3a074, type: 3}
   m_Name: Mana
   m_EditorClassIdentifier: 
-  _manaLevel: 0
+  _manaLevel: 2

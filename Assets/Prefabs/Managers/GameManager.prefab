@@ -43,6 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf301a965151d0448c394d1766cbe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveSystem: {fileID: 0}
-  unitDataBase: {fileID: 11400000, guid: 4f3ebb5bd6a91a14ab48c151246cc8e6, type: 2}
-  playerData: {fileID: 11400000, guid: 0a7ff1eb7949b4e44b8fd2134dd545c2, type: 2}
+  unitDataBase: {fileID: 11400000, guid: 4b8c9463d097b5e49a43c395435f901e, type: 2}

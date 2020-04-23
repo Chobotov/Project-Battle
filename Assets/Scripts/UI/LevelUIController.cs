@@ -56,7 +56,7 @@ public class LevelUIController : MonoBehaviour
     [Header("Кнопки пауза и скорость")]
     [SerializeField]
     private Button pauseButton,
-                   SpeedButton;
+                   speedButton;
 
     [Header("Кнопка Fireball")]
     [SerializeField]
@@ -68,9 +68,9 @@ public class LevelUIController : MonoBehaviour
 
     [Header("Кнопки спавна юнитов")]
     [SerializeField]
-    private Button firstUnit,
-                   secondUnit,
-                   thirdUnit;
+    private Button firstUnitButton,
+                   secondUnitButton,
+                   thirdUnitButton;
 
     private float delaySpawnUnit;
     private float fireballDelay;
@@ -88,7 +88,8 @@ public class LevelUIController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(SaveSystem.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice);
+        mana._manaLevel = Mana_Level.First;
+
         manaButoonSlider.maxValue = mana.MAX_MANA;
         mana.MANA = (int)manaButoonSlider.maxValue;
 
@@ -102,7 +103,7 @@ public class LevelUIController : MonoBehaviour
 
     private void Update()
     {
-        
+        manaButoonSlider.maxValue = mana.MAX_MANA;
     }
 
     public void Pause()
@@ -110,12 +111,14 @@ public class LevelUIController : MonoBehaviour
         if(gameState == GameState.Game)
         {
             gameState = GameState.Pause;
+            speedButton.gameObject.SetActive(false);
             //SceneManager.LoadScene(0);
             Time.timeScale = 0f;
         }
         else
         {
             gameState = GameState.Game;
+            speedButton.gameObject.SetActive(true);
             Time.timeScale = 1f;
         }
     }
@@ -173,7 +176,7 @@ public class LevelUIController : MonoBehaviour
                     mana.MANA += 1;
                     manaButoonSlider.value = mana.MANA;
                     textCurrentMana.text = mana.MANA.ToString();
-                    yield return new WaitForSeconds(0.05f);
+                    yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
                 break;
             //case PressedButton.Fireball:
@@ -197,10 +200,8 @@ public class LevelUIController : MonoBehaviour
             currentValueFirst = 0;
             firstUnitButtonSlider.value = 0;
             pressedButton = PressedButton.FirstUnit;
+            StartCoroutine(Delay());
             UseMana(priceFirstUnit);
-            StartCoroutine(Delay());
-            pressedButton = PressedButton.Mana;
-            StartCoroutine(Delay());
         }
     }
 
@@ -212,10 +213,8 @@ public class LevelUIController : MonoBehaviour
             currentValueSecond = 0;
             secondUnitButtonSlider.value = 0;
             pressedButton = PressedButton.SecondUnit;
+            StartCoroutine(Delay());
             UseMana(priceSecondUnit);
-            StartCoroutine(Delay());
-            pressedButton = PressedButton.Mana;
-            StartCoroutine(Delay());
         }
     }
 
@@ -227,21 +226,18 @@ public class LevelUIController : MonoBehaviour
             currentValueThird= 0;
             thirdUnitButtonSlider.value = 0;
             pressedButton = PressedButton.ThirdUnit;
+            StartCoroutine(Delay());
             UseMana(priceThirdUnit);
-            StartCoroutine(Delay());
-            pressedButton = PressedButton.Mana;
-            StartCoroutine(Delay());
         }
     }
 
     public void ManaButton()
     {
-        Debug.Log(mana.MANA_PRICE);
-        if(mana.MANA >= mana.MANA_PRICE)
+        if(mana.MANA >= mana.MANA_PRICE && mana._manaLevel != Mana_Level.Third)
         {
+            int manaPrice = mana.MANA_PRICE;
             mana.NextManaLevel();
-            UseMana(mana.MANA_PRICE);
-            StartCoroutine(Delay());
+            UseMana(manaPrice);
         }
     }
 
@@ -249,6 +245,7 @@ public class LevelUIController : MonoBehaviour
     {
         mana.MANA -= value;
         manaButoonSlider.value = mana.MANA;
+        pressedButton = PressedButton.Mana;
         StartCoroutine(Delay());
     }
 }

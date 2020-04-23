@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ManagerLoader : MonoBehaviour
 {
+    public UnitDataBase unitDataBase;
+
     // Ссылки на менеджеров
     public GameObject game_manager; 
     public GameObject save_manager; 

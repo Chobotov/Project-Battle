@@ -46,10 +46,8 @@ public class Mana : ScriptableObject
             {
 
                 case Mana_Level.First:
-                    _manaLevel = Mana_Level.Second;
                     return 75;
                 case Mana_Level.Second:
-                    _manaLevel = Mana_Level.Third;
                     return 150;
                 case Mana_Level.Third:
                     return 250;
@@ -77,6 +75,25 @@ public class Mana : ScriptableObject
         }
     }
 
+    //Скорость восстановления маны
+    public float MANA_SpeedUp
+    {
+        get
+        {
+            switch (_manaLevel)
+            {
+                case Mana_Level.First:
+                    return 0.05f;
+                case Mana_Level.Second:
+                    return 0.04f;
+                case Mana_Level.Third:
+                    return 0.03f;
+                default:
+                    return 0;
+            }
+        }
+    }
+
     public void NextManaLevel()
     {
         switch (_manaLevel)
@@ -88,8 +105,8 @@ public class Mana : ScriptableObject
                 _manaLevel = Mana_Level.Third;
                 break;
             case Mana_Level.Third:
-                _manaLevel = Mana_Level.Third;
                 break;
         }
+        Debug.Log(_manaLevel);
     }
 }

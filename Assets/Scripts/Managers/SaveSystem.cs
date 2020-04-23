@@ -7,35 +7,24 @@ using System.IO;
 public class SaveSystem : Singleton<SaveSystem>
 {
     public PlayerData playerData = new PlayerData();
-    public UnitDataBase unitDataBase = new UnitDataBase();
-    private string filepath;
+    private string PlayerFilepath;
 
     private void Start()
     {
-        Debug.Log("StartSave");
-
-        if (!PlayerPrefs.HasKey("PlayerData"))
+#if UNITY_ANDROID && !UNITY_EDITOR
+        PlayerFilepath = Path.Combine(Application.persistentDataPath, "SavePlayerData.json");
+#else
+        PlayerFilepath = Path.Combine(Application.dataPath, "SavePlayerData.json");
+#endif
+        if (File.Exists(PlayerFilepath))
         {
-            return;
-        }
-        else
-        {
-            playerData = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("PlayerData"));
-        }
-
-        if (!PlayerPrefs.HasKey("UnitDataBase"))
-        {
-            return;
-        }
-        else
-        {
-            unitDataBase = JsonUtility.FromJson<UnitDataBase>(PlayerPrefs.GetString("UnitDataBase"));
+            playerData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(PlayerFilepath));
+            Debug.Log("Save loaded!");
         }
     }
 
     private void OnApplicationQuit()
     {
-        PlayerPrefs.SetString("PlayerData", JsonUtility.ToJson(playerData));
-        PlayerPrefs.SetString("UnitDataBase", JsonUtility.ToJson(unitDataBase));
+        File.WriteAllText(PlayerFilepath, JsonUtility.ToJson(playerData));
     }
 }

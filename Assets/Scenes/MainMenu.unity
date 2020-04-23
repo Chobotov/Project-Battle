@@ -851,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29395a72a6b6fe04f928dc9c28bbced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitDataBase: {fileID: 11400000, guid: 4b8c9463d097b5e49a43c395435f901e, type: 2}
   game_manager: {fileID: 378706705540708656, guid: 879b486f8f18d0845a292e4f3f5e4ef7,
     type: 3}
   save_manager: {fileID: 449071123955903158, guid: 80dc2269a65255e46a27c0177b70e97d,
