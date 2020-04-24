@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ManagerLoader : MonoBehaviour
 {
-    public UnitDataBase unitDataBase;
-
     // Ссылки на менеджеров
     public GameObject game_manager; 
     public GameObject save_manager; 
@@ -14,14 +12,12 @@ public class ManagerLoader : MonoBehaviour
     // Метод пробуждения объекта (перед стартом игры)
     void Awake()
     {
-        // Инициализация игровой базы
         if (GameManager.Instance == null)
         {
             Instantiate(game_manager);
         }
 
-        // Инициализация игровой базы
-        if (SaveSystem.Instance == null)
+        if (SaveLoadManager.Instance == null)
         {
             Instantiate(save_manager);
         }

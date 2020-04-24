@@ -158,9 +158,9 @@ public class LevelUIController : MonoBehaviour
         textCurrentManaText.text = $"{mana.MANA}";
         textCurrentFireballText.text = $"{100}";
 
-        priceFirstUnit = SaveSystem.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice;
-        priceSecondUnit = SaveSystem.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.ManaPrice;
-        priceThirdUnit = SaveSystem.Instance.playerData.currentUnits[2].GetComponent<UnitData>().unitProperties.ManaPrice;
+        priceFirstUnit = SaveLoadManager.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice;
+        priceSecondUnit = SaveLoadManager.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.ManaPrice;
+        priceThirdUnit = SaveLoadManager.Instance.playerData.currentUnits[2].GetComponent<UnitData>().unitProperties.ManaPrice;
 
         priceManaFirstUnitText.text = $"{priceFirstUnit}";
         priceManaSecondUnitText.text = $"{priceSecondUnit}";
@@ -281,7 +281,7 @@ public class LevelUIController : MonoBehaviour
     {
         if (currentValueFirst == MAX_VALUE && mana.MANA >= priceFirstUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
-            Instantiate(SaveSystem.Instance.playerData.currentUnits[0], playerSpot);
+            Instantiate(SaveLoadManager.Instance.playerData.currentUnits[0], playerSpot);
             IntCountUnits+=1;
             currentValueFirst = 0;
             firstUnitButtonSlider.value = 0;
@@ -295,7 +295,7 @@ public class LevelUIController : MonoBehaviour
     {
         if (currentValueSecond == MAX_VALUE && mana.MANA >= priceSecondUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
-            Instantiate(SaveSystem.Instance.playerData.currentUnits[1], playerSpot);
+            Instantiate(SaveLoadManager.Instance.playerData.currentUnits[1], playerSpot);
             IntCountUnits += 1;
             currentValueSecond = 0;
             secondUnitButtonSlider.value = 0;
@@ -309,7 +309,7 @@ public class LevelUIController : MonoBehaviour
     {
         if (currentValueThird == MAX_VALUE && mana.MANA >= priceThirdUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
-            Instantiate(SaveSystem.Instance.playerData.currentUnits[2], playerSpot);
+            Instantiate(SaveLoadManager.Instance.playerData.currentUnits[2], playerSpot);
             IntCountUnits += 1;
             currentValueThird = 0;
             thirdUnitButtonSlider.value = 0;
@@ -347,10 +347,10 @@ public class LevelUIController : MonoBehaviour
         switch (gameState)
         {
             case GameState.Win:
-                SaveSystem.Instance.playerData.coins += winCoins;
+                SaveLoadManager.Instance.playerData.coins += winCoins;
                 break;
             case GameState.Lose:
-                SaveSystem.Instance.playerData.coins -= loseCoins;
+                SaveLoadManager.Instance.playerData.coins -= loseCoins;
                 break;
         }
         AsyncLoadingScreen.sceneID = mainSceneID;

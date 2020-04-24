@@ -271,7 +271,6 @@ GameObject:
   - component: {fileID: 6535321509874939463}
   - component: {fileID: 5743653898059643637}
   - component: {fileID: 8521866919949682931}
-  - component: {fileID: 685583527323517362}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -380,7 +379,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 685583527323517362}
+      - m_Target: {fileID: 0}
         m_MethodName: OnCLICK
         m_Mode: 1
         m_Arguments:
@@ -391,17 +390,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &685583527323517362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7475397462988581849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf3756eb4e498d4fb095278a605500a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 2
-  img: {fileID: 459076856874554325}

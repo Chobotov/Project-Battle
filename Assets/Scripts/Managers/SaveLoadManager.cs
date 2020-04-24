@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using System.IO;
 
-public class SaveSystem : Singleton<SaveSystem>
+public class SaveLoadManager : Singleton<SaveLoadManager>
 {
     public PlayerData playerData = new PlayerData();
     private string PlayerFilepath;
@@ -23,8 +23,13 @@ public class SaveSystem : Singleton<SaveSystem>
         }
     }
 
-    private void OnApplicationQuit()
+    public void Save()
     {
         File.WriteAllText(PlayerFilepath, JsonUtility.ToJson(playerData));
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainUIController : MonoBehaviour
 {
+    private const int loadScene = 2;
+
     private Camera cam;
     [SerializeField]
     private Transform SquadSpot;
@@ -24,10 +26,9 @@ public class MainUIController : MonoBehaviour
 
     [Header("Кнопки нижней части экрана")]
     [SerializeField]
-    private Button StartButton,
-                   SettingsButton,
-                   ArmyButton,
-                   InventarButton;
+    private Button startButton,
+                   settingsButton,
+                   exitButton;
 
     [Header("Кнопки закрытия View-элементов")]
     [SerializeField]
@@ -38,23 +39,23 @@ public class MainUIController : MonoBehaviour
     [Header("Кнопки запуска View-элементов")]
     [SerializeField]
     private GameObject armyButtonView,
-                       InventarView,
-                       SettingsView;
+                       inventarView,
+                       settingsView,
+                       shop;
 
     private void Start()
     {
         Time.timeScale = 1f;
         cam = Camera.main;
-        Debug.Log(SaveSystem.Instance.playerData);
-        energyText.text = SaveSystem.Instance.playerData.energy.ToString();
-        coinsText.text = SaveSystem.Instance.playerData.coins.ToString();
+        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
     }
 
     private void FixedUpdate()
     {
-        if (CurrentUnitsIsEmpty(SaveSystem.Instance.playerData.currentUnits) &&
+        if (CurrentUnitsIsEmpty(SaveLoadManager.Instance.playerData.currentUnits) &&
             (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f)
-            && !InventarView.activeSelf)
+            && !inventarView.activeSelf)
         {
             armyButtonView.SetActive(true);
         }
@@ -64,49 +65,59 @@ public class MainUIController : MonoBehaviour
         }
         if (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) > 5f)
         {
-            InventarView.SetActive(false);
+            inventarView.SetActive(false);
         }
     }
 
     public void StartGame()
     {
-        if (SaveSystem.Instance.playerData.currentUnits[0] != null &&
-           SaveSystem.Instance.playerData.currentUnits[1] != null &&
-            SaveSystem.Instance.playerData.currentUnits[2] != null &&
-            SaveSystem.Instance.playerData.energy > 0)
+        if (SaveLoadManager.Instance.playerData.currentUnits[0] != null &&
+           SaveLoadManager.Instance.playerData.currentUnits[1] != null &&
+            SaveLoadManager.Instance.playerData.currentUnits[2] != null &&
+            SaveLoadManager.Instance.playerData.energy > 0)
         {
-            SaveSystem.Instance.playerData.energy -= 1;
-            AsyncLoadingScreen.sceneID = 2;
+            SaveLoadManager.Instance.playerData.energy -= 1;
+            AsyncLoadingScreen.sceneID = loadScene;
             SceneManager.LoadScene(sceneID);
         }
     }
 
     public void ShowSettings()
     {
-        SettingsView.SetActive(true);
+        settingsView.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        SettingsView.SetActive(false);
+        settingsView.SetActive(false);
     }
 
     public void ShowInventar()
     {
-        InventarView.SetActive(true);
+        inventarView.SetActive(true);
         armyButtonView.SetActive(false);
+    }
+
+    public void CloseShop()
+    {
+        shop.SetActive(false);
     }
 
     public void CloseInventar()
     {
-        InventarView.SetActive(false);
+        inventarView.SetActive(false);
         armyButtonView.SetActive(true);
     }
 
     public void GetEnergy()
     {
-        SaveSystem.Instance.playerData.energy++;
-        energyText.text = SaveSystem.Instance.playerData.energy.ToString();
+        SaveLoadManager.Instance.playerData.energy++;
+        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     private bool CurrentUnitsIsEmpty(GameObject[] currentUnits)
