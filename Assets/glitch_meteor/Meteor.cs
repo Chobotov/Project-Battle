@@ -6,6 +6,7 @@ public class Meteor : MonoBehaviour
 {
     public int speed;
     public int damage;
+    private bool isHit;
 
     [SerializeField]
     private GameObject explosion;
@@ -15,25 +16,48 @@ public class Meteor : MonoBehaviour
 
     private GameObject[] enemysUnit;
 
-    private Transform currentEnemy;
+    private Vector2 currentEnemy;
 
     private float Distance
     {
         get
         {
-            return Mathf.Abs(currentEnemy.position.y - transform.position.y);
+            return Mathf.Abs(Mathf.Abs(currentEnemy.y) - Mathf.Abs(transform.position.y));
         }
     }
     private void Start()
+    {
+        isHit = true;
+        FindNearEnemy();
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, currentEnemy, Time.deltaTime*speed);
+        if (Distance <= 0.1f && isHit)
+        {
+            Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position, 20f);
+            foreach (Collider2D enemy in hitEnemys)
+            {
+                if (enemy.GetComponent<EnemyUnit>() != null)
+                    enemy.GetComponent<EnemyUnit>().TakeDamage(damage);
+            }
+            isHit = false;
+            explosion.SetActive(true);
+            Invoke("DestroyMeteor", 0.5f);
+        }
+    }
+
+    private void FindNearEnemy()
     {
         enemyTower = GameObject.FindGameObjectWithTag("EnemyTower").transform;
         playerTower = GameObject.FindGameObjectWithTag("PlayerTower").transform;
 
         enemysUnit = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if(enemysUnit.Length == 0)
+        if (enemysUnit.Length == 0)
         {
-            currentEnemy = enemyTower;
+            currentEnemy = enemyTower.position;
         }
         else
         {
@@ -48,24 +72,7 @@ public class Meteor : MonoBehaviour
                     indexEnemy = i;
                 }
             }
-            currentEnemy = enemysUnit[indexEnemy].transform;
-        }
-    }
-
-    private void Update()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, currentEnemy.position, Time.deltaTime*speed);
-        if(Distance <= 0.5f)
-        {
-            Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position,10f);
-            foreach(Collider2D enemy in hitEnemys)
-            {
-                Debug.Log(enemy.name);
-                if(enemy.GetComponent<EnemyUnit>() != null)
-                    enemy.GetComponent<EnemyUnit>().TakeDamage(damage);
-            }
-            explosion.SetActive(true);
-            Invoke("DestroyMeteor", 0.5f);
+            currentEnemy = new Vector2(enemysUnit[indexEnemy].transform.position.x, enemysUnit[indexEnemy].transform.position.y);
         }
     }
 

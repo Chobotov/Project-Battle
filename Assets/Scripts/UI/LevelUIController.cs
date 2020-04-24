@@ -201,6 +201,12 @@ public class LevelUIController : MonoBehaviour
         }
     }
 
+    public void LeaveLevel()
+    {
+        AsyncLoadingScreen.sceneID = mainSceneID;
+        SceneManager.LoadScene(loadingScreen);
+    }
+
     public void Speed()
     {
         switch (levelOfSpeed)
@@ -263,7 +269,7 @@ public class LevelUIController : MonoBehaviour
                     fireball.Value += 1;
                     FireballButtonSlider.value = fireball.Value;
                     textCurrentFireballText.text = $"{fireball.Value}";
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(0.6f);
                 }
                 break;
             default:
@@ -357,7 +363,7 @@ public class LevelUIController : MonoBehaviour
         StopAllCoroutines();
         Interactable(false);
         TimeSpan ts = stopwatch.Elapsed;
-        string elapsedTime = $"{ts.Minutes}:{ts.Seconds}";
+        string elapsedTime = $"{ts.Minutes}м:{ts.Seconds}с";
 
         switch (gameState)
         {
