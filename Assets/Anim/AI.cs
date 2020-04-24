@@ -16,7 +16,7 @@ public enum Distance : int
     Far = 50
 }
 
-public enum Chois
+public enum Choice
 {
     FirstUnit,
     SecondUnit,
@@ -26,7 +26,7 @@ public enum Chois
 }
 public class AI : MonoBehaviour
 {
-    private Chois chois;
+    private Choice choice;
 
     [Header("Единица времени готовности юнита для спавна")]
     [Range(0.1f,0.5f)]
@@ -90,7 +90,7 @@ public class AI : MonoBehaviour
                 Instantiate(enemys[Random.Range(0,3)], enem);
                 countUnits += 1;
                 currentValueRandom = 0;
-                chois = Chois.RandomUnit;
+                choice = Choice.RandomUnit;
                 StartCoroutine(Delay());
                 UseMana(priceRandomUnit);
             }
@@ -98,13 +98,13 @@ public class AI : MonoBehaviour
 
         if(distance > (float)Distance.Middle && distance < (float)Distance.Far)
         {
-            Debug.Log($"Far : {distance}");
+            //Debug.Log($"Far : {distance}");
             if (mana >= priceThirdUnit  && countUnits < MAX_ENEMY_UNITS && currentValueThird == MAX_VALUE)
             {
                 Instantiate(enemys[(int)EnemyUnitIndex.Heavy], enem);
                 countUnits += 1;
                 currentValueThird = 0;
-                chois = Chois.ThirdUnit;
+                choice = Choice.ThirdUnit;
                 StartCoroutine(Delay());
                 UseMana(priceThirdUnit);
             }
@@ -112,13 +112,13 @@ public class AI : MonoBehaviour
 
         else if (distance > (float)Distance.Middle && distance < (float)Distance.Far)
         {
-            Debug.Log($"Middle : {distance}");
+            //Debug.Log($"Middle : {distance}");
             if (mana >= priceSecondUnit && countUnits < MAX_ENEMY_UNITS && currentValueSecond == MAX_VALUE)
             {
                 Instantiate(enemys[(int)EnemyUnitIndex.Middle], enem);
                 countUnits += 1;
                 currentValueSecond = 0;
-                chois = Chois.SecondUnit;
+                choice = Choice.SecondUnit;
                 StartCoroutine(Delay());
                 UseMana(priceSecondUnit);
             }
@@ -126,13 +126,13 @@ public class AI : MonoBehaviour
 
         else if(distance > (float)Distance.Near && distance < (float)Distance.Middle)
         {
-            Debug.Log($"Near : {distance}");
+            //Debug.Log($"Near : {distance}");
             if (mana >= priceFirstUnit  && countUnits < MAX_ENEMY_UNITS && currentValueFirst == MAX_VALUE)
             {
                 Instantiate(enemys[(int)EnemyUnitIndex.Low], enem);
                 countUnits += 1;
                 currentValueFirst = 0;
-                chois = Chois.FirstUnit;
+                choice = Choice.FirstUnit;
                 StartCoroutine(Delay());
                 UseMana(priceFirstUnit);
             }
@@ -142,37 +142,37 @@ public class AI : MonoBehaviour
 
     IEnumerator Delay()
     {
-        switch (chois)
+        switch (choice)
         {
-            case Chois.FirstUnit:
+            case Choice.FirstUnit:
                 while (currentValueFirst != MAX_VALUE)
                 {
                     currentValueFirst += 1;
                     yield return new WaitForSeconds(delay);
                 }
                 break;
-            case Chois.SecondUnit:
+            case Choice.SecondUnit:
                 while (currentValueSecond != MAX_VALUE)
                 {
                     currentValueSecond += 1;
                     yield return new WaitForSeconds(delay);
                 }
                 break;
-            case Chois.ThirdUnit:
+            case Choice.ThirdUnit:
                 while (currentValueThird != MAX_VALUE)
                 {
                     currentValueThird += 1;
                     yield return new WaitForSeconds(delay);
                 }
                 break;
-            case Chois.RandomUnit:
+            case Choice.RandomUnit:
                 while (currentValueRandom != MAX_VALUE)
                 {
                     currentValueRandom += 1;
                     yield return new WaitForSeconds(delay);
                 }
                 break;
-            case Chois.Mana:
+            case Choice.Mana:
                 while (mana != MAX_MANA)
                 {
                     mana += 1;
@@ -187,7 +187,7 @@ public class AI : MonoBehaviour
     private void UseMana(int value)
     {
         mana -= value;
-        chois = Chois.Mana;
+        choice = Choice.Mana;
         StartCoroutine(Delay());
     }
 }

@@ -76,6 +76,7 @@ public class MainUIController : MonoBehaviour
             SaveSystem.Instance.playerData.energy > 0)
         {
             SaveSystem.Instance.playerData.energy -= 1;
+            AsyncLoadingScreen.sceneID = 2;
             SceneManager.LoadScene(sceneID);
         }
     }

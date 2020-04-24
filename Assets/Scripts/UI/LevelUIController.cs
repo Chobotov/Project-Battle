@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Diagnostics;
+using System;
 
 public class LevelUIController : MonoBehaviour
 {
@@ -26,10 +28,18 @@ public class LevelUIController : MonoBehaviour
     enum GameState
     {
         Game,
-        Pause
+        Pause,
+        Win,
+        Lose
     }
 
     public int timeDelay;
+
+    private const int mainSceneID = 0;
+    private const int loadingScreen = 1;
+
+    private const int winCoins = 50;
+    private const int loseCoins = 25;
 
     private const int MAX_VALUE = 100;
     private const int MAX_PLAYER_UNITS = 4;
@@ -58,7 +68,8 @@ public class LevelUIController : MonoBehaviour
 
     [Header("Панель настроек")]
     [SerializeField]
-    private GameObject settingsPanel;
+    private GameObject settingsPanel,
+                       endGamePanel;
 
     [Header("Кнопки пауза и скорость")]
     [SerializeField]
@@ -98,10 +109,22 @@ public class LevelUIController : MonoBehaviour
     [SerializeField]
     private Text countUnits;
     public static int IntCountUnits;
+    
+    [Header("Текстовые поля панели 'Конец игры' ")]
+    [SerializeField]
+    private Text timeText,
+                 healthText,
+                 coinsText,
+                 titleText;
+
+    private Stopwatch stopwatch;
 
     private void Start()
     {
         mana._manaLevel = Mana_Level.First;
+
+        stopwatch = new Stopwatch();
+        stopwatch.Start();    
 
         IntCountUnits = 0;
         countUnits.text = IntCountUnits.ToString();
@@ -124,6 +147,16 @@ public class LevelUIController : MonoBehaviour
     {
         manaButoonSlider.maxValue = mana.MAX_MANA;
         countUnits.text = IntCountUnits.ToString();
+        if (Gameplay.isPlayerTowerDead)
+        {
+            gameState = GameState.Lose;
+            EndGame();
+        }
+        else if (Gameplay.isEnemyTowerDead)
+        {
+            gameState = GameState.Win;
+            EndGame();
+        }
     }
 
     public void Pause()
@@ -275,6 +308,48 @@ public class LevelUIController : MonoBehaviour
             FireballButtonSlider.value = 0;
             pressedButton = PressedButton.Fireball;
             StartCoroutine(Delay());
+        }
+    }
+
+    public void Continue()
+    {
+        switch (gameState)
+        {
+            case GameState.Win:
+                SaveSystem.Instance.playerData.coins += winCoins;
+                break;
+            case GameState.Lose:
+                SaveSystem.Instance.playerData.coins -= loseCoins;
+                break;
+        }
+        AsyncLoadingScreen.sceneID = mainSceneID;
+        SceneManager.LoadScene(loadingScreen);
+    }
+
+    private void EndGame()
+    {
+        stopwatch.Stop();
+        StopAllCoroutines();
+        TimeSpan ts = stopwatch.Elapsed;
+        string elapsedTime = $"{ts.Minutes}:{ts.Seconds}";
+
+        switch (gameState)
+        {
+            case GameState.Win:
+                titleText.text = "Победа!";
+                timeText.text = elapsedTime;
+                healthText.text = Gameplay.playerHealth.ToString();
+                coinsText.text = $"+{winCoins}";
+                endGamePanel.SetActive(true);
+                break;
+            case GameState.Lose:
+                titleText.text = "Проиграл сражение, но не войну!";
+                timeText.text = elapsedTime;
+                healthText.text = Gameplay.playerHealth.ToString();
+                coinsText.text = $"-{loseCoins}";
+                endGamePanel.SetActive(true);
+                break;
+
         }
     }
 

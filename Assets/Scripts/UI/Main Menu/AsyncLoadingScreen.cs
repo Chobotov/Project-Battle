@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AsyncLoadingScreen : MonoBehaviour
 {
     [Header("Загружаемая сцена")]
-    public int sceneID;
+    public static int sceneID;
     
     public Text progressText;
     private void Start()

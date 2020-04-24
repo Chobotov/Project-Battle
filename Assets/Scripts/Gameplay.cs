@@ -15,31 +15,41 @@ public class Gameplay : MonoBehaviour
     private UnitData playerUnitData,
                      enemyUnitData;
 
+    public static int playerHealth;
+
     [Header("X-координата взрыва")]
     [SerializeField]
     private float X_PlayerCord,
                   X_EnemyCord;
     private float Ycord = 5f;
+
+    public static bool isEnemyTowerDead;
+    public static bool isPlayerTowerDead;
     void Start()
     {
+        isEnemyTowerDead = false;
+        isPlayerTowerDead = false;
         playerUnitData = PlayerTower.GetComponent<UnitData>();
         enemyUnitData = EnemyTower.GetComponent<UnitData>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(playerUnitData.dataHealth.Health <= 0)
+        playerHealth = playerUnitData.dataHealth.Health;
+        
+        if (playerUnitData.dataHealth.Health <= 0)
         {
             Explosion.transform.position = new Vector2(X_PlayerCord,Ycord);
             Explosion.SetActive(true);
             PlayerTower.SetActive(false);
+            isPlayerTowerDead = true;
         }
         else if(enemyUnitData.dataHealth.Health <= 0)
         {
             Explosion.transform.position = new Vector2(X_EnemyCord, Ycord);
             Explosion.SetActive(true);
             EnemyTower.SetActive(false);
+            isEnemyTowerDead = true;
         }
     }
 }

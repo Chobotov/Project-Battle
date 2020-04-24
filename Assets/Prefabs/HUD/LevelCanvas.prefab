@@ -125,6 +125,8 @@ MonoBehaviour:
   fireball: {fileID: 0}
   playerSpot: {fileID: 0}
   enemySpot: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  endGamePanel: {fileID: 0}
   pauseButton: {fileID: 2363017870275368315}
   speedButton: {fileID: 0}
   fireballButton: {fileID: 0}
@@ -140,6 +142,10 @@ MonoBehaviour:
   textCurrentMana: {fileID: 1046118175308133511}
   textCurrentFireball: {fileID: 8332473372796557252}
   countUnits: {fileID: 0}
+  timeText: {fileID: 0}
+  healthText: {fileID: 0}
+  coinsText: {fileID: 0}
+  titleText: {fileID: 0}
 --- !u!1 &2588250824666140073
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +853,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497265142540551470, guid: 01c2c7b0779585b469b62a5fa57281a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497265142540551470, guid: 01c2c7b0779585b469b62a5fa57281a6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 485
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497265142540551470, guid: 01c2c7b0779585b469b62a5fa57281a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -108
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497265142540551470, guid: 01c2c7b0779585b469b62a5fa57281a6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 147.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717690863322286614, guid: 01c2c7b0779585b469b62a5fa57281a6,
+        type: 3}
+      propertyPath: m_Name
+      value: title
       objectReference: {fileID: 0}
     - target: {fileID: 8420313829370819801, guid: 01c2c7b0779585b469b62a5fa57281a6,
         type: 3}
@@ -1570,7 +1601,7 @@ PrefabInstance:
     - target: {fileID: 7124804941260961269, guid: e3523027ec7358f4d970ece55517be23,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3523027ec7358f4d970ece55517be23, type: 3}
