@@ -32,6 +32,7 @@ public class LevelUIController : MonoBehaviour
     public int timeDelay;
 
     private const int MAX_VALUE = 100;
+    private const int MAX_PLAYER_UNITS = 4;
 
     //Текущие значения шкал заполненности кнопок
     private int currentValueFirst = MAX_VALUE;
@@ -77,20 +78,29 @@ public class LevelUIController : MonoBehaviour
     private float delaySpawnUnit;
     private float fireballDelay;
 
+    [Header("Слайдеры кнопок нижней панели")]
     [SerializeField]
     private Slider firstUnitButtonSlider,
                    secondUnitButtonSlider,
                    thirdUnitButtonSlider,
                    manaButoonSlider,
                    FireballButtonSlider;
-
+    [Header("Вывод текущей маны и заряда фаербола")]
     [SerializeField]
     private Text textCurrentMana,
                  textCurrentFireball;
 
+    [Header("Кол-во юнитов игрока на поле")]
+    [SerializeField]
+    private Text countUnits;
+    public static int IntCountUnits;
+
     private void Start()
     {
         mana._manaLevel = Mana_Level.First;
+
+        IntCountUnits = 0;
+        countUnits.text = IntCountUnits.ToString();
 
         manaButoonSlider.maxValue = mana.MAX_MANA;
         mana.MANA = (int)manaButoonSlider.maxValue;
@@ -109,6 +119,7 @@ public class LevelUIController : MonoBehaviour
     private void Update()
     {
         manaButoonSlider.maxValue = mana.MAX_MANA;
+        countUnits.text = IntCountUnits.ToString();
     }
 
     public void Pause()
@@ -199,9 +210,10 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnFirstUnit()
     {
-        if (currentValueFirst == MAX_VALUE && mana.MANA >= priceFirstUnit)
+        if (currentValueFirst == MAX_VALUE && mana.MANA >= priceFirstUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[0], playerSpot);
+            IntCountUnits+=1;
             currentValueFirst = 0;
             firstUnitButtonSlider.value = 0;
             pressedButton = PressedButton.FirstUnit;
@@ -212,9 +224,10 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnSecondtUnit()
     {
-        if (currentValueSecond == MAX_VALUE && mana.MANA >= priceSecondUnit)
+        if (currentValueSecond == MAX_VALUE && mana.MANA >= priceSecondUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[1], playerSpot);
+            IntCountUnits += 1;
             currentValueSecond = 0;
             secondUnitButtonSlider.value = 0;
             pressedButton = PressedButton.SecondUnit;
@@ -225,10 +238,11 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnThirdUnit()
     {
-        if (currentValueThird == MAX_VALUE && mana.MANA >= priceThirdUnit)
+        if (currentValueThird == MAX_VALUE && mana.MANA >= priceThirdUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveSystem.Instance.playerData.currentUnits[2], playerSpot);
-            currentValueThird= 0;
+            IntCountUnits += 1;
+            currentValueThird = 0;
             thirdUnitButtonSlider.value = 0;
             pressedButton = PressedButton.ThirdUnit;
             StartCoroutine(Delay());

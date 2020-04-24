@@ -38,6 +38,7 @@ public class EnemyUnit : MonoBehaviour
 
     private void DestroyUnit()
     {
+        AI.countUnits -= 1;
         Destroy(gameObject);
     }
 }

@@ -83,11 +83,11 @@ public class Mana : ScriptableObject
             switch (_manaLevel)
             {
                 case Mana_Level.First:
-                    return 0.05f;
+                    return 0.09f;
                 case Mana_Level.Second:
-                    return 0.04f;
+                    return 0.07f;
                 case Mana_Level.Third:
-                    return 0.03f;
+                    return 0.05f;
                 default:
                     return 0;
             }

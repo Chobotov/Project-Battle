@@ -39,6 +39,7 @@ public class PlayerUnit : MonoBehaviour
 
     private void DestroyUnit()
     {
+        LevelUIController.IntCountUnits -= 1;
         Destroy(gameObject);
     }
 }
