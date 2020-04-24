@@ -55,9 +55,9 @@ public class Meteor : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy.position, Time.deltaTime*speed);
-        if(Distance <= 0.1f)
+        if(Distance <= 0.5f)
         {
-            Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position,2f);
+            Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position,10f);
             foreach(Collider2D enemy in hitEnemys)
             {
                 Debug.Log(enemy.name);
