@@ -66,6 +66,13 @@ public class LevelUIController : MonoBehaviour
     private LevelOfSpeed levelOfSpeed = LevelOfSpeed.Normal;
     private PressedButton pressedButton = PressedButton.None;
 
+    [Header("Метеорит")]
+    [SerializeField]
+    private GameObject meteorite;
+
+    [SerializeField]
+    private Transform meteoriteSpot;
+
     [Header("Панель настроек")]
     [SerializeField]
     private GameObject settingsPanel,
@@ -100,10 +107,21 @@ public class LevelUIController : MonoBehaviour
                    thirdUnitButtonSlider,
                    manaButoonSlider,
                    FireballButtonSlider;
+
+    [Header("Цена маной за спавн юнита")]
+    [SerializeField]
+    private Text priceManaFirstUnitText,
+                 priceManaSecondUnitText,
+                 priceManaThirdUnitText;
+
+    [Header("Цена маной за увеличение макс. маны")]
+    [SerializeField]
+    private Text priceNextManaText;
+
     [Header("Вывод текущей маны и заряда фаербола")]
     [SerializeField]
-    private Text textCurrentMana,
-                 textCurrentFireball;
+    private Text textCurrentManaText,
+                 textCurrentFireballText;
 
     [Header("Кол-во юнитов игрока на поле")]
     [SerializeField]
@@ -123,11 +141,13 @@ public class LevelUIController : MonoBehaviour
     {
         mana._manaLevel = Mana_Level.First;
 
+        priceNextManaText.text = $"{mana.MANA_PRICE}";
+
         stopwatch = new Stopwatch();
         stopwatch.Start();    
 
         IntCountUnits = 0;
-        countUnits.text = IntCountUnits.ToString();
+        countUnits.text = $"{IntCountUnits}";
 
         manaButoonSlider.maxValue = mana.MAX_MANA;
         mana.MANA = (int)manaButoonSlider.maxValue;
@@ -135,18 +155,22 @@ public class LevelUIController : MonoBehaviour
         fireball.Value = fireball.MAX_VALUE;
         FireballButtonSlider.value = fireball.Value;
 
-        textCurrentMana.text = mana.MANA.ToString();
-        textCurrentFireball.text = 100.ToString();
+        textCurrentManaText.text = $"{mana.MANA}";
+        textCurrentFireballText.text = $"{100}";
 
         priceFirstUnit = SaveSystem.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice;
         priceSecondUnit = SaveSystem.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.ManaPrice;
         priceThirdUnit = SaveSystem.Instance.playerData.currentUnits[2].GetComponent<UnitData>().unitProperties.ManaPrice;
+
+        priceManaFirstUnitText.text = $"{priceFirstUnit}";
+        priceManaSecondUnitText.text = $"{priceSecondUnit}";
+        priceManaThirdUnitText.text = $"{priceThirdUnit}";
     }
 
     private void Update()
     {
         manaButoonSlider.maxValue = mana.MAX_MANA;
-        countUnits.text = IntCountUnits.ToString();
+        countUnits.text = $"{IntCountUnits}";
         if (Gameplay.isPlayerTowerDead)
         {
             gameState = GameState.Lose;
@@ -164,8 +188,7 @@ public class LevelUIController : MonoBehaviour
         if(gameState == GameState.Game)
         {
             gameState = GameState.Pause;
-            speedButton.gameObject.SetActive(false);
-            pauseButton.gameObject.SetActive(false);
+            Interactable(false);
             settingsPanel.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -173,8 +196,7 @@ public class LevelUIController : MonoBehaviour
         {
             gameState = GameState.Game;
             settingsPanel.SetActive(false);
-            pauseButton.gameObject.SetActive(true);
-            speedButton.gameObject.SetActive(true);
+            Interactable(true);
             Time.timeScale = 1f;
         }
     }
@@ -231,7 +253,7 @@ public class LevelUIController : MonoBehaviour
                 {
                     mana.MANA += 1;
                     manaButoonSlider.value = mana.MANA;
-                    textCurrentMana.text = mana.MANA.ToString();
+                    textCurrentManaText.text = $"{mana.MANA}";
                     yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
                 break;
@@ -240,6 +262,7 @@ public class LevelUIController : MonoBehaviour
                 {
                     fireball.Value += 1;
                     FireballButtonSlider.value = fireball.Value;
+                    textCurrentFireballText.text = $"{fireball.Value}";
                     yield return new WaitForSeconds(1f);
                 }
                 break;
@@ -296,6 +319,7 @@ public class LevelUIController : MonoBehaviour
         {
             int manaPrice = mana.MANA_PRICE;
             mana.NextManaLevel();
+            priceNextManaText.text = $"{mana.MANA_PRICE}";
             UseMana(manaPrice);
         }
     }
@@ -304,6 +328,7 @@ public class LevelUIController : MonoBehaviour
     {
         if (fireball.Fireball_isReady)
         {
+            Instantiate(meteorite, meteoriteSpot);
             fireball.Value = 0;
             FireballButtonSlider.value = 0;
             pressedButton = PressedButton.Fireball;
@@ -330,6 +355,7 @@ public class LevelUIController : MonoBehaviour
     {
         stopwatch.Stop();
         StopAllCoroutines();
+        Interactable(false);
         TimeSpan ts = stopwatch.Elapsed;
         string elapsedTime = $"{ts.Minutes}:{ts.Seconds}";
 
@@ -338,19 +364,30 @@ public class LevelUIController : MonoBehaviour
             case GameState.Win:
                 titleText.text = "Победа!";
                 timeText.text = elapsedTime;
-                healthText.text = Gameplay.playerHealth.ToString();
+                healthText.text = $"{Gameplay.playerHealth}";
                 coinsText.text = $"+{winCoins}";
                 endGamePanel.SetActive(true);
                 break;
             case GameState.Lose:
                 titleText.text = "Проиграл сражение, но не войну!";
                 timeText.text = elapsedTime;
-                healthText.text = Gameplay.playerHealth.ToString();
+                healthText.text = $"{Gameplay.playerHealth}";
                 coinsText.text = $"-{loseCoins}";
                 endGamePanel.SetActive(true);
                 break;
 
         }
+    }
+
+    private void Interactable(bool On_Off)
+    {
+        manaButton.interactable = On_Off;
+        fireballButton.interactable = On_Off;
+        firstUnitButton.interactable = On_Off;
+        secondUnitButton.interactable = On_Off;
+        thirdUnitButton.interactable = On_Off;
+        pauseButton.gameObject.SetActive(On_Off);
+        speedButton.gameObject.SetActive(On_Off);
     }
 
     private void UseMana(int value)

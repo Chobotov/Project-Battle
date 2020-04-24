@@ -78,7 +78,6 @@ public class AI : MonoBehaviour
             if (distance > UnitDistance)
                 distance = UnitDistance;
         }
-        
     }
 
     private void Update()
