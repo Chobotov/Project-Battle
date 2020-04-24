@@ -56,6 +56,10 @@ public class LevelUIController : MonoBehaviour
     private LevelOfSpeed levelOfSpeed = LevelOfSpeed.Normal;
     private PressedButton pressedButton = PressedButton.None;
 
+    [Header("Панель настроек")]
+    [SerializeField]
+    private GameObject settingsPanel;
+
     [Header("Кнопки пауза и скорость")]
     [SerializeField]
     private Button pauseButton,
@@ -128,12 +132,15 @@ public class LevelUIController : MonoBehaviour
         {
             gameState = GameState.Pause;
             speedButton.gameObject.SetActive(false);
-            //SceneManager.LoadScene(0);
+            pauseButton.gameObject.SetActive(false);
+            settingsPanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
             gameState = GameState.Game;
+            settingsPanel.SetActive(false);
+            pauseButton.gameObject.SetActive(true);
             speedButton.gameObject.SetActive(true);
             Time.timeScale = 1f;
         }
