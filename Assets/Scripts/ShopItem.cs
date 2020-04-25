@@ -10,29 +10,33 @@ public class ShopItem : MonoBehaviour
                  healthText,
                  damageText,
                  manaPriceText,
-                 speedText;
+                 speedText,
+                 coinsPrice;
     [Header("Изображение юнита")]
     public Image image;
 
-    private Button buy;
+    public Button buyButton;
 
     public int id;
-
-    public int Price;
-    public GameObject Unit;
+    public int price;
+    public GameObject unit;
 
     private void OnEnable()
     {
-        //Unit = GameManager.Instance.UnitDataBase.allUnits[id];
+        unit = GameManager.Instance.allUnits[id];
 
-        var dataHealth = Unit.GetComponent<UnitData>().dataHealth; 
-        var unitProperties = Unit.GetComponent<UnitData>().unitProperties;
+        if (unit.GetComponent<UnitData>().unitProperties.isPurchased == true)
+            buyButton.gameObject.SetActive(false);
 
-        image.sprite = Unit.GetComponent<SpriteRenderer>().sprite;
+        var dataHealth = unit.GetComponent<UnitData>().dataHealth; 
+        var unitProperties = unit.GetComponent<UnitData>().unitProperties;
 
-        Price = unitProperties.CoinsPrice;
+        image.sprite = unit.GetComponent<SpriteRenderer>().sprite;
 
-        titleText.text = Unit.name;
+        price = unitProperties.CoinsPrice;
+        coinsPrice.text = $"{price}";
+
+        titleText.text = unit.name;
         healthText.text = $"{dataHealth.Health}";
         damageText.text = $"{unitProperties.Damage}";
         manaPriceText.text = $"{unitProperties.ManaPrice}";
@@ -41,10 +45,8 @@ public class ShopItem : MonoBehaviour
 
     public void BuyUnit()
     {
-        SaveLoadManager.Instance.playerData.coins -= Price;
-        //GameManager.Instance.UnitDataBase.purchasedUnits.Add(GameManager.Instance.UnitDataBase.allUnits[id]);
-        buy.gameObject.SetActive(false);
+        SaveLoadManager.Instance.playerData.coins -= price;
+        GameManager.Instance.allUnits[id].GetComponent<UnitData>().unitProperties.isPurchased = true;
+        buyButton.gameObject.SetActive(false);
     }
-
-
 }

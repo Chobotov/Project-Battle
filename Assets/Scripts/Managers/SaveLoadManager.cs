@@ -28,6 +28,20 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         File.WriteAllText(PlayerFilepath, JsonUtility.ToJson(playerData));
     }
 
+    public bool IsCurrentSquadEmpty()
+    {
+        bool isEmpty = false;
+        for (var i = 0; i < playerData.currentUnits.Length; i++)
+        {
+            if (playerData.currentUnits[i] == null)
+            {
+                isEmpty = true;
+                break;
+            }
+        }
+        return isEmpty;
+    }
+
     private void OnApplicationQuit()
     {
         Save();

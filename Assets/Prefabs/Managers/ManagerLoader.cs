@@ -6,7 +6,15 @@ public class ManagerLoader : MonoBehaviour
 {
     // Ссылки на менеджеров
     public GameObject game_manager; 
-    public GameObject save_manager; 
+    public GameObject save_manager;
+
+    //Юниты
+    [SerializeField]
+    private List<GameObject> units = new List<GameObject>();
+
+    //Улучшения для башни
+    [SerializeField]
+    private List<GameObject> towerUpdates = new List<GameObject>();
 
 
     // Метод пробуждения объекта (перед стартом игры)
@@ -21,5 +29,9 @@ public class ManagerLoader : MonoBehaviour
         {
             Instantiate(save_manager);
         }
+        if(GameManager.Instance.allUnits.Count == 0)
+            GameManager.Instance.allUnits.AddRange(units);
+        if (GameManager.Instance.towerUpdates.Count == 0)
+            GameManager.Instance.towerUpdates.AddRange(towerUpdates);
     }
 }

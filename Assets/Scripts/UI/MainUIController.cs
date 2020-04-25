@@ -34,7 +34,8 @@ public class MainUIController : MonoBehaviour
     [SerializeField]
     private Button CloseSettingsButton,
                    CloseTowerUpdatesButton,
-                   CloseInventarButton;
+                   CloseInventarButton,
+                   CloseShopButton;
 
     [Header("Кнопки запуска View-элементов")]
     [SerializeField]
@@ -53,7 +54,7 @@ public class MainUIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CurrentUnitsIsEmpty(SaveLoadManager.Instance.playerData.currentUnits) &&
+        if (SaveLoadManager.Instance.IsCurrentSquadEmpty() &&
             (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f)
             && !inventarView.activeSelf)
         {
@@ -67,6 +68,7 @@ public class MainUIController : MonoBehaviour
         {
             inventarView.SetActive(false);
         }
+        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
     }
 
     public void StartGame()
@@ -111,24 +113,13 @@ public class MainUIController : MonoBehaviour
 
     public void GetEnergy()
     {
-        SaveLoadManager.Instance.playerData.energy++;
+        if(SaveLoadManager.Instance.playerData.energy<10)
+            SaveLoadManager.Instance.playerData.energy++;
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
     }
 
     public void Exit()
     {
         Application.Quit();
-    }
-
-    private bool CurrentUnitsIsEmpty(GameObject[] currentUnits)
-    {
-        bool isEmpty = false;
-        for(var i = 0; i < currentUnits.Length; i++)
-        {
-            if (currentUnits[i] == null)
-                isEmpty = true;
-        }
-        return isEmpty;
-
     }
 }

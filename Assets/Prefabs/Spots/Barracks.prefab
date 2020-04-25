@@ -351,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 6402936446647559368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 9113838433815181439}
   - {fileID: 590542918007605685}
@@ -400,6 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 0}
+  Items: []
+  shopSpot: {fileID: 0}
 --- !u!1 &9219985753533526307
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Timely : MonoBehaviour
     public GameObject first;
     public GameObject second;
     public GameObject third;
+    public GameObject forty;
 
     private void Start()
     {
