@@ -46,8 +46,11 @@ public class ShopItem : MonoBehaviour
 
     public void BuyUnit()
     {
-        SaveLoadManager.Instance.playerData.coins -= price;
-        GameManager.Instance.allUnits[id].GetComponent<UnitData>().unitProperties.isPurchased = true;
-        buyButton.gameObject.SetActive(false);
+        if(SaveLoadManager.Instance.playerData.coins >= price)
+        {
+            SaveLoadManager.Instance.playerData.coins -= price;
+            GameManager.Instance.allUnits[id].GetComponent<UnitData>().unitProperties.isPurchased = true;
+            buyButton.gameObject.SetActive(false);
+        }
     }
 }

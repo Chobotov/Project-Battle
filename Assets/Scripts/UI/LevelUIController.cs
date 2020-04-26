@@ -135,11 +135,25 @@ public class LevelUIController : MonoBehaviour
                  coinsText,
                  titleText;
 
+    [Header("Иконки юнитов на кнопках")]
+    [SerializeField]
+    private GameObject imageFirstUnit,
+                       imageSecondUnit,
+                       imageThirdUnit;
+
+    [Header("Спрайты кнопки скорости игры")]
+    [SerializeField]
+    private Sprite normalSpeed,
+                   fastSpeed,
+                   veryfastSpeed;
+
     private Stopwatch stopwatch;
 
     private void Start()
     {
         mana._manaLevel = Mana_Level.First;
+
+        speedButton.GetComponent<Image>().sprite = normalSpeed;
 
         priceNextManaText.text = $"{mana.MANA_PRICE}";
 
@@ -157,6 +171,13 @@ public class LevelUIController : MonoBehaviour
 
         textCurrentManaText.text = $"{mana.MANA}";
         textCurrentFireballText.text = $"{100}";
+
+        imageFirstUnit.GetComponent<Image>().sprite = SaveLoadManager.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.sprite;
+        imageSecondUnit.GetComponent<Image>().sprite = SaveLoadManager.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.sprite;
+        imageThirdUnit.GetComponent<Image>().sprite = SaveLoadManager.Instance.playerData.currentUnits[2].GetComponent<UnitData>().unitProperties.sprite;
+        imageFirstUnit.GetComponent<Image>().SetNativeSize();
+        imageSecondUnit.GetComponent<Image>().SetNativeSize();
+        imageThirdUnit.GetComponent<Image>().SetNativeSize();
 
         priceFirstUnit = SaveLoadManager.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.ManaPrice;
         priceSecondUnit = SaveLoadManager.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.ManaPrice;
@@ -213,14 +234,17 @@ public class LevelUIController : MonoBehaviour
         {
             case LevelOfSpeed.Normal:
                 levelOfSpeed = LevelOfSpeed.Faster;
+                speedButton.GetComponent<Image>().sprite = fastSpeed;
                 Time.timeScale = 1.5f;
                 break;
             case LevelOfSpeed.Faster:
                 levelOfSpeed = LevelOfSpeed.VeryFast;
+                speedButton.GetComponent<Image>().sprite = veryfastSpeed;
                 Time.timeScale = 2f;
                 break;
             case LevelOfSpeed.VeryFast:
                 levelOfSpeed = LevelOfSpeed.Normal;
+                speedButton.GetComponent<Image>().sprite = normalSpeed;
                 Time.timeScale = 1f;
                 break;
         }
