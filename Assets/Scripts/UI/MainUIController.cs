@@ -44,6 +44,8 @@ public class MainUIController : MonoBehaviour
                        settingsView,
                        shop;
 
+
+
     private void Start()
     {
         Time.timeScale = 1f;

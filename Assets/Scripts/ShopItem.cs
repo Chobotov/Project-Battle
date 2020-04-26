@@ -32,6 +32,7 @@ public class ShopItem : MonoBehaviour
         var unitProperties = unit.GetComponent<UnitData>().unitProperties;
 
         image.sprite = unit.GetComponent<SpriteRenderer>().sprite;
+        image.SetNativeSize();
 
         price = unitProperties.CoinsPrice;
         coinsPrice.text = $"{price}";
