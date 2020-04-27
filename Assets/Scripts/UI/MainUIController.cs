@@ -44,7 +44,9 @@ public class MainUIController : MonoBehaviour
                        settingsView,
                        shop;
 
-
+    [Header("Точки спавна текущего отряда")]
+    [SerializeField]
+    private GameObject[] spots = new GameObject[3];
 
     private void Start()
     {
@@ -52,6 +54,11 @@ public class MainUIController : MonoBehaviour
         cam = Camera.main;
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
         coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
+
+        for(var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
+        {
+            spots[i] = GameManager.Instance.allUnits[SaveLoadManager.Instance.playerData.isCurrentUnit[i]];
+        }
     }
 
     private void FixedUpdate()
@@ -75,9 +82,7 @@ public class MainUIController : MonoBehaviour
 
     public void StartGame()
     {
-        if (SaveLoadManager.Instance.playerData.currentUnits[0] != null &&
-           SaveLoadManager.Instance.playerData.currentUnits[1] != null &&
-            SaveLoadManager.Instance.playerData.currentUnits[2] != null &&
+        if (!SaveLoadManager.Instance.IsCurrentSquadEmpty() &&
             SaveLoadManager.Instance.playerData.energy > 0)
         {
             SaveLoadManager.Instance.playerData.energy -= 1;

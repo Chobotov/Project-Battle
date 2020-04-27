@@ -22,4 +22,4 @@ MonoBehaviour:
   CoinsPrice: 30
   ManaPrice: 50
   isPurchased: 0
-  isCurrentUnit: 0
+  isCurrentUnit: 1

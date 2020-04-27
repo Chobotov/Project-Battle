@@ -18,6 +18,8 @@ public class Item : MonoBehaviour
             if (emptySlot != int.MinValue)
             {
                 SaveLoadManager.Instance.playerData.currentUnits[emptySlot] = GameManager.Instance.allUnits[id];
+                SaveLoadManager.Instance.playerData.isCurrentUnit[emptySlot] = id;
+                GameManager.Instance.UpdateDataUnits();
             }
         }
     }

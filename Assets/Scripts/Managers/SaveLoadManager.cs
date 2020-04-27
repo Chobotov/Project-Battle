@@ -19,6 +19,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (File.Exists(PlayerFilepath))
         {
             playerData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(PlayerFilepath));
+            GameManager.Instance.UpdateDataUnits();
             Debug.Log("Save loaded!");
         }
     }

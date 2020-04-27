@@ -17,6 +17,9 @@ public class PlayerData
     [Header("Текущее улучшение для башни")]
     public GameObject currentTowerUpdate;
 
+    public int [] isCurrentUnit = new int[3];
+    public List<int> isPurchasedUnit = new List<int>();
+
 
     public void SetCoinsAndEnergy(int coins, int energy)
     {

@@ -239,6 +239,12 @@ Transform:
   m_Father: {fileID: 421517488}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &329925214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3195644070608489600, guid: 070b5439e529f9748b94e7fd394d1ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7800721406358311472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &421517487
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &528543533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798544358860629237, guid: 070b5439e529f9748b94e7fd394d1ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7800721406358311472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &552816259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3646841389902567911, guid: 1187a3a7678e7e44ab63842e1a1b4786,
@@ -1883,6 +1895,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1527902067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5606266208499816932, guid: 070b5439e529f9748b94e7fd394d1ac5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7800721406358311472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1550364078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2708,6 +2726,21 @@ PrefabInstance:
       propertyPath: CloseShopButton
       value: 
       objectReference: {fileID: 838904220}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: spots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1527902067}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: spots.Array.data[2]
+      value: 
+      objectReference: {fileID: 528543533}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: spots.Array.data[1]
+      value: 
+      objectReference: {fileID: 329925214}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13942abf43488d8469c738490fb4df3c, type: 3}
 --- !u!1001 &7800721406358311472
