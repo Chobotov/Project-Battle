@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ItemType
+{
+    Unit,
+    TowerUpdate
+}
 public class ShopItem : MonoBehaviour
 {
+    public ItemType itemType;
     [Header("Хар-ки юнита")]
     public Text titleText,
                  healthText,
@@ -23,12 +29,19 @@ public class ShopItem : MonoBehaviour
 
     private void OnEnable()
     {
-        unit = GameManager.Instance.allUnits[id];
-
+        if(itemType == ItemType.Unit)
+        {
+            unit = GameManager.Instance.allUnits[id];
+        }
+        else
+        {
+            unit = GameManager.Instance.towerUpdates[id];
+        }
+        
         if (unit.GetComponent<UnitData>().unitProperties.isPurchased == true)
             buyButton.gameObject.SetActive(false);
 
-        var dataHealth = unit.GetComponent<UnitData>().dataHealth; 
+        var dataHealth = unit.GetComponent<UnitData>().dataHealth;
         var unitProperties = unit.GetComponent<UnitData>().unitProperties;
 
         image.sprite = unit.GetComponent<SpriteRenderer>().sprite;
@@ -51,6 +64,18 @@ public class ShopItem : MonoBehaviour
             SaveLoadManager.Instance.playerData.coins -= price;
             SaveLoadManager.Instance.playerData.isPurchasedUnit.Add(id);
             GameManager.Instance.UpdateDataUnits();
+            buyButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void BuyItem()
+    {
+        if (SaveLoadManager.Instance.playerData.coins >= price)
+        {
+            unit.GetComponent<UnitData>().unitProperties.isPurchased = true;
+            SaveLoadManager.Instance.playerData.currentTowerUpdate = true;
+            SaveLoadManager.Instance.playerData.coins -= price;
+            GameManager.Instance.UpdateTowerUpdates();
             buyButton.gameObject.SetActive(false);
         }
     }

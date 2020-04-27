@@ -26,4 +26,21 @@ public class GameManager : Singleton<GameManager>
                 allUnits[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
         }
     }
+
+    public void UpdateTowerUpdates()
+    {
+        if (SaveLoadManager.Instance.playerData.currentTowerUpdate) 
+        {
+            for (var i = 0; i < towerUpdates.Count; i++)
+            {
+                if(towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased &&
+                    towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit)
+                {
+                    towerUpdates[i].SetActive(true);
+                }
+                else if(!towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit)
+                    towerUpdates[i].SetActive(false);
+            }
+        }
+    }
 }

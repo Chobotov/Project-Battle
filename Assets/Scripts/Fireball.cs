@@ -32,4 +32,13 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        if (currentEnemy.gameObject == null)
+        {
+            //Debug.Log(currentEnemy);
+            Destroy(gameObject);
+        }
+    }
 }

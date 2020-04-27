@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2483309563049520921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.408, y: 0.236, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7711220286809449219}
   m_RootOrder: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3905853007229418056}
   - component: {fileID: 995794087212806220}
   - component: {fileID: 5793107830922608159}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Swordsman
   m_TagString: Unit
   m_Icon: {fileID: 0}

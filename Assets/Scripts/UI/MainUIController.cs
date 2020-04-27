@@ -48,6 +48,10 @@ public class MainUIController : MonoBehaviour
     [SerializeField]
     private GameObject[] spots = new GameObject[3];
 
+    [Header("ArmyShop")]
+    [SerializeField]
+    private GameObject armyShop;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -110,6 +114,7 @@ public class MainUIController : MonoBehaviour
     public void CloseShop()
     {
         shop.SetActive(false);
+        armyShop.SetActive(true);
     }
 
     public void CloseInventar()

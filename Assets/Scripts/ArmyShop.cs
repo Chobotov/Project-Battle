@@ -23,6 +23,8 @@ public class ArmyShop : MonoBehaviour
     private void OnMouseDown()
     {
         shop.SetActive(true);
+        this.gameObject.SetActive(false);
+        ShopUnits();
     }
 
     public void ShopUnits()

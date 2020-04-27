@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TowerUpdateAI : MonoBehaviour
 {
-    public int damage;
     public Transform startRay;
     public float attackDelay;
-    public float speed;
     
     private float nextAttackTime;
     private RaycastHit2D hit;
-    private float maxDistance;
-    private UnitData unitData;
+
     private EnemyUnit target;
     private UnitData enemyData;
     

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2751816882621917934}
   - component: {fileID: 4064998527253199059}
   - component: {fileID: 6820892438193495618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CountryMan
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 2682472721403501568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 781869593597398948}
   m_RootOrder: 0

@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2818604721393628351}
   - component: {fileID: 2818604721393628350}
   - component: {fileID: 2818604721393628349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spearman
   m_TagString: Unit
   m_Icon: {fileID: 0}
