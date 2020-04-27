@@ -22,7 +22,7 @@ public class LevelUIController : MonoBehaviour
         SecondUnit,
         ThirdUnit,
         Mana,
-        Fireball
+        Meteor
     }
 
     enum GameState
@@ -57,7 +57,7 @@ public class LevelUIController : MonoBehaviour
     [SerializeField]
     private Mana mana;
     [SerializeField]
-    private Fireball fireball;
+    private MeteorData fireball;
 
     [SerializeField]
     private Transform playerSpot, enemySpot;
@@ -83,7 +83,7 @@ public class LevelUIController : MonoBehaviour
     private Button pauseButton,
                    speedButton;
 
-    [Header("Кнопка Fireball")]
+    [Header("Кнопка MeteorData")]
     [SerializeField]
     private Button fireballButton;
 
@@ -287,8 +287,8 @@ public class LevelUIController : MonoBehaviour
                     yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
                 break;
-            case PressedButton.Fireball:
-                while (!fireball.Fireball_isReady)
+            case PressedButton.Meteor:
+                while (!fireball.Meteor_isReady)
                 {
                     fireball.Value += 1;
                     FireballButtonSlider.value = fireball.Value;
@@ -349,19 +349,22 @@ public class LevelUIController : MonoBehaviour
         {
             int manaPrice = mana.MANA_PRICE;
             mana.NextManaLevel();
-            priceNextManaText.text = $"{mana.MANA_PRICE}";
+            if(mana._manaLevel == Mana_Level.Third)
+                priceNextManaText.text = "max";
+            else
+                priceNextManaText.text = $"{mana.MANA_PRICE}";
             UseMana(manaPrice);
         }
     }
 
     public void Fireball()
     {
-        if (fireball.Fireball_isReady)
+        if (fireball.Meteor_isReady)
         {
             Instantiate(meteorite, meteoriteSpot);
             fireball.Value = 0;
             FireballButtonSlider.value = 0;
-            pressedButton = PressedButton.Fireball;
+            pressedButton = PressedButton.Meteor;
             StartCoroutine(Delay());
         }
     }

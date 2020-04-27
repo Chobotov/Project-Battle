@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu]
-public class Fireball : ScriptableObject
+public class MeteorData : ScriptableObject
 {
     //Шкала накопления 
-    public Slider FireballSlider;
+    public Slider MeteorSlider;
     //Урон 
     [SerializeField] private int damage = 250;
     public int Damage
@@ -45,7 +45,7 @@ public class Fireball : ScriptableObject
     }
     //Заклинание готово
     private bool IsReady;
-    public bool Fireball_isReady
+    public bool Meteor_isReady
     {
         get
         {

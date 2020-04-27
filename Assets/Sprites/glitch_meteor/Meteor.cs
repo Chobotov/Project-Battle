@@ -22,7 +22,7 @@ public class Meteor : MonoBehaviour
     {
         get
         {
-            return Mathf.Abs(Mathf.Abs(currentEnemy.y) - Mathf.Abs(transform.position.y));
+            return Vector2.Distance(transform.position, currentEnemy);
         }
     }
     private void Start()
@@ -34,7 +34,7 @@ public class Meteor : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy, Time.deltaTime*speed);
-        if (Distance <= 0.1f && isHit)
+        if (Distance <= 0.05f && isHit)
         {
             Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position, 20f);
             foreach (Collider2D enemy in hitEnemys)
