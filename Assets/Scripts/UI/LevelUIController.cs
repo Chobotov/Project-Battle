@@ -399,7 +399,7 @@ public class LevelUIController : MonoBehaviour
                 endGamePanel.SetActive(true);
                 break;
             case GameState.Lose:
-                titleText.text = "Проиграл сражение, но не войну!";
+                titleText.text = "Поражение!";
                 timeText.text = elapsedTime;
                 healthText.text = $"{Gameplay.playerHealth}";
                 coinsText.text = $"-{loseCoins}";
