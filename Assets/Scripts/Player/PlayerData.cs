@@ -15,10 +15,11 @@ public class PlayerData
     [Header("Текущий отряд игрока")]
     public GameObject[] currentUnits = new GameObject[3];
     [Header("Текущее улучшение для башни")]
-    public bool currentTowerUpdate;
+    public int currentTowerUpdate;
 
     public int [] isCurrentUnit = new int[3];
     public List<int> isPurchasedUnit = new List<int>();
+    public List<int> isPurchasedItem = new List<int>();
 
 
     public void SetCoinsAndEnergy(int coins, int energy)
@@ -36,7 +37,7 @@ public class PlayerData
         }
     }
 
-    public void SetCurrentTowerUpdate(GameObject towerUpdate)
+    public void SetCurrentTowerUpdate(int towerUpdate)
     {
         currentTowerUpdate = towerUpdate;
     }

@@ -27,6 +27,8 @@ public class ShopItem : MonoBehaviour
     public int price;
     public GameObject unit;
 
+    private DataHealth dataHealth; 
+    private UnitProperties unitProperties;
     private void OnEnable()
     {
         if(itemType == ItemType.Unit)
@@ -41,8 +43,8 @@ public class ShopItem : MonoBehaviour
         if (unit.GetComponent<UnitData>().unitProperties.isPurchased == true)
             buyButton.gameObject.SetActive(false);
 
-        var dataHealth = unit.GetComponent<UnitData>().dataHealth;
-        var unitProperties = unit.GetComponent<UnitData>().unitProperties;
+        dataHealth = unit.GetComponent<UnitData>().dataHealth;
+        unitProperties = unit.GetComponent<UnitData>().unitProperties;
 
         image.sprite = unit.GetComponent<SpriteRenderer>().sprite;
         image.SetNativeSize();
@@ -72,9 +74,9 @@ public class ShopItem : MonoBehaviour
     {
         if (SaveLoadManager.Instance.playerData.coins >= price)
         {
-            unit.GetComponent<UnitData>().unitProperties.isPurchased = true;
-            SaveLoadManager.Instance.playerData.currentTowerUpdate = true;
             SaveLoadManager.Instance.playerData.coins -= price;
+            unitProperties.isPurchased = true;
+            SaveLoadManager.Instance.playerData.isPurchasedItem.Add(id);
             GameManager.Instance.UpdateTowerUpdates();
             buyButton.gameObject.SetActive(false);
         }

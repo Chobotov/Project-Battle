@@ -29,18 +29,21 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateTowerUpdates()
     {
-        if (SaveLoadManager.Instance.playerData.currentTowerUpdate) 
+        Debug.Log("True");
+        for (var i = 0; i < towerUpdates.Count; i++)
         {
-            for (var i = 0; i < towerUpdates.Count; i++)
-            {
-                if(towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased &&
-                    towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit)
-                {
-                    towerUpdates[i].SetActive(true);
-                }
-                else if(!towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit)
-                    towerUpdates[i].SetActive(false);
-            }
+            if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
+                towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = true;
+            else
+                towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
+        }
+
+        for (var i = 0; i < towerUpdates.Count; i++)
+        {
+            if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
+                towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
+            else
+                towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
         }
     }
 }
