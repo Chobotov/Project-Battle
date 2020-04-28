@@ -11,6 +11,8 @@ public class MainUIController : MonoBehaviour
     private Camera cam;
     [SerializeField]
     private Transform SquadSpot;
+    [SerializeField]
+    private Transform Tower;
 
     [Header("Загружаемая сцена")]
     public int sceneID;
@@ -33,7 +35,6 @@ public class MainUIController : MonoBehaviour
     [Header("Кнопки закрытия View-элементов")]
     [SerializeField]
     private Button CloseSettingsButton,
-                   CloseTowerUpdatesButton,
                    CloseInventarButton,
                    CloseShopButton;
 
@@ -48,12 +49,15 @@ public class MainUIController : MonoBehaviour
     [SerializeField]
     private GameObject[] spots = new GameObject[3];
 
-    [Header("ArmyShop")]
     [SerializeField]
     private GameObject armyShop;
 
+    [SerializeField]
+    private GameObject towerUpdate;
+ 
     private void Start()
     {
+        CheckTowerUpdate();
         Time.timeScale = 1f;
         cam = Camera.main;
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
@@ -61,15 +65,22 @@ public class MainUIController : MonoBehaviour
 
         for(var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
         {
-            spots[i] = GameManager.Instance.allUnits[SaveLoadManager.Instance.playerData.isCurrentUnit[i]];
+            int index = SaveLoadManager.Instance.playerData.isCurrentUnit[i];
+            if (index < 0)
+                spots[i] = null;
+            else
+                spots[i] = GameManager.Instance.allUnits[index];
         }
     }
 
     private void FixedUpdate()
     {
         if (SaveLoadManager.Instance.IsCurrentSquadEmpty() &&
-            (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f)
-            && !inventarView.activeSelf)
+            (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f) && 
+            !inventarView.activeSelf ||
+            SaveLoadManager.Instance.IsCurrentTowerUpdateEmpty() &&
+            (Mathf.Abs(cam.transform.position.x - Tower.position.x) < 5f) &&
+            !inventarView.activeSelf)
         {
             armyButtonView.SetActive(true);
         }
@@ -77,7 +88,8 @@ public class MainUIController : MonoBehaviour
         {
             armyButtonView.SetActive(false);
         }
-        if (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) > 5f)
+        if (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) > 5f &&
+            Mathf.Abs(cam.transform.position.x - Tower.position.x) > 5f)
         {
             inventarView.SetActive(false);
         }
@@ -133,5 +145,13 @@ public class MainUIController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    private void CheckTowerUpdate()
+    {
+        if (towerUpdate.GetComponent<UnitData>().unitProperties.isCurrentUnit == true)
+            towerUpdate.SetActive(true);
+        else
+            towerUpdate.SetActive(false);
     }
 }

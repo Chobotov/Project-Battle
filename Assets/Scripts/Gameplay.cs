@@ -12,6 +12,10 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject Explosion;
 
+    [Header("Взрыв")]
+    [SerializeField]
+    private GameObject towerUpdate;
+
     private UnitData playerUnitData,
                      enemyUnitData;
 
@@ -25,8 +29,10 @@ public class Gameplay : MonoBehaviour
 
     public static bool isEnemyTowerDead;
     public static bool isPlayerTowerDead;
+
     void Start()
     {
+        CheckTowerUpdate();
         isEnemyTowerDead = false;
         isPlayerTowerDead = false;
         playerUnitData = PlayerTower.GetComponent<UnitData>();
@@ -51,5 +57,13 @@ public class Gameplay : MonoBehaviour
             EnemyTower.SetActive(false);
             isEnemyTowerDead = true;
         }
+    }
+
+    private void CheckTowerUpdate()
+    {
+        if (towerUpdate.GetComponent<UnitData>().unitProperties.isCurrentUnit == true)
+            towerUpdate.SetActive(true);
+        else
+            towerUpdate.SetActive(false);
     }
 }

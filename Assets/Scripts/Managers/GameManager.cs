@@ -8,6 +8,12 @@ public class GameManager : Singleton<GameManager>
 
     public List<GameObject> towerUpdates = new List<GameObject>();
 
+    private void Start()
+    {
+        UpdateDataUnits();
+        UpdateTowerUpdates();
+    }
+
     public void UpdateDataUnits()
     {
         for(var i = 0; i < allUnits.Count; i++)
@@ -29,7 +35,7 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateTowerUpdates()
     {
-        Debug.Log("True");
+        Debug.Log("Tower");
         for (var i = 0; i < towerUpdates.Count; i++)
         {
             if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
@@ -41,7 +47,10 @@ public class GameManager : Singleton<GameManager>
         for (var i = 0; i < towerUpdates.Count; i++)
         {
             if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
+            {
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
+                towerUpdates[i].SetActive(true);
+            }
             else
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
         }

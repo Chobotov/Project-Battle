@@ -24,6 +24,19 @@ public class Item : MonoBehaviour
         }
     }
 
+    public void SetTowerUpdate()
+    {
+        if (!SaveLoadManager.Instance.IsCurrentTowerUpdateEmpty())
+        {
+            return;
+        }
+        else
+        {
+            SaveLoadManager.Instance.playerData.currentTowerUpdate = id;
+            GameManager.Instance.UpdateTowerUpdates();
+        }
+    }
+
     private int SearchEmptySlot()
     {
         int emptySlot = int.MinValue;

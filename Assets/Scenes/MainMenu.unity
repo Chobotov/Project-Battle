@@ -326,6 +326,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 779866804}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &565598378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6790472449379494842, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+    type: 3}
+  m_PrefabInstance: {fileID: 779866804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565598380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7295242750496789533, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+    type: 3}
+  m_PrefabInstance: {fileID: 779866804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565598378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e8d8c052956da40b13ba99eb90abb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &587174177 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 94921011679068763, guid: 1187a3a7678e7e44ab63842e1a1b4786,
@@ -547,6 +565,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1685147338282101941, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: towerUpdates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685147338282101941, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: towerUpdates.Array.data[0]
+      value: 
+      objectReference: {fileID: 565598378}
+    - target: {fileID: 1685147338282101941, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2122133365}
+    - target: {fileID: 1685147338282101941, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: squad
+      value: 
+      objectReference: {fileID: 964412259}
+    - target: {fileID: 1685147338282101941, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 308951811}
     - target: {fileID: 1761982284469813320, guid: 1187a3a7678e7e44ab63842e1a1b4786,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -1148,6 +1191,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: d5c8aa4b31fad8c419ee3d83be75c168,
         type: 3}
+    - target: {fileID: 5747340817679108240, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 565598380}
+    - target: {fileID: 5747340817679108240, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTowerUpdate
+      objectReference: {fileID: 0}
     - target: {fileID: 5831075452272949712, guid: 1187a3a7678e7e44ab63842e1a1b4786,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1266,6 +1319,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: d5c8aa4b31fad8c419ee3d83be75c168,
         type: 3}
+    - target: {fileID: 6790472449379494842, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6925375578838072939, guid: 1187a3a7678e7e44ab63842e1a1b4786,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1475,6 +1533,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -856.95557
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535072299350496091, guid: 1187a3a7678e7e44ab63842e1a1b4786,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8573325248728746796, guid: 1187a3a7678e7e44ab63842e1a1b4786,
         type: 3}
@@ -2886,6 +2974,21 @@ PrefabInstance:
       propertyPath: armyShop
       value: 
       objectReference: {fileID: 1390700455}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: towerUpdateItem
+      value: 
+      objectReference: {fileID: 308951810}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: Tower
+      value: 
+      objectReference: {fileID: 308951811}
+    - target: {fileID: 2986712096280042485, guid: 13942abf43488d8469c738490fb4df3c,
+        type: 3}
+      propertyPath: towerUpdate
+      value: 
+      objectReference: {fileID: 1327178250}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13942abf43488d8469c738490fb4df3c, type: 3}
 --- !u!1001 &7800721406358311472

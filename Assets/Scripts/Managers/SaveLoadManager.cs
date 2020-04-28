@@ -20,6 +20,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             playerData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(PlayerFilepath));
             GameManager.Instance.UpdateDataUnits();
+            GameManager.Instance.UpdateTowerUpdates();
+            if(playerData.isPurchasedItem.Count == 0)
+                playerData.currentTowerUpdate = -1;
             Debug.Log("Save loaded!");
         }
     }
@@ -41,6 +44,13 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             }
         }
         return isEmpty;
+    }
+
+    public bool IsCurrentTowerUpdateEmpty()
+    {
+        if (playerData.currentTowerUpdate == -1 )
+            return true;
+        else return false;
     }
 
     private void OnApplicationQuit()

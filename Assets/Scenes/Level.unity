@@ -413,6 +413,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d151c379ce5124488e75baf7fc62624, type: 3}
+--- !u!1 &227169955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4509507779554545047, guid: 4d151c379ce5124488e75baf7fc62624,
+    type: 3}
+  m_PrefabInstance: {fileID: 227169954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289221324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3354989751203192014, guid: 38e3ce28de4925a4a8cf84186721dcf5,
@@ -599,6 +605,7 @@ MonoBehaviour:
   PlayerTower: {fileID: 1866292808}
   EnemyTower: {fileID: 1867970788}
   Explosion: {fileID: 14827266}
+  towerUpdate: {fileID: 227169955}
   X_PlayerCord: -55
   X_EnemyCord: 55
 --- !u!1 &955552487
