@@ -52,7 +52,10 @@ public class GameManager : Singleton<GameManager>
                 towerUpdates[i].SetActive(true);
             }
             else
+            {
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
+                towerUpdates[i].SetActive(false);
+            }
         }
     }
 }
