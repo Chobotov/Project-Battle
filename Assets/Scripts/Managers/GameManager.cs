@@ -8,6 +8,12 @@ public class GameManager : Singleton<GameManager>
 
     public List<GameObject> towerUpdates = new List<GameObject>();
 
+    public Transform spotTowerUpdate;
+
+    private GameObject currentTowerUpdate;
+
+    public GameMode gameMode;
+
     private void Start()
     {
         UpdateDataUnits();
@@ -49,12 +55,12 @@ public class GameManager : Singleton<GameManager>
             if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
             {
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
-                towerUpdates[i].SetActive(true);
+                if(currentTowerUpdate == null)
+                    currentTowerUpdate = Instantiate(towerUpdates[i], new Vector3(spotTowerUpdate.transform.position.x, spotTowerUpdate.transform.position.y, spotTowerUpdate.transform.position.z),Quaternion.identity);
             }
             else
             {
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
-                towerUpdates[i].SetActive(false);
             }
         }
     }

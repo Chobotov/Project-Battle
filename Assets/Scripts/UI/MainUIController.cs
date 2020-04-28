@@ -57,7 +57,8 @@ public class MainUIController : MonoBehaviour
  
     private void Start()
     {
-        CheckTowerUpdate();
+        GameManager.Instance.gameMode = GameMode.MainMenu;
+        GameManager.Instance.UpdateTowerUpdates();
         Time.timeScale = 1f;
         cam = Camera.main;
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
@@ -145,13 +146,5 @@ public class MainUIController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-    }
-
-    private void CheckTowerUpdate()
-    {
-        if (towerUpdate.GetComponent<UnitData>().unitProperties.isCurrentUnit == true)
-            towerUpdate.SetActive(true);
-        else
-            towerUpdate.SetActive(false);
     }
 }

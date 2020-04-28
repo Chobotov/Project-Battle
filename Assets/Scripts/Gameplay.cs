@@ -12,9 +12,10 @@ public class Gameplay : MonoBehaviour
     [SerializeField]
     private GameObject Explosion;
 
-    [Header("Взрыв")]
+    [Header("TowerUpdate")]
     [SerializeField]
     private GameObject towerUpdate;
+    public GameObject spotTowerUpdate;
 
     private UnitData playerUnitData,
                      enemyUnitData;
@@ -30,8 +31,11 @@ public class Gameplay : MonoBehaviour
     public static bool isEnemyTowerDead;
     public static bool isPlayerTowerDead;
 
+    private GameObject currentTowerUpdate;
+
     void Start()
     {
+        GameManager.Instance.gameMode = GameMode.Level;
         CheckTowerUpdate();
         isEnemyTowerDead = false;
         isPlayerTowerDead = false;
@@ -61,9 +65,27 @@ public class Gameplay : MonoBehaviour
 
     private void CheckTowerUpdate()
     {
-        if (towerUpdate.GetComponent<UnitData>().unitProperties.isCurrentUnit == true)
-            towerUpdate.SetActive(true);
-        else
-            towerUpdate.SetActive(false);
+        for (var i = 0; i < GameManager.Instance.towerUpdates.Count; i++)
+        {
+            if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
+                GameManager.Instance.towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = true;
+            else
+                GameManager.Instance.towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
+        }
+
+        for (var i = 0; i < GameManager.Instance.towerUpdates.Count; i++)
+        {
+            if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
+            {
+                GameManager.Instance.towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
+                currentTowerUpdate = Instantiate(GameManager.Instance.towerUpdates[i], new Vector3(spotTowerUpdate.transform.position.x, spotTowerUpdate.transform.position.y, spotTowerUpdate.transform.position.z), Quaternion.identity);
+            }
+            else
+            {
+                GameManager.Instance.towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
+                if(GameManager.Instance.towerUpdates[i] == currentTowerUpdate)
+                    Destroy(currentTowerUpdate);
+            }
+        }
     }
 }

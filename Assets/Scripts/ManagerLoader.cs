@@ -16,6 +16,8 @@ public class ManagerLoader : MonoBehaviour
     [SerializeField]
     private List<GameObject> towerUpdates = new List<GameObject>();
 
+    public Transform spotTowerUpdate;
+
 
     // Метод пробуждения объекта (перед стартом игры)
     void Awake()
@@ -33,5 +35,7 @@ public class ManagerLoader : MonoBehaviour
             GameManager.Instance.allUnits.AddRange(units);
         if (GameManager.Instance.towerUpdates.Count == 0)
             GameManager.Instance.towerUpdates.AddRange(towerUpdates);
+        if (GameManager.Instance.spotTowerUpdate == null)
+            GameManager.Instance.spotTowerUpdate = this.spotTowerUpdate;
     }
 }

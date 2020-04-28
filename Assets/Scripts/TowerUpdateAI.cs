@@ -27,11 +27,13 @@ public class TowerUpdateAI : MonoBehaviour
     private void FixedUpdate()
     {
         hit = Physics2D.Raycast(startRay.position, endRay);
+        Debug.DrawRay(startRay.position, endRay,Color.red);
 
         if (hit && hit.collider.gameObject.GetComponent<EnemyUnit>() != null)
         {
             if (!targets.Contains(hit.collider.gameObject))
             {
+                Debug.Log("Add");
                 AddEnemyToList(hit.collider.gameObject);
             }
         }
@@ -63,6 +65,7 @@ public class TowerUpdateAI : MonoBehaviour
     }
     private void Attack(EnemyUnit target)
     {
+        Debug.Log("Attack");
         if (nextAttackTime < Time.time && enemyData.dataHealth.Health >= 0)
         {
             GameObject cast =  Instantiate(fireball,startRay.transform);

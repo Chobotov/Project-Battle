@@ -808,6 +808,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3759223439113844583, guid: 5547de53ac9a469478f357a31d8df498,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4349063619228271489, guid: 5547de53ac9a469478f357a31d8df498,
         type: 3}
       propertyPath: unit

@@ -7,6 +7,12 @@ public enum Type
     Unit,
     TowerUpdate
 }
+
+public enum GameMode
+{
+    MainMenu,
+    Level
+}
 public class DeleteItemOrUnit : MonoBehaviour
 {
     public int id;
@@ -23,14 +29,23 @@ public class DeleteItemOrUnit : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = null;
                 break;
             case Type.TowerUpdate:
-                if(SaveLoadManager.Instance.playerData.currentTowerUpdate != -1)
+                if(SaveLoadManager.Instance.playerData.currentTowerUpdate != -1 && GameManager.Instance.gameMode == GameMode.MainMenu)
                 {
                     index = SaveLoadManager.Instance.playerData.currentTowerUpdate;
                     GameManager.Instance.towerUpdates[index].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
                     SaveLoadManager.Instance.playerData.currentTowerUpdate = -1;
+                    Destroy(this.gameObject);
                     GameManager.Instance.UpdateTowerUpdates();
                 }
                 break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(type == Type.TowerUpdate)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
