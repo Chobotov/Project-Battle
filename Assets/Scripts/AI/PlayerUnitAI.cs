@@ -2,10 +2,13 @@
 
 public class PlayerUnitAI : MonoBehaviour
 {
-    private float nextAttackTime;
     private RaycastHit2D hit;
+    
     private int damage, speed;
+    
+    private float nextAttackTime;
     private float attackDelay, maxDistance;
+    
     private UnitData unitData;
 
     public Transform startRay;

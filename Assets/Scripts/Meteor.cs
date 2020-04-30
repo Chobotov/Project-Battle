@@ -14,7 +14,7 @@ public class Meteor : MonoBehaviour
     private Transform enemyTower,
                       playerTower;
 
-    private GameObject[] enemysUnit;
+    private GameObject[] enemysUnits;
 
     private Vector2 currentEnemy;
 
@@ -52,10 +52,9 @@ public class Meteor : MonoBehaviour
     {
         enemyTower = GameObject.FindGameObjectWithTag("EnemyTower").transform;
         playerTower = GameObject.FindGameObjectWithTag("PlayerTower").transform;
+        enemysUnits = GameObject.FindGameObjectsWithTag("Enemy");
 
-        enemysUnit = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (enemysUnit.Length == 0)
+        if (enemysUnits.Length == 0)
         {
             currentEnemy = enemyTower.position;
         }
@@ -63,16 +62,16 @@ public class Meteor : MonoBehaviour
         {
             var distance = float.MaxValue;
             int indexEnemy = 0;
-            for (var i = 0; i < enemysUnit.Length; i++)
+            for (var i = 0; i < enemysUnits.Length; i++)
             {
-                var UnitDistance = Mathf.Abs(enemysUnit[i].transform.position.x - playerTower.position.x);
+                var UnitDistance = Mathf.Abs(enemysUnits[i].transform.position.x - playerTower.position.x);
                 if (distance > UnitDistance)
                 {
                     distance = UnitDistance;
                     indexEnemy = i;
                 }
             }
-            currentEnemy = new Vector2(enemysUnit[indexEnemy].transform.position.x, enemysUnit[indexEnemy].transform.position.y);
+            currentEnemy = new Vector2(enemysUnits[indexEnemy].transform.position.x, enemysUnits[indexEnemy].transform.position.y);
         }
     }
 

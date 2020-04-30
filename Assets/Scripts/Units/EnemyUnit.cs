@@ -32,7 +32,6 @@ public class EnemyUnit : MonoBehaviour
 
     private void Die()
     {
-        //if (GamePlay.Instance.playerCount > 0) GamePlay.Instance.playerCount--;
         unitData.unitProperties.state = State.Dead;
     }
 

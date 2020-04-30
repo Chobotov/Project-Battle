@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyUnitAI : MonoBehaviour
 {
-    private float nextAttackTime;
-    private RaycastHit2D hit;
-    private int damage, speed;
     private float attackDelay, maxDistance;
+    private float nextAttackTime;
+    
+    private int damage, speed;
+    
+    private RaycastHit2D hit;
+   
     private UnitData unitData;
 
     public Transform startRay;

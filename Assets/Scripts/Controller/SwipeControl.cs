@@ -21,7 +21,7 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
             return spots.Count == 0 ? true : false;
         }
     }
-    //Проверка на нажатие кнопок навигации между игровыми местами
+    //Проверка на нажатие на экран
     private bool isPressed = false;
 
     private void Update()
@@ -54,7 +54,6 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SwipeRight()
     {
-        //Debug.Log("Swipe Right");
         if (spotID == 2)
         {
             spotID = 0;
@@ -67,7 +66,6 @@ public class SwipeControl : MonoBehaviour, IBeginDragHandler, IDragHandler
     }
     private void SwipeLeft()
     {
-        //Debug.Log("Swipe Left") ;
         if (spotID == 0)
         {
             spotID = 2;

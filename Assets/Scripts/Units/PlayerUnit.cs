@@ -33,7 +33,6 @@ public class PlayerUnit : MonoBehaviour
 
     private void Die()
     {
-        //if (GamePlay.Instance.playerCount > 0) GamePlay.Instance.playerCount--;
         unitData.unitProperties.state = State.Dead;
     }
 

@@ -37,7 +37,6 @@ public class Fireball : MonoBehaviour
     {
         if (currentEnemy.gameObject == null)
         {
-            //Debug.Log(currentEnemy);
             Destroy(gameObject);
         }
     }

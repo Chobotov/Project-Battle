@@ -5,10 +5,6 @@ using UnityEngine;
 public class Spots : MonoBehaviour
 {
     public GameObject[] spots = new GameObject[3];
-    private void Start()
-    {
-        
-    }
 
     private void FixedUpdate()
     {

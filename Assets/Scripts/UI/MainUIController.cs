@@ -57,12 +57,12 @@ public class MainUIController : MonoBehaviour
  
     private void Start()
     {
+        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
+        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
         GameManager.Instance.gameMode = GameMode.MainMenu;
         GameManager.Instance.UpdateTowerUpdates();
         Time.timeScale = 1f;
         cam = Camera.main;
-        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
-        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
 
         for(var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
         {
@@ -76,7 +76,9 @@ public class MainUIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SaveLoadManager.Instance.IsCurrentSquadEmpty() &&
+        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
+        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+        if (SaveLoadManager.Instance.IsCurrentSquadHasEmptySlot() &&
             (Mathf.Abs(cam.transform.position.x - SquadSpot.position.x) < 5f) && 
             !inventarView.activeSelf ||
             SaveLoadManager.Instance.IsCurrentTowerUpdateEmpty() &&
@@ -94,12 +96,11 @@ public class MainUIController : MonoBehaviour
         {
             inventarView.SetActive(false);
         }
-        coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
     }
 
     public void StartGame()
     {
-        if (!SaveLoadManager.Instance.IsCurrentSquadEmpty() &&
+        if (!SaveLoadManager.Instance.IsCurrentSquadHasEmptySlot() &&
             SaveLoadManager.Instance.playerData.energy > 0)
         {
             SaveLoadManager.Instance.playerData.energy -= 1;

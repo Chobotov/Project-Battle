@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     public List<GameObject> allUnits = new List<GameObject>();
-
     public List<GameObject> towerUpdates = new List<GameObject>();
-
     public Transform spotTowerUpdate;
-
     private GameObject currentTowerUpdate;
-
     public GameMode gameMode;
-
     private void Start()
     {
         UpdateDataUnits();
@@ -41,7 +38,6 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateTowerUpdates()
     {
-        Debug.Log("Tower");
         for (var i = 0; i < towerUpdates.Count; i++)
         {
             if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])

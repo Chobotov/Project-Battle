@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
 
     public void SetUnitIntoSquad()
     {
-        if (!SaveLoadManager.Instance.IsCurrentSquadEmpty())
+        if (!SaveLoadManager.Instance.IsCurrentSquadHasEmptySlot())
         {
             return;
         }
