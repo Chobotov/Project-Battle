@@ -36,6 +36,7 @@ public class Meteor : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, currentEnemy, Time.deltaTime*speed);
         if (Distance <= 0.05f && isHit)
         {
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.MeteorExplosion);
             Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(transform.position, 20f);
             foreach (Collider2D enemy in hitEnemys)
             {

@@ -151,6 +151,9 @@ public class LevelUIController : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.AudioSource.Stop();
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Level,0.2f);
+
         mana._manaLevel = Mana_Level.First;
 
         speedButton.GetComponent<Image>().sprite = normalSpeed;
@@ -206,7 +209,8 @@ public class LevelUIController : MonoBehaviour
 
     public void Pause()
     {
-        if(gameState == GameState.Game)
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        if (gameState == GameState.Game)
         {
             gameState = GameState.Pause;
             Interactable(false);
@@ -222,14 +226,32 @@ public class LevelUIController : MonoBehaviour
         }
     }
 
+    public void OnOffAudio()
+    {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        switch (AudioManager.Instance.audioStatus)
+        {
+            case AudioStatus.ON:
+                AudioManager.Instance.AudioSource.volume = 0f;
+                AudioManager.Instance.audioStatus = AudioStatus.OFF;
+                break;
+            case AudioStatus.OFF:
+                AudioManager.Instance.AudioSource.volume = 1f;
+                AudioManager.Instance.audioStatus = AudioStatus.ON;
+                break;
+        }
+    }
+
     public void LeaveLevel()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         AsyncLoadingScreen.sceneID = mainSceneID;
         SceneManager.LoadScene(loadingScreen);
     }
 
     public void Speed()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         switch (levelOfSpeed)
         {
             case LevelOfSpeed.Normal:
@@ -303,6 +325,7 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnFirstUnit()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (currentValueFirst == MAX_VALUE && mana.MANA >= priceFirstUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveLoadManager.Instance.playerData.currentUnits[0], playerSpot);
@@ -317,6 +340,7 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnSecondtUnit()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (currentValueSecond == MAX_VALUE && mana.MANA >= priceSecondUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveLoadManager.Instance.playerData.currentUnits[1], playerSpot);
@@ -331,6 +355,7 @@ public class LevelUIController : MonoBehaviour
 
     public void SpawnThirdUnit()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (currentValueThird == MAX_VALUE && mana.MANA >= priceThirdUnit && IntCountUnits < MAX_PLAYER_UNITS)
         {
             Instantiate(SaveLoadManager.Instance.playerData.currentUnits[2], playerSpot);
@@ -345,7 +370,8 @@ public class LevelUIController : MonoBehaviour
 
     public void ManaButton()
     {
-        if(mana.MANA >= mana.MANA_PRICE && mana._manaLevel != Mana_Level.Third)
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        if (mana.MANA >= mana.MANA_PRICE && mana._manaLevel != Mana_Level.Third)
         {
             int manaPrice = mana.MANA_PRICE;
             mana.NextManaLevel();
@@ -359,6 +385,7 @@ public class LevelUIController : MonoBehaviour
 
     public void Fireball()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (fireball.Meteor_isReady)
         {
             Instantiate(meteorite, meteoriteSpot);
@@ -371,6 +398,7 @@ public class LevelUIController : MonoBehaviour
 
     public void Continue()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         switch (gameState)
         {
             case GameState.Win:
@@ -386,6 +414,7 @@ public class LevelUIController : MonoBehaviour
 
     private void EndGame()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         stopwatch.Stop();
         StopAllCoroutines();
         Interactable(false);

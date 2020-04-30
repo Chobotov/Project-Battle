@@ -28,6 +28,7 @@ public class Fireball : MonoBehaviour
         if (Distance <= 0.05f && isHit)
         {
             isHit = false;
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.FireballAudio);
             currentEnemy.GetComponent<EnemyUnit>().TakeDamage(damage);
             Destroy(gameObject);
         }

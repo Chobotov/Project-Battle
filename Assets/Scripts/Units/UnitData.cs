@@ -26,6 +26,7 @@ public class UnitData : MonoBehaviour
         Sprite sprite = unitProperties.sprite;
         Side side = unitProperties.side;
         State state = unitProperties.state;
+        UnitClass unitClass = unitProperties.unitClass;
         int Damage = unitProperties.Damage;
         int Speed = unitProperties.Speed;
         int manaPrice = unitProperties.ManaPrice;
@@ -36,7 +37,7 @@ public class UnitData : MonoBehaviour
         bool isCurrentUnit = unitProperties.isCurrentUnit;
         unitProperties = ScriptableObject.CreateInstance(typeof(UnitProperties)) as UnitProperties;
         unitProperties.SetSprite(sprite);
-        unitProperties.SetEnum(side, state);
+        unitProperties.SetEnum(side, state, unitClass);
         unitProperties.SetInt(Damage, Speed, manaPrice, coinsPrice);
         unitProperties.SetFloat(Distance, AttackDelay);
         unitProperties.SetBool(isPurchased, isCurrentUnit);

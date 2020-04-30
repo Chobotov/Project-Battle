@@ -57,11 +57,17 @@ public class MainUIController : MonoBehaviour
  
     private void Start()
     {
+        AudioManager.Instance.AudioSource.Stop();
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.MainMenu);
+
         coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+        
         GameManager.Instance.gameMode = GameMode.MainMenu;
         GameManager.Instance.UpdateTowerUpdates();
+        
         Time.timeScale = 1f;
+        
         cam = Camera.main;
 
         for(var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
@@ -100,6 +106,7 @@ public class MainUIController : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (!SaveLoadManager.Instance.IsCurrentSquadHasEmptySlot() &&
             SaveLoadManager.Instance.playerData.energy > 0)
         {
@@ -111,41 +118,64 @@ public class MainUIController : MonoBehaviour
 
     public void ShowSettings()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         settingsView.SetActive(true);
     }
 
     public void CloseSettings()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         settingsView.SetActive(false);
     }
 
     public void ShowInventar()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         inventarView.SetActive(true);
         armyButtonView.SetActive(false);
     }
 
     public void CloseShop()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         shop.SetActive(false);
         armyShop.SetActive(true);
     }
 
     public void CloseInventar()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         inventarView.SetActive(false);
         armyButtonView.SetActive(true);
     }
 
+    public void OnOffAudio()
+    {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        switch (AudioManager.Instance.audioStatus)
+        {
+            case AudioStatus.ON:
+                AudioManager.Instance.AudioSource.volume = 0f;
+                AudioManager.Instance.audioStatus = AudioStatus.OFF;
+                break;
+            case AudioStatus.OFF:
+                AudioManager.Instance.AudioSource.volume = 1f;
+                AudioManager.Instance.audioStatus = AudioStatus.ON;
+                break;
+        }
+    }
+
     public void GetEnergy()
     {
-        if(SaveLoadManager.Instance.playerData.energy<10)
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        if (SaveLoadManager.Instance.playerData.energy<10)
             SaveLoadManager.Instance.playerData.energy++;
         energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
     }
 
     public void Exit()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         Application.Quit();
     }
 }

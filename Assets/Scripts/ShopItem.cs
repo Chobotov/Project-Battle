@@ -61,8 +61,10 @@ public class ShopItem : MonoBehaviour
 
     public void BuyUnit()
     {
-        if(SaveLoadManager.Instance.playerData.coins >= price)
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
+        if (SaveLoadManager.Instance.playerData.coins >= price)
         {
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.BuyButtonClick, 0.3f);
             SaveLoadManager.Instance.playerData.coins -= price;
             SaveLoadManager.Instance.playerData.isPurchasedUnit.Add(id);
             GameManager.Instance.UpdateDataUnits();
@@ -72,8 +74,10 @@ public class ShopItem : MonoBehaviour
 
     public void BuyItem()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (SaveLoadManager.Instance.playerData.coins >= price)
         {
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.BuyButtonClick, 0.3f);
             SaveLoadManager.Instance.playerData.coins -= price;
             SaveLoadManager.Instance.playerData.isPurchasedItem.Add(id);
             GameManager.Instance.UpdateTowerUpdates();

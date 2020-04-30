@@ -47,15 +47,19 @@ public class Gameplay : MonoBehaviour
     {
         playerHealth = playerUnitData.dataHealth.Health;
         
-        if (playerUnitData.dataHealth.Health <= 0)
+        if (playerUnitData.dataHealth.Health <= 0 && !isPlayerTowerDead)
         {
+            AudioManager.Instance.AudioSource.Stop();
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Lose,0.1f);
             Explosion.transform.position = new Vector2(X_PlayerCord,Ycord);
             Explosion.SetActive(true);
             PlayerTower.SetActive(false);
             isPlayerTowerDead = true;
         }
-        else if(enemyUnitData.dataHealth.Health <= 0)
+        else if(enemyUnitData.dataHealth.Health <= 0 && !isEnemyTowerDead)
         {
+            AudioManager.Instance.AudioSource.Stop();
+            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Win);
             Explosion.transform.position = new Vector2(X_EnemyCord, Ycord);
             Explosion.SetActive(true);
             EnemyTower.SetActive(false);

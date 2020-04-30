@@ -34,6 +34,10 @@ public class EnemyUnit : MonoBehaviour
     {
         unitData.unitProperties.state = State.Dead;
     }
+    private void DeathScream()
+    {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Death);
+    }
 
     private void DestroyUnit()
     {

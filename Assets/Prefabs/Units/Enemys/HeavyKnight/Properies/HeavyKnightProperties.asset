@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   side: 1
   state: 0
+  unitClass: 2
   Damage: 20
   Speed: 5
   Distance: 3

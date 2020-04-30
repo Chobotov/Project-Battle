@@ -19,6 +19,7 @@ public class DeleteItemOrUnit : MonoBehaviour
     public Type type;
     private void OnMouseDown()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         switch (type)
         {
             case Type.Unit:

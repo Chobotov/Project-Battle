@@ -15,11 +15,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 2f13e89b94526c540ad3ac5d6ece8b74, type: 3}
   side: 0
   state: 0
+  unitClass: 2
   Damage: 20
   Speed: 5
   Distance: 2
   AttackDelay: 1
   CoinsPrice: 120
   ManaPrice: 125
-  isPurchased: 0
+  isPurchased: 1
   isCurrentUnit: 0

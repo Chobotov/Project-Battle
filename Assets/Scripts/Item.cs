@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 
     public void SetUnitIntoSquad()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (!SaveLoadManager.Instance.IsCurrentSquadHasEmptySlot())
         {
             return;
@@ -26,6 +27,7 @@ public class Item : MonoBehaviour
 
     public void SetTowerUpdate()
     {
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         if (!SaveLoadManager.Instance.IsCurrentTowerUpdateEmpty())
         {
             return;

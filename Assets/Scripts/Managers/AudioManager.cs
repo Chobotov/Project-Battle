@@ -2,28 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AudioStatus
+{
+    ON,
+    OFF
+}
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
-    AudioClip mainMenu;
+    public AudioClip mainMenu;
     [SerializeField]
-    AudioClip level;
+    public AudioClip level;
     [SerializeField]
-    AudioClip buttonClick;
+    public AudioClip buttonClick;
     [SerializeField]
-    AudioClip meteorExplosion;
+    public AudioClip buyButtonClick;
     [SerializeField]
-    AudioClip fireballAudio;
+    public AudioClip meteorExplosion;
     [SerializeField]
-    AudioClip swordsdFight;
+    public AudioClip[] fireballAudio = new AudioClip[3];
     [SerializeField]
-    AudioClip punch;
+    public AudioClip swordsdFight;
     [SerializeField]
-    AudioClip death;
+    public AudioClip punch;
     [SerializeField]
-    AudioClip win;
+    public AudioClip[] death = new AudioClip[3];
     [SerializeField]
-    AudioClip lose;
+    public AudioClip win;
+    [SerializeField]
+    public AudioClip lose;
+    AudioSource audioSource;
+
+    public AudioStatus audioStatus; 
+
+    private void Start()
+    {
+        audioStatus = AudioStatus.ON;
+        this.gameObject.AddComponent <AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public AudioSource AudioSource
+    {
+        get
+        {
+            return audioSource;
+        }
+        set { }
+    }
 
     public AudioClip MainMenu
     {
@@ -31,6 +57,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             return mainMenu;
         }
+        set { }
     }
 
     public AudioClip Level
@@ -39,6 +66,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             return level;
         }
+        set { }
     }
 
     public AudioClip ButtonClick
@@ -47,6 +75,16 @@ public class AudioManager : Singleton<AudioManager>
         {
             return buttonClick;
         }
+        set { }
+    }
+
+    public AudioClip BuyButtonClick
+    {
+        get
+        {
+            return buyButtonClick;
+        }
+        set { }
     }
 
     public AudioClip MeteorExplosion
@@ -55,14 +93,17 @@ public class AudioManager : Singleton<AudioManager>
         {
             return meteorExplosion;
         }
+        set { }
     }
 
     public AudioClip FireballAudio
     {
         get
         {
-            return fireballAudio;
+            int index = Random.Range(0, 3);
+            return fireballAudio[index];
         }
+        set { }
     }
 
     public AudioClip SwordsFigth
@@ -71,6 +112,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             return swordsdFight;
         }
+        set { }
     }
 
     public AudioClip Punch
@@ -79,14 +121,17 @@ public class AudioManager : Singleton<AudioManager>
         {
             return punch;
         }
+        set { }
     }
 
     public AudioClip Death
     {
         get
         {
-            return death;
+            int index = Random.Range(0, 3);
+            return death[index];
         }
+        set { }
     }
 
     public AudioClip Win
@@ -95,6 +140,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             return win;
         }
+        set { }
     }
 
     public AudioClip Lose
@@ -103,6 +149,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             return lose;
         }
+        set { }
     }
 
 }

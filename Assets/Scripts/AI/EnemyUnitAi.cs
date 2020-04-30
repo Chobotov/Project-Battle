@@ -61,4 +61,17 @@ public class EnemyUnitAI : MonoBehaviour
             nextAttackTime = Time.time + attackDelay;
         }
     }
+
+    private void GetAudio()
+    {
+        switch (unitData.unitProperties.unitClass)
+        {
+            case UnitClass.Low:
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Punch);
+                break;
+            case UnitClass.Middle:
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth);
+                break;
+        }
+    }
 }

@@ -18,6 +18,15 @@ public enum State
     Dead
 }
 
+//Класс юнита
+public enum UnitClass
+{
+    Low,
+    Middle,
+    Heavy,
+    Mag
+}
+
 [CreateAssetMenu]
 public class UnitProperties : ScriptableObject
 {
@@ -27,6 +36,8 @@ public class UnitProperties : ScriptableObject
     public Side side;
     [Header("Состояние юнита")]
     public State state;
+    [Header("Класс юнита")]
+    public UnitClass unitClass;
     [Header("Урон")]
     public int Damage;
     [Header("Скорость")]
@@ -49,10 +60,11 @@ public class UnitProperties : ScriptableObject
         this.sprite = sprite;
     }
 
-    public void SetEnum(Side side,State state)
+    public void SetEnum(Side side,State state, UnitClass unitClass)
     {
         this.side = side;
         this.state = state;
+        this.unitClass = unitClass;
     }
 
     public void SetInt(int damage, int speed, int manaPrice, int coinsPrice)
