@@ -30,15 +30,17 @@ public class Gameplay : MonoBehaviour
 
     public static bool isEnemyTowerDead;
     public static bool isPlayerTowerDead;
+    public bool isEndGame;
 
     private GameObject currentTowerUpdate;
 
     void Start()
     {
-        GameManager.Instance.gameMode = GameMode.Level;
-        CheckTowerUpdate();
+        isEndGame = true;
         isEnemyTowerDead = false;
         isPlayerTowerDead = false;
+        GameManager.Instance.gameMode = GameMode.Level;
+        CheckTowerUpdate();
         playerUnitData = PlayerTower.GetComponent<UnitData>();
         enemyUnitData = EnemyTower.GetComponent<UnitData>();
     }
@@ -47,28 +49,44 @@ public class Gameplay : MonoBehaviour
     {
         playerHealth = playerUnitData.dataHealth.Health;
         
-        if (playerUnitData.dataHealth.Health <= 0 && !isPlayerTowerDead)
+        if (playerUnitData.dataHealth.Health <= 0)
         {
-            AudioManager.Instance.AudioSource.Stop();
-            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Lose,0.1f);
+            #region Audio
+            if (isEndGame)
+            {
+                AudioManager.Instance.AudioSource.Stop();
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Lose, 0.1f);
+                isEndGame = false;
+            }
+            #endregion
             Explosion.transform.position = new Vector2(X_PlayerCord,Ycord);
             Explosion.SetActive(true);
             PlayerTower.SetActive(false);
             isPlayerTowerDead = true;
+            Invoke("StopTime", 1f);
         }
-        else if(enemyUnitData.dataHealth.Health <= 0 && !isEnemyTowerDead)
+        else if(enemyUnitData.dataHealth.Health <= 0)
         {
-            AudioManager.Instance.AudioSource.Stop();
-            AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Win);
+            #region Audio
+            if (isEndGame)
+            {
+                AudioManager.Instance.AudioSource.Stop();
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Win, 0.1f);
+                isEndGame = false;
+            }
+            #endregion
             Explosion.transform.position = new Vector2(X_EnemyCord, Ycord);
             Explosion.SetActive(true);
             EnemyTower.SetActive(false);
             isEnemyTowerDead = true;
+            Invoke("StopTime", 1f);
         }
     }
 
+    //Проверка наличия юнита для башни
     private void CheckTowerUpdate()
     {
+        //Обновление списка купленных юнитов для башни
         for (var i = 0; i < GameManager.Instance.towerUpdates.Count; i++)
         {
             if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
@@ -76,7 +94,7 @@ public class Gameplay : MonoBehaviour
             else
                 GameManager.Instance.towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
         }
-
+        //Обновление списка выбранного юнита для башни
         for (var i = 0; i < GameManager.Instance.towerUpdates.Count; i++)
         {
             if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
@@ -91,5 +109,10 @@ public class Gameplay : MonoBehaviour
                     Destroy(currentTowerUpdate);
             }
         }
+    }
+
+    private void StopTime()
+    {
+        Time.timeScale = 0f;
     }
 }

@@ -23,16 +23,19 @@ public class DeleteItemOrUnit : MonoBehaviour
         switch (type)
         {
             case Type.Unit:
-                int index = SaveLoadManager.Instance.playerData.isCurrentUnit[id];
-                GameManager.Instance.allUnits[index].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
-                SaveLoadManager.Instance.playerData.isCurrentUnit[id] = int.MinValue;
-                SaveLoadManager.Instance.playerData.currentUnits[id] = null;
-                GetComponent<SpriteRenderer>().sprite = null;
+                if(SaveLoadManager.Instance.playerData.isCurrentUnit.Length > 0)
+                {
+                    int index = SaveLoadManager.Instance.playerData.isCurrentUnit[id];
+                    GameManager.Instance.allUnits[index].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
+                    SaveLoadManager.Instance.playerData.isCurrentUnit[id] = int.MinValue;
+                    SaveLoadManager.Instance.playerData.currentUnits[id] = null;
+                    GetComponent<SpriteRenderer>().sprite = null;
+                }
                 break;
             case Type.TowerUpdate:
                 if(SaveLoadManager.Instance.playerData.currentTowerUpdate != -1 && GameManager.Instance.gameMode == GameMode.MainMenu)
                 {
-                    index = SaveLoadManager.Instance.playerData.currentTowerUpdate;
+                    int index = SaveLoadManager.Instance.playerData.currentTowerUpdate;
                     GameManager.Instance.towerUpdates[index].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
                     SaveLoadManager.Instance.playerData.currentTowerUpdate = -1;
                     Destroy(this.gameObject);

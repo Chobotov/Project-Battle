@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     public List<GameObject> allUnits = new List<GameObject>();
     public List<GameObject> towerUpdates = new List<GameObject>();
     public Transform spotTowerUpdate;
-    private GameObject currentTowerUpdate;
+    public GameObject currentTowerUpdateObject;
     public GameMode gameMode;
     private void Start()
     {
@@ -19,20 +19,24 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateDataUnits()
     {
-        for(var i = 0; i < allUnits.Count; i++)
+        for (var i = 0; i < SaveLoadManager.Instance.playerData.isPurchasedUnit.Count; i++)
         {
-            if(i < SaveLoadManager.Instance.playerData.isPurchasedUnit.Count && i == SaveLoadManager.Instance.playerData.isPurchasedUnit[i])
-                allUnits[i].GetComponent<UnitData>().unitProperties.isPurchased = true;
-            else
-                allUnits[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
+            var index = SaveLoadManager.Instance.playerData.isPurchasedUnit[i];
+            allUnits[index].GetComponent<UnitData>().unitProperties.isPurchased = true;
         }
 
         for (var i = 0; i < allUnits.Count; i++)
         {
-            if(i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.isCurrentUnit[i])
+            if (i == SaveLoadManager.Instance.playerData.isCurrentUnit[0] ||
+                    i == SaveLoadManager.Instance.playerData.isCurrentUnit[1] ||
+                    i == SaveLoadManager.Instance.playerData.isCurrentUnit[2])
+            {
                 allUnits[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
+            }
             else
+            {
                 allUnits[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = false;
+            }
         }
     }
 
@@ -40,19 +44,22 @@ public class GameManager : Singleton<GameManager>
     {
         for (var i = 0; i < towerUpdates.Count; i++)
         {
-            if (i < SaveLoadManager.Instance.playerData.isPurchasedItem.Count && i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
-                towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = true;
-            else
-                towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
+            for (var index = 0; index < SaveLoadManager.Instance.playerData.isPurchasedItem.Count; index++)
+            {
+                if (i == SaveLoadManager.Instance.playerData.isPurchasedItem[i])
+                    towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = true;
+                else
+                    towerUpdates[i].GetComponent<UnitData>().unitProperties.isPurchased = false;
+            }
         }
 
         for (var i = 0; i < towerUpdates.Count; i++)
         {
-            if (i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length && i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
+            if (i == SaveLoadManager.Instance.playerData.currentTowerUpdate)
             {
                 towerUpdates[i].GetComponent<UnitData>().unitProperties.isCurrentUnit = true;
-                if(currentTowerUpdate == null)
-                    currentTowerUpdate = Instantiate(towerUpdates[i], new Vector3(spotTowerUpdate.transform.position.x, spotTowerUpdate.transform.position.y, spotTowerUpdate.transform.position.z),Quaternion.identity);
+                if(currentTowerUpdateObject == null)
+                    currentTowerUpdateObject = Instantiate(towerUpdates[i], new Vector3(spotTowerUpdate.transform.position.x, spotTowerUpdate.transform.position.y, spotTowerUpdate.transform.position.z),Quaternion.identity);
             }
             else
             {

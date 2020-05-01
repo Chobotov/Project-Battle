@@ -6,16 +6,12 @@ using System.IO;
 
 public class SaveLoadManager : Singleton<SaveLoadManager>
 {
+    private float currenttimeScale = 1f;
     private const int MaxEnergy = 10;
     private const int MinutesForOneEnergy = 6;
 
     public PlayerData playerData = new PlayerData();
     private string PlayerFilepath;
-
-    private void Awake()
-    {
-        CheckTime();
-    }
 
     private void Start()
     {
@@ -31,6 +27,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             GameManager.Instance.UpdateTowerUpdates();
             if(playerData.isPurchasedItem.Count == 0)
                 playerData.currentTowerUpdate = -1;
+            CheckTime();
             Debug.Log("Save loaded!");
         }
     }
@@ -45,16 +42,18 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         TimeSpan ts;
         if (PlayerPrefs.HasKey("LastSession") && playerData.energy < MaxEnergy)
         {
+            int energy = 0;
             ts = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString("LastSession"));
             if (ts.Hours >= 1)
             {
-                playerData.energy = MaxEnergy;
+                energy = MaxEnergy;
             }
             else
             {
-                playerData.energy += (ts.Minutes / MinutesForOneEnergy);
+                energy = playerData.energy + (ts.Minutes / MinutesForOneEnergy);
             }
-            Debug.Log(ts.Minutes / MinutesForOneEnergy);
+            playerData.SetCoinsAndEnergy(playerData.coins, energy);
+            Debug.Log(playerData.energy);
             print(string.Format("Вас не было: {0} дней, {1} часов, {2} минут, {3} секунд", ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
         }
         PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());
@@ -85,7 +84,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         if (focus)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = currenttimeScale;
+            currenttimeScale = Time.timeScale;
         }
     }
 
@@ -94,6 +94,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (pause)
         {
             Save();
+            currenttimeScale = Time.timeScale;
             Time.timeScale = 0f;
         }
     }

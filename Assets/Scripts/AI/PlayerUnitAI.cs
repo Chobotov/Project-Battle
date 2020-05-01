@@ -2,15 +2,14 @@
 
 public class PlayerUnitAI : MonoBehaviour
 {
+    [SerializeField]
+    private float volumeScale = 0.5f;
+
     private RaycastHit2D hit;
-    
     private int damage, speed;
-    
     private float nextAttackTime;
     private float attackDelay, maxDistance;
-    
     private UnitData unitData;
-
     public Transform startRay;
     
 
@@ -65,10 +64,13 @@ public class PlayerUnitAI : MonoBehaviour
         switch(unitData.unitProperties.unitClass)
         {
             case UnitClass.Low:
-                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Punch);
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Punch, volumeScale);
                 break;
             case UnitClass.Middle:
-                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth);
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth, volumeScale);
+                break;
+            case UnitClass.Heavy:
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth, volumeScale);
                 break;
         }
     }

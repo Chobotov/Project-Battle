@@ -598,6 +598,7 @@ MonoBehaviour:
   spotTowerUpdate: {fileID: 1608565979}
   X_PlayerCord: -55
   X_EnemyCord: 55
+  isEndGame: 0
 --- !u!1 &955552487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2597,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 690f0522441d5c34dbc050273647071b,
         type: 3}
+    - target: {fileID: 7598160217847003081, guid: ffce46b40cbcc0a4888e377bf522203e,
+        type: 3}
+      propertyPath: oFFButton
+      value: 
+      objectReference: {fileID: 21300000, guid: 11e3d102a51b3e1409ff67d202690d8b,
+        type: 3}
+    - target: {fileID: 7598160217847003081, guid: ffce46b40cbcc0a4888e377bf522203e,
+        type: 3}
+      propertyPath: onButton
+      value: 
+      objectReference: {fileID: 21300000, guid: 4487209fdda91154da619301adb9e6c4,
+        type: 3}
+    - target: {fileID: 7598160217847003081, guid: ffce46b40cbcc0a4888e377bf522203e,
+        type: 3}
+      propertyPath: OnOffAudioButton
+      value: 
+      objectReference: {fileID: 1630199109}
     - target: {fileID: 7738713852233199082, guid: ffce46b40cbcc0a4888e377bf522203e,
         type: 3}
       propertyPath: m_Name
@@ -2806,6 +2824,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &1630199109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1421270369216293853, guid: ffce46b40cbcc0a4888e377bf522203e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1630199095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1699373401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4141916577423367477, guid: ffce46b40cbcc0a4888e377bf522203e,

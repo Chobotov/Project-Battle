@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -54,14 +52,19 @@ public class MainUIController : MonoBehaviour
 
     [SerializeField]
     private GameObject towerUpdate;
- 
+
+    [Header("Спрайты кнопки ВКЛ/ВЫКЛ звука")]
+    [SerializeField]
+    private Sprite onButton,oFFButton;
+
     private void Start()
     {
         AudioManager.Instance.AudioSource.Stop();
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.MainMenu);
 
         coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
-        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+        if(SaveLoadManager.Instance.playerData.energy > 10)
+            energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
         
         GameManager.Instance.gameMode = GameMode.MainMenu;
         GameManager.Instance.UpdateTowerUpdates();
@@ -70,7 +73,17 @@ public class MainUIController : MonoBehaviour
         
         cam = Camera.main;
 
-        for(var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
+        switch (AudioManager.Instance.audioStatus)
+        {
+            case AudioStatus.ON:
+                OnOffAudioButton.GetComponent<Image>().sprite = onButton;
+                break;
+            case AudioStatus.OFF:
+                OnOffAudioButton.GetComponent<Image>().sprite = oFFButton;
+                break;
+        }
+
+        for (var i = 0; i < SaveLoadManager.Instance.playerData.isCurrentUnit.Length; i++)
         {
             int index = SaveLoadManager.Instance.playerData.isCurrentUnit[i];
             if (index < 0)
@@ -155,10 +168,12 @@ public class MainUIController : MonoBehaviour
         switch (AudioManager.Instance.audioStatus)
         {
             case AudioStatus.ON:
+                OnOffAudioButton.GetComponent<Image>().sprite = oFFButton;
                 AudioManager.Instance.AudioSource.volume = 0f;
                 AudioManager.Instance.audioStatus = AudioStatus.OFF;
                 break;
             case AudioStatus.OFF:
+                OnOffAudioButton.GetComponent<Image>().sprite = onButton;
                 AudioManager.Instance.AudioSource.volume = 1f;
                 AudioManager.Instance.audioStatus = AudioStatus.ON;
                 break;

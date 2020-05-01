@@ -142,9 +142,9 @@ GameObject:
   - component: {fileID: 7329930723794306038}
   - component: {fileID: 6079129912744286575}
   - component: {fileID: 7091765968302188240}
-  - component: {fileID: 5292702781391725694}
   - component: {fileID: 6932667188757846314}
   - component: {fileID: 8741253099301174004}
+  - component: {fileID: 5292702781391725694}
   m_Layer: 0
   m_Name: "\u041C\u0430\u0433"
   m_TagString: Untagged
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 725907303032118172}
+  volumeScale: 0.5
 --- !u!114 &7091765968302188240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,25 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataHealth: {fileID: 11400000, guid: 998fda4e177e3a349af3fd21a606f571, type: 2}
   unitProperties: {fileID: 11400000, guid: 686f205a188583d44aaae3bdf8a3db10, type: 2}
---- !u!95 &5292702781391725694
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8670780445794794948}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 31f9fe6af3246ce4cbf2d9011144a449, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6932667188757846314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +299,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3f9e6a883d2a94d926fd32c1d786fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5292702781391725694
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670780445794794948}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31f9fe6af3246ce4cbf2d9011144a449, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1045509682190275200
 PrefabInstance:
   m_ObjectHideFlags: 0

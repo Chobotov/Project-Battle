@@ -7,6 +7,8 @@ public class EnemyUnit : MonoBehaviour
 {
     public Slider healthBar;
     private UnitData unitData;
+    [SerializeField]
+    private float volumeScale = 0.5f;
     private void Start()
     {
         unitData = GetComponent<UnitData>();
@@ -36,7 +38,7 @@ public class EnemyUnit : MonoBehaviour
     }
     private void DeathScream()
     {
-        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Death);
+        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Death, volumeScale);
     }
 
     private void DestroyUnit()

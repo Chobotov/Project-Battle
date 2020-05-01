@@ -22,5 +22,5 @@ MonoBehaviour:
   AttackDelay: 1
   CoinsPrice: 120
   ManaPrice: 125
-  isPurchased: 1
+  isPurchased: 0
   isCurrentUnit: 0

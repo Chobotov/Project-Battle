@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ManagerLoader : MonoBehaviour
 {
+    [Header("AUDIO")]
     [SerializeField]
     AudioClip mainMenu;
     [SerializeField]
@@ -27,12 +28,13 @@ public class ManagerLoader : MonoBehaviour
     [SerializeField]
     AudioClip lose;
     AudioSource audioSource;
-
+    [Space]
     // Ссылки на менеджеров
     public GameObject game_manager; 
     public GameObject save_manager;
     public GameObject audio_manager;
 
+    [Header("UNITS AND ITEMS")]
     //Юниты
     [SerializeField]
     private List<GameObject> units = new List<GameObject>();

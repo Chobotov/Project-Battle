@@ -97,6 +97,10 @@ public class LevelUIController : MonoBehaviour
                    secondUnitButton,
                    thirdUnitButton;
 
+    [Header("Вкл/Выкл звук")]
+    [SerializeField]
+    private Button OnOffAudioButton;
+
     private float delaySpawnUnit;
     private float fireballDelay;
 
@@ -149,6 +153,10 @@ public class LevelUIController : MonoBehaviour
 
     private Stopwatch stopwatch;
 
+    [Header("Спрайты кнопки ВКЛ/ВЫКЛ звука")]
+    [SerializeField]
+    private Sprite onButton, oFFButton;
+
     private void Start()
     {
         AudioManager.Instance.AudioSource.Stop();
@@ -174,6 +182,16 @@ public class LevelUIController : MonoBehaviour
 
         textCurrentManaText.text = $"{mana.MANA}";
         textCurrentFireballText.text = $"{100}";
+
+        switch (AudioManager.Instance.audioStatus)
+        {
+            case AudioStatus.ON:
+                OnOffAudioButton.GetComponent<Image>().sprite = onButton;
+                break;
+            case AudioStatus.OFF:
+                OnOffAudioButton.GetComponent<Image>().sprite = oFFButton;
+                break;
+        }
 
         imageFirstUnit.GetComponent<Image>().sprite = SaveLoadManager.Instance.playerData.currentUnits[0].GetComponent<UnitData>().unitProperties.sprite;
         imageSecondUnit.GetComponent<Image>().sprite = SaveLoadManager.Instance.playerData.currentUnits[1].GetComponent<UnitData>().unitProperties.sprite;
@@ -232,10 +250,12 @@ public class LevelUIController : MonoBehaviour
         switch (AudioManager.Instance.audioStatus)
         {
             case AudioStatus.ON:
+                OnOffAudioButton.GetComponent<Image>().sprite = oFFButton;
                 AudioManager.Instance.AudioSource.volume = 0f;
                 AudioManager.Instance.audioStatus = AudioStatus.OFF;
                 break;
             case AudioStatus.OFF:
+                OnOffAudioButton.GetComponent<Image>().sprite = onButton;
                 AudioManager.Instance.AudioSource.volume = 1f;
                 AudioManager.Instance.audioStatus = AudioStatus.ON;
                 break;
@@ -406,6 +426,8 @@ public class LevelUIController : MonoBehaviour
                 break;
             case GameState.Lose:
                 SaveLoadManager.Instance.playerData.coins -= loseCoins;
+                if (SaveLoadManager.Instance.playerData.coins < 0)
+                    SaveLoadManager.Instance.playerData.coins = 0;
                 break;
         }
         AsyncLoadingScreen.sceneID = mainSceneID;
@@ -414,7 +436,6 @@ public class LevelUIController : MonoBehaviour
 
     private void EndGame()
     {
-        AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
         stopwatch.Stop();
         StopAllCoroutines();
         Interactable(false);

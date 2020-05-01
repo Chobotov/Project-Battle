@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class EnemyUnitAI : MonoBehaviour
 {
+    [SerializeField]
+    private float volumeScale = 0.5f;
+
     private float attackDelay, maxDistance;
     private float nextAttackTime;
-    
     private int damage, speed;
-    
     private RaycastHit2D hit;
-   
     private UnitData unitData;
-
     public Transform startRay;
-
 
     private void Start()
     {
@@ -67,10 +65,13 @@ public class EnemyUnitAI : MonoBehaviour
         switch (unitData.unitProperties.unitClass)
         {
             case UnitClass.Low:
-                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Punch);
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Punch, volumeScale);
                 break;
             case UnitClass.Middle:
-                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth);
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth, volumeScale);
+                break; 
+            case UnitClass.Heavy:
+                AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.SwordsFigth, volumeScale);
                 break;
         }
     }

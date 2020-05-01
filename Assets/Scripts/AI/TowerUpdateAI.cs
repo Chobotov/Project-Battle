@@ -33,7 +33,6 @@ public class TowerUpdateAI : MonoBehaviour
         {
             if (!targets.Contains(hit.collider.gameObject))
             {
-                Debug.Log("Add");
                 AddEnemyToList(hit.collider.gameObject);
             }
         }
@@ -65,7 +64,6 @@ public class TowerUpdateAI : MonoBehaviour
     }
     private void Attack(EnemyUnit target)
     {
-        Debug.Log("Attack");
         if (nextAttackTime < Time.time && enemyData.dataHealth.Health >= 0)
         {
             GameObject cast =  Instantiate(fireball,startRay.transform);
