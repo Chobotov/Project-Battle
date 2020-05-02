@@ -1,5 +1,6 @@
 <h1>Project-Battle</h1>
 <h2>Unity 2019.3.7f1</h2>
+
 ![icon](https://github.com/Chobotov/Project-Battle/blob/master/Assets/icon/iconGame.png)
 
 <p>Игра, разработанна специально для конкурса Black Bears Coding Challenge 2020 от компании Black Bears.</p>
