@@ -240,7 +240,18 @@ public class LevelUIController : MonoBehaviour
             gameState = GameState.Game;
             settingsPanel.SetActive(false);
             Interactable(true);
-            Time.timeScale = 1f;
+            switch (levelOfSpeed)
+            {
+                case LevelOfSpeed.Normal:
+                    Time.timeScale = 1f;
+                    break;
+                case LevelOfSpeed.Faster:
+                    Time.timeScale = 1.5f;
+                    break;
+                case LevelOfSpeed.VeryFast:
+                    Time.timeScale = 2f;
+                    break;
+            }
         }
     }
 
