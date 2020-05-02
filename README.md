@@ -20,7 +20,9 @@
 
 <h2>Видео-превью</h2>
 
-[![Video](https://vk.com/video96721519_456239199?t=1m14s)](https://vk.com/video96721519_456239199)
+<img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png" width="60">
+
+[Video](https://yadi.sk/i/IqsTXILb1bx2_w)
 
 <h2>Скриншоты</h2>
 <h3>Главное меню. Башня</h3>
