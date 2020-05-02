@@ -25,7 +25,7 @@
 
 <h3>Главное меню. Магазин</h3>
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuShop.jpg" width="320">
 
 <h3>Магазин</h3>
 
@@ -33,13 +33,10 @@
 
 <h3>Бой</h3>
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
-![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Game1.png" width="320">
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
-![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Game2.png" width="320">
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
-![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Game3.png" width="320">
 
 
