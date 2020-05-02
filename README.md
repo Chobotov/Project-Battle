@@ -20,7 +20,7 @@
 
 <h2>Видео-превью</h2>
 <strong>Нажми на изображение для просмотра</strong>
-<a href="https://yadi.sk/i/IqsTXILb1bx2_w"><img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png" width="60" alt=""></a>
+<p><a href="https://yadi.sk/i/IqsTXILb1bx2_w"><img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/video-512.png" width="60" alt=""></a></p>
 
 <h2>Скриншоты</h2>
 <h3>Главное меню. Башня</h3>
