@@ -12,4 +12,4 @@
 <strong>Выполнено:</strong> Возможность выбора колоды юнитов перед боем<br>
 <strong>Не выполнено:</strong> Возможность PvP боев</p>
 <h2>Скриншоты</h2>
-
+![](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.png)
