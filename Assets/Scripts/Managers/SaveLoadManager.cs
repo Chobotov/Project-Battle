@@ -37,6 +37,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         File.WriteAllText(PlayerFilepath, JsonUtility.ToJson(playerData));
     }
 
+    //Прибавление энергии в зависимости от времени без игры
     private void CheckTime()
     {
         TimeSpan ts;

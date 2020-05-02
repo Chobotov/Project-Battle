@@ -134,8 +134,6 @@ public class AI : MonoBehaviour
             }
         }
     }
-
-
     IEnumerator Delay()
     {
         switch (choice)

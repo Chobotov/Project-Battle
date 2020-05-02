@@ -6,6 +6,10 @@ public class MainUIController : MonoBehaviour
 {
     private const int loadScene = 2;
 
+    [Header("Туториал")]
+    [SerializeField]
+    private GameObject tutorial;
+
     private Camera cam;
     [SerializeField]
     private Transform SquadSpot;
@@ -59,6 +63,15 @@ public class MainUIController : MonoBehaviour
 
     private void Start()
     {
+        if (SaveLoadManager.Instance.playerData.isFirstLaunch)
+        {
+            tutorial.SetActive(true);
+        }
+        else
+        {
+            tutorial.SetActive(false);
+        }
+
         AudioManager.Instance.AudioSource.Stop();
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.MainMenu);
 

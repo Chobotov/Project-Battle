@@ -6,24 +6,16 @@ public class PlayerFarUnitAI : MonoBehaviour
 {
     private float attackDelay, maxDistance;
     private float nextAttackTime;
-    
     private int damage,speed;
-    
     private RaycastHit2D hit;
-    
     private UnitData unitData;
     private UnitData enemyData;
-
     private EnemyUnit target;
-
     public Transform startRay;
-
     [SerializeField]
     private GameObject fireball;
-
     private int layerMaskOnlyPlayerUnits = 1 << 8;
     private int layerMaskWithoutPlayerUnits;
-
 
     private void Start()
     {

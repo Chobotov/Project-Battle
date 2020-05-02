@@ -36,11 +36,12 @@ public class EnemyUnit : MonoBehaviour
     {
         unitData.unitProperties.state = State.Dead;
     }
+    //Вызывается через анимацию смерти
     private void DeathScream()
     {
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.Death, volumeScale);
     }
-
+    //Вызывается через анимацию смерти
     private void DestroyUnit()
     {
         AI.countUnits -= 1;

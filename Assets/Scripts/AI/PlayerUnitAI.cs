@@ -58,7 +58,7 @@ public class PlayerUnitAI : MonoBehaviour
             nextAttackTime = Time.time + attackDelay;
         }
     }
-
+    //Вызов через анимацию смерти
     private void GetAudio()
     {
         switch(unitData.unitProperties.unitClass)

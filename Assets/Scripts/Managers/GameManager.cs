@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
         UpdateTowerUpdates();
     }
 
+    //Обновление у юнита статуса купленного и текущего члена отряда
     public void UpdateDataUnits()
     {
         for (var i = 0; i < SaveLoadManager.Instance.playerData.isPurchasedUnit.Count; i++)
@@ -40,6 +41,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    //Обновление у юнита башни статуса купленного и текущего для башни
     public void UpdateTowerUpdates()
     {
         for (var i = 0; i < towerUpdates.Count; i++)

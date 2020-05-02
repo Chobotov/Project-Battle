@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class TowerUpdateAI : MonoBehaviour
 {
-    public Transform startRay;
-    public float attackDelay;
-    private float nextAttackTime;
-    
-    private RaycastHit2D hit;
-
-    private EnemyUnit target;
-    private UnitData enemyData;
-    
-    private Vector2 endRay;
     [SerializeField]
     private List<GameObject> targets = new List<GameObject>();
     [SerializeField]
     private GameObject fireball;
+
+    public Transform startRay;
+    public float attackDelay;
+    private float nextAttackTime;
+    private RaycastHit2D hit;
+    private EnemyUnit target;
+    private UnitData enemyData;
+    private Vector2 endRay;
 
     private void Start()
     {
@@ -27,7 +25,6 @@ public class TowerUpdateAI : MonoBehaviour
     private void FixedUpdate()
     {
         hit = Physics2D.Raycast(startRay.position, endRay);
-        Debug.DrawRay(startRay.position, endRay,Color.red);
 
         if (hit && hit.collider.gameObject.GetComponent<EnemyUnit>() != null)
         {

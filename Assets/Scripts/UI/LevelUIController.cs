@@ -454,6 +454,8 @@ public class LevelUIController : MonoBehaviour
             case GameState.Lose:
                 titleText.text = "Поражение!";
                 timeText.text = elapsedTime;
+                if (Gameplay.playerHealth < 0)
+                    Gameplay.playerHealth = 0;
                 healthText.text = $"{Gameplay.playerHealth}";
                 coinsText.text = $"-{loseCoins}";
                 endGamePanel.SetActive(true);

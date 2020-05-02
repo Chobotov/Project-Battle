@@ -21,6 +21,8 @@ public class PlayerData
     public List<int> isPurchasedUnit = new List<int>();
     public List<int> isPurchasedItem = new List<int>();
 
+    public bool isFirstLaunch = true;
+
 
     public void SetCoinsAndEnergy(int coins, int energy)
     {

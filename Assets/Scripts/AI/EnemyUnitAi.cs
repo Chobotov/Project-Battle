@@ -60,6 +60,7 @@ public class EnemyUnitAI : MonoBehaviour
         }
     }
 
+    //Вызов через анимацию смерти
     private void GetAudio()
     {
         switch (unitData.unitProperties.unitClass)
