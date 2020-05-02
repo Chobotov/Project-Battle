@@ -65,6 +65,7 @@ public class AI : MonoBehaviour
 
     private void Start()
     {
+        delay = Random.Range(0.1f, 0.5f);
         countUnits = 0;
     }
 
