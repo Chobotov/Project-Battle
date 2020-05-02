@@ -17,11 +17,11 @@
 <h2>Скриншоты</h2>
 <h3>Главное меню. Башня</h3>
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.png" width="320">
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.jpg" width="320">
 
 <h3>Главное меню. Отряд</h3>
 
-<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.jpg" width="320">
 
 <h3>Главное меню. Магазин</h3>
 
