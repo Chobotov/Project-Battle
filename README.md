@@ -1,4 +1,7 @@
 <h1>Project-Battle</h1>
+
+![icon](https://github.com/Chobotov/Project-Battle/blob/master/Assets/icon/iconGame.png)
+
 <p>Игра, разработанна специально для конкурса Black Bears Coding Challenge 2020 от компании Black Bears.</p>
 <h2>Описание игры</h2>
 <p>На поле две башни, игрока и врага. У каждой башни есть показатель HP. Игрок, как и враг (компьютер), выпускают на поле юнитов. В игре 4 вида юнитов, но боевая колода(боевой отряд) состоит из трех юнитов. Выпуск юнитов на поле ограничен КД и стоимостью в мане. Мана копится по времени. Юниты самостоятельно начинают движение к вражеской башне, вступая в бой с вражескими юнитами на пути. Дойдя до башни юниты атакуют её. Игра продолжается пока одна из башен не рухнет. В игре присутствует магазин юнитов, в котором игрок может покупать новых юнитов для отряда и юнитов для башни. За победу в бою игрок зарабатывает 50 монет, за проигрыш - 25 монет. Перед боем игрок может составить свой отряд из купленных юнитов, а также поставить специального юнита на башню.</p>
@@ -12,3 +15,30 @@
 <strong>Выполнено:</strong> Возможность выбора колоды юнитов перед боем<br>
 <strong>Не выполнено:</strong> Возможность PvP боев</p>
 <h2>Скриншоты</h2>
+<h3>Главное меню. Башня</h3>
+
+![Main menu.Tower](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.png?raw=true)
+
+<h3>Главное меню. Отряд</h3>
+
+![Main menu.Squad](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png?raw=true)
+
+<h3>Главное меню. Магазин</h3>
+
+![Main menu. Shop](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png?raw=true)
+
+<h3>Магазин</h3>
+
+![Shop](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+
+<h3>Бой</h3>
+
+![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+
+
+![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+
+
+![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+
+
