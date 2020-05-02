@@ -77,8 +77,7 @@ public class MainUIController : MonoBehaviour
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.MainMenu);
 
         coinsText.text = $"{SaveLoadManager.Instance.playerData.coins}";
-        if(SaveLoadManager.Instance.playerData.energy > 10)
-            energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
         
         GameManager.Instance.gameMode = GameMode.MainMenu;
         GameManager.Instance.UpdateTowerUpdates();

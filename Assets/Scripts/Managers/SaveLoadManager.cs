@@ -54,7 +54,6 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
                 energy = playerData.energy + (ts.Minutes / MinutesForOneEnergy);
             }
             playerData.SetCoinsAndEnergy(playerData.coins, energy);
-            Debug.Log(playerData.energy);
             print(string.Format("Вас не было: {0} дней, {1} часов, {2} минут, {3} секунд", ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
         }
         PlayerPrefs.SetString("LastSession", DateTime.Now.ToString());

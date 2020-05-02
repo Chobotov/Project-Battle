@@ -27,7 +27,10 @@ public class PlayerData
     public void SetCoinsAndEnergy(int coins, int energy)
     {
         this.coins = coins;
-        this.energy = energy;
+        if (energy > 10)
+            this.energy = 10;
+        else
+            this.energy = energy;
     }
 
     public void SetCurrentUnits(GameObject[] currentUnits)
