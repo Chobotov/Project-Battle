@@ -12,4 +12,3 @@
 <strong>Выполнено:</strong> Возможность выбора колоды юнитов перед боем<br>
 <strong>Не выполнено:</strong> Возможность PvP боев</p>
 <h2>Скриншоты</h2>
-![](Assets/Screenshots/MainMenuTower.png)
