@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class MainUIController : MonoBehaviour
 {
     private const int loadScene = 2;
+    private const int coinsPrice = 10;
 
     [Header("Туториал")]
     [SerializeField]
@@ -196,9 +197,12 @@ public class MainUIController : MonoBehaviour
     public void GetEnergy()
     {
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
-        if (SaveLoadManager.Instance.playerData.energy<10)
+        if (SaveLoadManager.Instance.playerData.energy<10 && SaveLoadManager.Instance.playerData.coins >= coinsPrice)
+        {
             SaveLoadManager.Instance.playerData.energy++;
-        energyText.text = $"{SaveLoadManager.Instance.playerData.energy}";
+            SaveLoadManager.Instance.playerData.coins -= coinsPrice;
+            
+        }
     }
 
     public void Exit()
