@@ -17,28 +17,29 @@
 <h2>Скриншоты</h2>
 <h3>Главное меню. Башня</h3>
 
-![Main menu.Tower](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.png?raw=true)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuTower.png" width="320">
 
 <h3>Главное меню. Отряд</h3>
 
-![Main menu.Squad](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png?raw=true)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
 
 <h3>Главное меню. Магазин</h3>
 
-![Main menu. Shop](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png?raw=true)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
 
 <h3>Магазин</h3>
 
-![Shop](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png" width="320">
 
 <h3>Бой</h3>
 
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
 ![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
 
-
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
 ![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
 
-
+<img src="https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/MainMenuSquad.png" width="320">
 ![Fight](https://github.com/Chobotov/Project-Battle/blob/master/Assets/Screenshots/Shop.png)
 
 
