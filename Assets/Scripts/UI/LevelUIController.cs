@@ -276,7 +276,8 @@ public class LevelUIController : MonoBehaviour
     public void LeaveLevel()
     {
         AudioManager.Instance.AudioSource.PlayOneShot(AudioManager.Instance.ButtonClick, 0.3f);
-        SaveLoadManager.Instance.playerData.coins -= loseCoins;
+        int coins = SaveLoadManager.Instance.playerData.coins - loseCoins;
+        SaveLoadManager.Instance.playerData.SetCoinsAndEnergy(coins, SaveLoadManager.Instance.playerData.energy);
         AsyncLoadingScreen.sceneID = mainSceneID;
         SceneManager.LoadScene(loadingScreen);
     }
