@@ -26,7 +26,10 @@ public class PlayerData
 
     public void SetCoinsAndEnergy(int coins, int energy)
     {
-        this.coins = coins;
+        if (coins < 0)
+            this.coins = 0;
+        else
+            this.coins = coins;
         if (energy > 10)
             this.energy = 10;
         else
