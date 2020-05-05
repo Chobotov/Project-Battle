@@ -48,7 +48,7 @@ public class PlayerFarUnitAI : MonoBehaviour
                 enemyData = target.GetComponent<UnitData>();
                 Attack(target);
             }
-            else if (target == null)
+            else if (target == null && hit.distance <= maxDistance)
             {
                 unitData.unitProperties.state = State.Idle;
             }

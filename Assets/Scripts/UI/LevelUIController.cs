@@ -339,6 +339,7 @@ public class LevelUIController : MonoBehaviour
                     mana.MANA += 1;
                     manaButoonSlider.value = mana.MANA;
                     textCurrentManaText.text = $"{mana.MANA}";
+                    print(mana.MANA_SpeedUp);
                     yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
                 break;

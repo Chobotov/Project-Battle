@@ -42,7 +42,7 @@ public class PlayerUnitAI : MonoBehaviour
             {
                 Attack(enemy);
             }
-            else if (enemy == null)
+            else if (enemy == null && hit.distance <= maxDistance)
             {
                 unitData.unitProperties.state = State.Idle;
             }
