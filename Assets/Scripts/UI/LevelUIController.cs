@@ -156,6 +156,9 @@ public class LevelUIController : MonoBehaviour
     [Header("Спрайты кнопки ВКЛ/ВЫКЛ звука")]
     [SerializeField]
     private Sprite onButton, oFFButton;
+    
+    //Статус загрузки маны
+    private bool isManaLoad = false;
 
     private void Start()
     {
@@ -336,12 +339,14 @@ public class LevelUIController : MonoBehaviour
             case PressedButton.Mana:
                 while (mana.MANA != (int)manaButoonSlider.maxValue)
                 {
+                    isManaLoad = true;
                     mana.MANA += 1;
                     manaButoonSlider.value = mana.MANA;
                     textCurrentManaText.text = $"{mana.MANA}";
                     print(mana.MANA_SpeedUp);
                     yield return new WaitForSeconds(mana.MANA_SpeedUp);
                 }
+                isManaLoad = false;
                 break;
             case PressedButton.Meteor:
                 while (!fireball.Meteor_isReady)
@@ -494,7 +499,8 @@ public class LevelUIController : MonoBehaviour
         mana.MANA -= value;
         manaButoonSlider.value = mana.MANA;
         pressedButton = PressedButton.Mana;
-        StartCoroutine(Delay());
+        if(!isManaLoad)
+            StartCoroutine(Delay());
     }
 
 }
